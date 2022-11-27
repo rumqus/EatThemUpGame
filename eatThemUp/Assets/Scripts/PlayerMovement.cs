@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private Rigidbody playerRb;
     private Vector3 movement;
-    private float size; // размер игрока влияет на того кого может съесть
+   
  
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
+        
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        transform.LookAt(playerRb.position + movement);
     }
     /// <summary>
     /// Метод передвижения игрока
