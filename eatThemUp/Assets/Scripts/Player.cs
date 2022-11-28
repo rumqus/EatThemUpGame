@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] static float size; // текущий уровень размер игрока
-    private Vector3 sizeOfPlayer; // текущий размер игрока
-    [SerializeField] private Vector3 plusSize = new Vector3(0.05f, 0.05f,0.05f); //шаг увелечения размера игрока
+    [SerializeField] private float pointsSize; // очки размера игрока
+    private int LevelOfSize; // уровень размера игрока
     private Vector3 stepPosition = new Vector3(0, 1f, 0f); // шаг изменения позиции по Y при увелечении размера
     [SerializeField] private float speedGrowth = 2;
+    [SerializeField] private float stepSize = 0.3f; // шаг увеличения размера
+
 
     // Start is called before the first frame update
     void Start()
     {
-        size = 1f;
-        sizeOfPlayer = GetComponent<Transform>().localScale;
+        pointsSize = 1f;
+        LevelOfSize = 0;
     }
 
     // Update is called once per frame
@@ -26,30 +27,47 @@ public class Player : MonoBehaviour
     /// <summary>
     /// метод изменения размера игрока
     /// </summary>
-    private void ChangeSize(Vector3 colObject) 
+    private void ChangeSize(Enemy enemySize) 
     {
-        sizeOfPlayer += colObject;
-        transform.localScale = sizeOfPlayer;
-        transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
+        pointsSize += enemySize.Size; //прибавляем очки роста
+        if (LevelOfSize <= 5 && pointsSize/5 >= 1)
+        {
+            LevelOfSize++;
+            transform.localScale += new Vector3(stepSize, stepSize, stepSize);
+            transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
+        }
+        else 
+        {
+         // даем увеличение на время
+        }
+        
+        
        
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareSize(other.gameObject))
+        Debug.Log(TryGetComponent(out Enemy comps));
+        if (TryGetComponent(out Enemy comp))
         {
-            ChangeSize(other.transform.localScale);
-            Destroy(other.gameObject);
+            if (CompareSize(comp.Size))
+            {
+                ChangeSize(comp);
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                Debug.Log("Конец игры");
+                //жрем игрока
+                //отыгрываем анимацию пожирания
+                //удаялем игрока
+                // закачиваем игру
+            }
+
         }
-        else 
-        {
-            Debug.Log("Конец игры");
-        //жрем игрока
-        //отыгрываем анимацию пожирания
-        //удаялем игрока
-        // закачиваем игру
-        }
+
+        
         
     }
 
@@ -58,10 +76,10 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="collidedObject"></param>
     /// <returns></returns>
-    public bool CompareSize(GameObject collidedObject)
+    public bool CompareSize(float enemySize)
     {
-        if (sizeOfPlayer.x > collidedObject.transform.localScale.x)
-        {
+        if (pointsSize > enemySize)
+        {            
             return true;
         }
         else return false;
