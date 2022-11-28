@@ -26,21 +26,47 @@ public class Player : MonoBehaviour
     /// <summary>
     /// метод изменения размера игрока
     /// </summary>
-    private void ChangeSize() 
+    private void ChangeSize(Vector3 colObject) 
     {
-        sizeOfPlayer += plusSize;
+        sizeOfPlayer += colObject;
         transform.localScale = sizeOfPlayer;
         transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
+       
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        ChangeSize();
-        Destroy(other.gameObject);
+        if (CompareSize(other.gameObject))
+        {
+            ChangeSize(other.transform.localScale);
+            Destroy(other.gameObject);
+        }
+        else 
+        {
+            Debug.Log("Конец игры");
+        //жрем игрока
+        //отыгрываем анимацию пожирания
+        //удаялем игрока
+        // закачиваем игру
+        }
         
-
     }
 
+    /// <summary>
+    /// метод сравнения размеров сталкиваемых объектов
+    /// </summary>
+    /// <param name="collidedObject"></param>
+    /// <returns></returns>
+    public bool CompareSize(GameObject collidedObject)
+    {
+        if (sizeOfPlayer.x > collidedObject.transform.localScale.x)
+        {
+            return true;
+        }
+        else return false;
+    
+    }
+    
 
 }
