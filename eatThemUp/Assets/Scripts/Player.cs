@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float pointsSize; // очки размера игрока
+    private float pointsSize; // очки размера игрока
     private int LevelOfSize; // уровень размера игрока
+    [SerializeField] private int maxLevelofSize; // максимальный уровень роста
     private Vector3 stepPosition = new Vector3(0, 1f, 0f); // шаг изменения позиции по Y при увелечении размера
     [SerializeField] private float speedGrowth = 2;
     [SerializeField] private float stepSize = 0.3f; // шаг увеличения размера
+    [SerializeField] private float timeSuperSize; // таймер максимального увелечения на время, когда игрок может есть всех 
 
 
     // Start is called before the first frame update
@@ -27,20 +29,21 @@ public class Player : MonoBehaviour
     /// <summary>
     /// метод изменения размера игрока
     /// </summary>
-    private void ChangeSize(Enemy enemySize) 
+    private void ChangeSize(float enemySize) 
     {
-        pointsSize += enemySize.Size; //прибавляем очки роста
-        if (LevelOfSize <= 5 && pointsSize/5 >= 1)
+        pointsSize += enemySize; //прибавляем очки роста
+        if (LevelOfSize <= maxLevelofSize && pointsSize/5 >= 1)
         {
             LevelOfSize++;
             transform.localScale += new Vector3(stepSize, stepSize, stepSize);
             transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
+            pointsSize = 1f;
         }
         else 
         {
          // даем увеличение на время
         }
-        
+        Debug.Log(pointsSize);
         
        
     }
@@ -48,10 +51,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(TryGetComponent(out Enemy comps));
-        if (TryGetComponent(out Enemy comp))
+        
+        if (other.gameObject.tag == "enemy")
         {
-            if (CompareSize(comp.Size))
+            float comp = other.gameObject.GetComponent<Enemy>().Size;
+            if (CompareSize(comp))
             {
                 ChangeSize(comp);
                 Destroy(other.gameObject);
