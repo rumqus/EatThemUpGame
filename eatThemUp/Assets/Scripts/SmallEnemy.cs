@@ -11,6 +11,8 @@ public class SmallEnemy : Enemy
     void Start()
     {
         Size = 0.25f;
+        LevelofSize = 0.25f;
+        
     }
         
 }

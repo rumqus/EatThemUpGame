@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float pointsSize; // очки размера игрока
-    private int LevelOfSize; // уровень размера игрока
-    [SerializeField] private int maxLevelofSize; // максимальный уровень роста
-    private Vector3 stepPosition = new Vector3(0, 1f, 0f); // шаг изменения позиции по Y при увелечении размера
-    [SerializeField] private float speedGrowth = 2;
-    [SerializeField] private float stepSize = 0.3f; // шаг увеличения размера
-    [SerializeField] private float timeSuperSize; // таймер максимального увелечения на время, когда игрок может есть всех 
+    private float pointsSize; // points of size Player
+    private int levelOfSize; // max level of Size player
+    [SerializeField] private int maxLevelofSize; // max level of size
+    private Vector3 stepPosition = new Vector3(0, 1f, 0f); // step of changing player position against Y axis
+    [SerializeField] private float speedGrowth = 2; // speed of growth Player
+    [SerializeField] private float stepSize = 0.3f; // step of increasing size player
+    [SerializeField] private float timeSuperSize; // taimer for super-size
+    // debug
+    public float enemySize;
+    public float enemyLevel;
+    public GameObject gamemanager;
 
+    public float PointSize { get; private set; }
+    public int LevelOfsize { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
         pointsSize = 1f;
-        LevelOfSize = 0;
+        levelOfSize = 1;
     }
 
     // Update is called once per frame
@@ -27,37 +33,39 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// метод изменения размера игрока
+    /// Changing size of Player
     /// </summary>
-    private void ChangeSize(float enemySize) 
+    private void ChangeSize(float enemySize, float enemyLevel)
     {
         pointsSize += enemySize; //прибавляем очки роста
-        if (LevelOfSize <= maxLevelofSize && pointsSize/5 >= 1)
+        if (levelOfSize <= maxLevelofSize && pointsSize / 5 >= 1 && levelOfSize > enemyLevel)
         {
-            LevelOfSize++;
+            levelOfSize++;
             transform.localScale += new Vector3(stepSize, stepSize, stepSize);
             transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
             pointsSize = 1f;
         }
-        else 
+        else
         {
-         // даем увеличение на время
+            // даем увеличение на время
         }
-        Debug.Log(pointsSize);
+        this.enemyLevel = enemyLevel;
+        this.enemySize = enemySize;
         
-       
+
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.gameObject.tag == "enemy")
+
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            float comp = other.gameObject.GetComponent<Enemy>().Size;
-            if (CompareSize(comp))
+            
+            if (CompareSize(enemy.Size))
             {
-                ChangeSize(comp);
+                ChangeSize(enemy.Size, enemy.LevelofSize);
                 Destroy(other.gameObject);
             }
             else
@@ -71,8 +79,8 @@ public class Player : MonoBehaviour
 
         }
 
-        
-        
+
+
     }
 
     /// <summary>
@@ -83,12 +91,12 @@ public class Player : MonoBehaviour
     public bool CompareSize(float enemySize)
     {
         if (pointsSize > enemySize)
-        {            
+        {
             return true;
         }
         else return false;
-    
+
     }
-    
+
 
 }

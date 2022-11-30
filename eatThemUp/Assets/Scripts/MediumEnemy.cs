@@ -11,6 +11,7 @@ public class MediumEnemy : Enemy
     void Start()
     {
         Size = 0.5f;
+        LevelofSize = 0.5f;
     }
         
 }

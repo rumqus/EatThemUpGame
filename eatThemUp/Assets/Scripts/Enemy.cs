@@ -4,10 +4,11 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private float size; // очки роста противника
-
+    [SerializeField] private float size; // points of size enemy
+    [SerializeField] private int levelofSize; // Level of enemy
     public float Size { get; protected set;}
 
+    public float LevelofSize { get; protected set; }
     
     void Start()
     {

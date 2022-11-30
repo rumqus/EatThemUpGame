@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BigEnemy : Enemy
 {
+    
     public override void MoveEnemy()
     {
         Debug.Log("маленький враг двигается");
@@ -11,6 +12,7 @@ public class BigEnemy : Enemy
     void Start()
     {
         Size = 2f;
+        LevelofSize = 2f;
     }
         
 }
