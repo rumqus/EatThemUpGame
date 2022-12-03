@@ -5,19 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float pointsSize; // points of size Player
-    private int levelOfSize; // max level of Size player
+    private int levelOfSize; // level of Size player
     [SerializeField] private int maxLevelofSize; // max level of size
     private Vector3 stepPosition = new Vector3(0, 1f, 0f); // step of changing player position against Y axis
     [SerializeField] private float speedGrowth = 2; // speed of growth Player
     [SerializeField] private float stepSize = 0.3f; // step of increasing size player
     [SerializeField] private float timeSuperSize; // taimer for super-size
-    // debug
-    public float enemySize;
-    public float enemyLevel;
-    public GameObject gamemanager;
+    // debug panel
+    public float enemySizeS;
+    public float enemyLevelS;
+    public GameObject debugPanel;
 
-    public float PointSize { get; private set; }
-    public int LevelOfsize { get; private set; }
+    public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
+    public int LevelOfsize { get { return levelOfSize; } private set { levelOfSize = value; } }
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +49,9 @@ public class Player : MonoBehaviour
         {
             // даем увеличение на время
         }
-        this.enemyLevel = enemyLevel;
-        this.enemySize = enemySize;
+        enemyLevelS = enemyLevel;
+        enemySizeS = enemySize;
+        debugPanel.GetComponent<DebugPanel>().Showdata();
         
 
 
