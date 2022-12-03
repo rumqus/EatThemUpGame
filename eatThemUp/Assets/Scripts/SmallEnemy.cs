@@ -3,11 +3,9 @@ using UnityEngine.AI;
 
 public class SmallEnemy : Enemy
 {
+    // descrition in parent class Enemy
 
-    public override void MoveEnemy()
-    {
-        Debug.Log("маленький враг двигается");
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +21,8 @@ public class SmallEnemy : Enemy
 
     private void Update()
     {
-        CheckDistance();
+        ChasePlayer();
     }
 
-    //private void CheckDistance() 
-    //{
-    //    float distance = Vector3.Distance(target.position, transform.position);
-    //    if (distance < 5f)
-    //    {
-    //        Agent.SetDestination(target.position);
-
-    //    }
-
-    //}
+   
 }

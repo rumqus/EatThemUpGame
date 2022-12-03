@@ -8,8 +8,11 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float size; // points of size enemy
     [SerializeField] private int levelofSize; // Level of enemy
     private float radius = 5f; // radius of enemy start acting
-    protected Transform target;
+    protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
+    [SerializeField]private float areaRadius;
+    protected float timer; // time for movement
+    
 
     public float Size { get; protected set; }
 
@@ -18,50 +21,56 @@ public abstract class Enemy : MonoBehaviour
     public NavMeshAgent Agent { get; protected set; }
 
 
-
-    void Start()
-    {
-        
-        Debug.Log($@"ENEMY { target.position}");
-    }
-
     protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
-
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, areaRadius);
     }
 
     private void Update()
     {
-        CheckDistance();
+        ChasePlayer();
     }
 
     /// <summary>
-    /// метож перемещения противника по карте
+    /// random movement enemy on the map
     /// </summary>
-    public abstract void MoveEnemy();
+    protected void MoveEnemy() 
+    {
+        if (!Agent.hasPath)
+        {
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+        }
+        
+    }
 
 
     /// <summary>
     /// checking distance between player and enemy
     /// </summary>
-    protected void CheckDistance() 
+    protected void ChasePlayer()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        if (distance < radius)
+
+        if (distance < radius && LevelofSize > target.GetComponent<Player>().LevelOfsize)
         {
             Agent.SetDestination(target.position);
-
+            FaceToPlayer();
+        }
+        else 
+        {
+            MoveEnemy();
         }
 
-    
     }
-        
+
+    protected void FaceToPlayer()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
 }
-
-
-
-
-
-
