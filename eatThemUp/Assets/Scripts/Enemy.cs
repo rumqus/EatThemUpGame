@@ -7,7 +7,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private float size; // points of size enemy
     [SerializeField] private int levelofSize; // Level of enemy
-    private float radius = 5f; // radius of enemy start acting
+    private float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
     [SerializeField]private float areaRadius;

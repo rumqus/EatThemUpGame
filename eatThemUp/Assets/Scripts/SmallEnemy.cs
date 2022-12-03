@@ -14,7 +14,6 @@ public class SmallEnemy : Enemy
         Size = 0.25f;
         LevelofSize = 0.25f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
-        Debug.Log(Agent.isActiveAndEnabled);
         target = PlayerInstance.instancePlayer.player.transform;
         
     }

@@ -53,10 +53,7 @@ public class Player : MonoBehaviour
         enemySizeS = enemySize;
         debugPanel.GetComponent<DebugPanel>().Showdata();
         
-
-
     }
-
 
     private void OnTriggerEnter(Collider other)
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5499465805134898510}
   - component: {fileID: 5499465805134898497}
   - component: {fileID: 5499465805134898509}
-  - component: {fileID: 5499465805134898508}
+  - component: {fileID: 1194906432023427033}
   m_Layer: 0
   m_Name: mediumEnemy
   m_TagString: enemy
@@ -63,8 +63,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55872476, y: 0.48873448, z: 0.5169945}
-  m_Center: {x: 0.0025146008, y: 0.24949217, z: -0.004053116}
+  m_Size: {x: 0.80782986, y: 0.7800613, z: 0.5169945}
+  m_Center: {x: -0.0059304237, y: 0.39515558, z: -0.004053116}
 --- !u!195 &5499465805134898509
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5499465805134898508
+--- !u!114 &1194906432023427033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,12 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5499465805134898507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea1a4c80f4531a47ad88f1edc9f8052, type: 3}
+  m_Script: {fileID: 11500000, guid: 14062fadd95b2354ba465e175e625d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
   levelofSize: 0
-  areaRadius: 40
+  areaRadius: 50
 --- !u!1 &5499465805477699819
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,8 +128,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5499465805477699819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5499465805134898496}
@@ -163,7 +163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 157e649d6247f8443a0e14e0e05fac2c, type: 2}
+  - {fileID: 2100000, guid: bd26e3d2d0f56b54d95b8f3b244d407f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
