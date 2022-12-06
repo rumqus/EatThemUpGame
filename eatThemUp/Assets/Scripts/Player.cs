@@ -41,36 +41,19 @@ public class Player : MonoBehaviour
     {
         pointsSize += enemySize; //прибавляем очки роста
 
-        //if (levelOfSize <= maxLevelofSize && pointsSize / 5 >= 1 && levelOfSize > enemyLevel)
-        //{
-        //    levelOfSize++;
-        //    transform.localScale += new Vector3(stepSize, stepSize, stepSize);
-        //    transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
-        //    pointsSize = 1f;
-        //}
-        //else if (levelOfSize == maxLevelofSize && pointsSize / 5 >= 1 && levelOfSize > enemyLevel)
-        //{
-        //    GetSuperSize();
-        //}
-
-        if (LevelOfsize > enemyLevel)
+        if (pointsSize / 5 > 1)
         {
-            if (pointsSize / 5 > 1)
+            if (levelOfSize < maxLevelofSize)
             {
-                if (levelOfSize < maxLevelofSize)
-                {
-                    levelOfSize++;
-                    transform.localScale += new Vector3(stepSize, stepSize, stepSize);
-                    transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
-                    pointsSize = 1f;
-                }
-                else
-                {
-                    GetSuperSize();
-                }
-
+                levelOfSize++;
+                transform.localScale += new Vector3(stepSize, stepSize, stepSize);
+                transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
+                pointsSize = 1f;
             }
-
+            else
+            {
+                GetSuperSize();
+            }
         }
 
         enemyLevelS = enemyLevel;
@@ -85,7 +68,7 @@ public class Player : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
             // compare size with player vs enemy
-            if (CompareSize(enemy.Size))
+            if (CompareSizeLevel(enemy.LevelofSize))
             {
                 //if true - player is bigger
                 ChangeSize(enemy.Size, enemy.LevelofSize);
@@ -109,9 +92,9 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="collidedObject"></param>
     /// <returns></returns>
-    public bool CompareSize(float enemySize)
+    public bool CompareSizeLevel(float enemylevel)
     {
-        if (pointsSize > enemySize)
+        if (levelOfSize > enemylevel)
         {
             return true;
         }
