@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     private int levelOfSize; // level of Size player
     [SerializeField] private int maxLevelofSize; // max level of size
     private Vector3 stepPosition = new Vector3(0, 1f, 0f); // step of changing player position against Y axis
-    [SerializeField] private float speedGrowth = 2; // speed of growth Player
-    [SerializeField] private float stepSize = 0.3f; // step of increasing size player
+    [SerializeField] private float speedGrowth ; // speed of growth Player
+    [SerializeField] private float stepSize; // step of increasing size player
     [SerializeField] private float timer;
 
     // debug panel
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       // DebugSmooth();
     }
 
     /// <summary>
@@ -40,13 +40,14 @@ public class Player : MonoBehaviour
     private void ChangeSize(float enemySize, float enemyLevel)
     {
         pointsSize += enemySize; //прибавляем очки роста
-
-        if (pointsSize / 5 > 1)
+        if (pointsSize / 3 > 1)
         {
             if (levelOfSize < maxLevelofSize)
             {
+                Vector3 newScale = transform.localScale + new Vector3(stepSize, stepSize, stepSize);
                 levelOfSize++;
-                transform.localScale += new Vector3(stepSize, stepSize, stepSize);
+                //SmoothScale(transform.localScale,newScale);
+                transform.localScale = Vector3.Lerp(transform.localScale, newScale, speedGrowth); 
                 transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
                 pointsSize = 1f;
             }
@@ -106,7 +107,9 @@ public class Player : MonoBehaviour
     /// </summary>
     private void GetSuperSize()
     {
-        transform.localScale = new Vector3(3f, 3f, 3f);
+        levelOfSize = 10;
+        SmoothScale(transform.localScale, new Vector3(3f, 3f, 3f));
+        //transform.localScale = new Vector3(3f, 3f, 3f);
         StartCoroutine(TimeSuperSize(timer));
     }
 
@@ -115,9 +118,31 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(timer);
         pointsSize = 1f;
         levelOfSize = 1;
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        //transform.localScale = new Vector3(1f, 1f, 1f);
+        SmoothScale(transform.localScale, new Vector3(1f, 1f, 1f));
     }
 
+    /// <summary>
+    /// smooth scale of player
+    /// </summary>
+    /// <param name="currentsize"></param>
+    /// <param name="newSize"></param>
+    private void SmoothScale(Vector3 currentsize, Vector3 newSize) 
+    {
+        transform.localScale = Vector3.Lerp(currentsize, newSize, speedGrowth);
+    }
+
+    private void DebugSmooth() 
+    {
+        if (Input.GetButton("Jump"))
+        {
+            SmoothScale(transform.localScale, new Vector3(5, 5, 5));
+        }
+        else 
+        {
+            SmoothScale(transform.localScale, new Vector3(1, 1, 1));
+        }
+    }
 
 
 }
