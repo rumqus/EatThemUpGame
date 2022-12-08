@@ -674,10 +674,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f7ed3bb982754419d529a503444598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLevelofSize: 4
+  maxLevelofSize: 2
   speedGrowth: 1
   stepSize: 1
-  timer: 0.2
+  timer: 5
   enemySizeS: 0
   enemyLevelS: 0
   debugPanel: {fileID: 1763199049}

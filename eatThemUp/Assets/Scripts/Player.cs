@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float speedGrowth ; // speed of growth Player
     [SerializeField] private float stepSize; // step of increasing size player
     [SerializeField] private float timer;
+    private bool onOffSuperSize;
+    
 
     // debug panel
     public float enemySizeS;
@@ -25,13 +27,14 @@ public class Player : MonoBehaviour
     {
         pointsSize = 1f;
         levelOfSize = 1;
+        onOffSuperSize = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       // DebugSmooth();
+        CheckSuperSize(onOffSuperSize);
     }
 
     /// <summary>
@@ -47,7 +50,7 @@ public class Player : MonoBehaviour
                 Vector3 newScale = transform.localScale + new Vector3(stepSize, stepSize, stepSize);
                 levelOfSize++;
                 //SmoothScale(transform.localScale,newScale);
-                transform.localScale = Vector3.Lerp(transform.localScale, newScale, speedGrowth); 
+                //transform.localScale = Vector3.Lerp(transform.localScale, newScale, speedGrowth * Time.deltaTime); 
                 transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
                 pointsSize = 1f;
             }
@@ -107,9 +110,12 @@ public class Player : MonoBehaviour
     /// </summary>
     private void GetSuperSize()
     {
+        onOffSuperSize = true;
         levelOfSize = 10;
-        SmoothScale(transform.localScale, new Vector3(3f, 3f, 3f));
+        //DebugSmooth(transform.localScale, new Vector3(3, 3, 3));
+        //SmoothScale(transform.localScale, new Vector3(3f, 3f, 3f));
         //transform.localScale = new Vector3(3f, 3f, 3f);
+        
         StartCoroutine(TimeSuperSize(timer));
     }
 
@@ -118,8 +124,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(timer);
         pointsSize = 1f;
         levelOfSize = 1;
+        onOffSuperSize = false;
         //transform.localScale = new Vector3(1f, 1f, 1f);
-        SmoothScale(transform.localScale, new Vector3(1f, 1f, 1f));
+        //SmoothScale(transform.localScale, new Vector3(1f, 1f, 1f));
+       
     }
 
     /// <summary>
@@ -129,20 +137,43 @@ public class Player : MonoBehaviour
     /// <param name="newSize"></param>
     private void SmoothScale(Vector3 currentsize, Vector3 newSize) 
     {
-        transform.localScale = Vector3.Lerp(currentsize, newSize, speedGrowth);
+        transform.localScale = Vector3.Lerp(transform.localScale, newSize, speedGrowth * Time.deltaTime);
     }
 
-    private void DebugSmooth() 
+   
+
+
+    private void DebugSmooth(Vector3 startScale, Vector3 endScale) 
     {
-        if (Input.GetButton("Jump"))
+        for (float time = 0; time < 2; time +=Time.deltaTime)
         {
-            SmoothScale(transform.localScale, new Vector3(5, 5, 5));
+            transform.localScale = Vector3.Lerp(startScale,endScale, speedGrowth * Time.deltaTime);
+        }
+    }
+
+    //IEnumerator ScaleUpAndDown(Transform transform, Vector3 upScale, float duration)
+    //{
+    //    Vector3 initialScale = transform.localScale;
+
+    //    for (float time = 0; time < duration * 2; time += Time.deltaTime)
+    //    {
+    //        float progress = Mathf.PingPong(time, duration) / duration;
+    //        transform.localScale = Vector3.Lerp(initialScale, upScale, progress);
+    //        yield return null;
+    //    }
+    //    transform.localScale = initialScale;
+    //}
+
+    private void CheckSuperSize(bool onSize) 
+    {
+        if (onSize == true)
+        {
+            SmoothScale(transform.localScale, new Vector3(3, 3, 3));
         }
         else 
         {
             SmoothScale(transform.localScale, new Vector3(1, 1, 1));
         }
+    
     }
-
-
 }
