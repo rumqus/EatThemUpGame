@@ -15,7 +15,8 @@ public class SmallEnemy : Enemy
         LevelofSize = 0.25f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
-        
+        Agent.avoidancePriority = Random.RandomRange(76, 99);
+
     }
 
     private void Update()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,9 +8,9 @@ public abstract class Enemy : MonoBehaviour
     private float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
-    [SerializeField]private float areaRadius;
+    private float areaRadius;
     protected float timer; // time for movement
-    
+
 
     public float Size { get; protected set; }
 
@@ -29,6 +27,11 @@ public abstract class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, areaRadius);
     }
 
+    private void Start()
+    {
+        areaRadius = GetPoint.Instance.Range;
+    }
+
     private void Update()
     {
         ChasePlayer();
@@ -37,13 +40,13 @@ public abstract class Enemy : MonoBehaviour
     /// <summary>
     /// random movement enemy on the map
     /// </summary>
-    protected void MoveEnemy() 
+    protected void MoveEnemy()
     {
         if (!Agent.hasPath)
         {
-            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(GetPoint.Instance.transform, areaRadius));
         }
-        
+
     }
 
 
@@ -59,7 +62,7 @@ public abstract class Enemy : MonoBehaviour
             Agent.SetDestination(target.position);
             FaceToPlayer();
         }
-        else 
+        else
         {
             MoveEnemy();
         }

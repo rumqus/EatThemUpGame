@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5499465805134898497}
   - component: {fileID: 5499465805134898509}
   - component: {fileID: 1194906432023427033}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mediumEnemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5499465805134898507}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 5
   m_Acceleration: 6
   avoidancePriority: 50
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   levelofSize: 0
-  areaRadius: 50
 --- !u!1 &5499465805477699819
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +112,7 @@ GameObject:
   - component: {fileID: 5499465805477699820}
   - component: {fileID: 5499465805477699822}
   - component: {fileID: 5499465805477699821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

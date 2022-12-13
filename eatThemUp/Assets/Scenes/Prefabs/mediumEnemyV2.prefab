@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4550448526268593098}
   - component: {fileID: 4550448526268593096}
   - component: {fileID: 4550448526268593099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4550448526595634791}
   - component: {fileID: 4550448526595634795}
   - component: {fileID: 7197137866185663743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mediumEnemyV2
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4550448526595634797}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 5
   m_Acceleration: 6
   avoidancePriority: 50
@@ -184,4 +184,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   levelofSize: 0
-  areaRadius: 50

@@ -12,6 +12,7 @@ public class BigEnemy : Enemy
         Size = 1f;
         LevelofSize = 6f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
+        Agent.avoidancePriority = Random.RandomRange(0,25);
         Debug.Log(Agent.isActiveAndEnabled);
         target = PlayerInstance.instancePlayer.player.transform;
 
