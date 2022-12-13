@@ -5,7 +5,7 @@ using UnityEngine;
 public class PooledObjects : MonoBehaviour
 {
 
-    private ObjectPooler objectPooler;    
+    private ObjectPooler objectPooler;
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
@@ -32,7 +32,7 @@ public class PooledObjects : MonoBehaviour
         for (int i = 0; i < enemys.Count; i++)
         {
             GameObject pooledObject = enemys[i];
-            pooledObject.transform.position = spawnpoint.GetRandomPoint();
+            pooledObject.transform.position = spawnpoint.GetRandomPoint(GetPoint.Instance.transform,GetPoint.Instance.Range);
             pooledObject.SetActive(true);
         }
     
