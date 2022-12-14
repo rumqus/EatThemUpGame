@@ -19,23 +19,27 @@ public class PooledObjects : MonoBehaviour
         spawnpoint = GetPoint.Instance;
         objectPooler = ObjectPooler.SharedInstance;
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
-        //mediumEnemys = objectPooler.GetAllPooledObjects(1);
-        //biggestEnemy = objectPooler.GetAllPooledObjects(2);
+        mediumEnemys = objectPooler.GetAllPooledObjects(1);
+        biggestEnemy = objectPooler.GetAllPooledObjects(2);
 
         SpawnEnemy(smallestEnemys);
-        //SpawnEnemy(mediumEnemys);
-        //SpawnEnemy(biggestEnemy);
+        SpawnEnemy(mediumEnemys);
+        SpawnEnemy(biggestEnemy);
     }
 
     private void SpawnEnemy(List<GameObject> enemys) 
     {
+        
         for (int i = 0; i < enemys.Count; i++)
         {
             GameObject pooledObject = enemys[i];
-            pooledObject.transform.position = spawnpoint.GetRandomPoint(GetPoint.Instance.transform,GetPoint.Instance.Range);
+            pooledObject.transform.position = spawnpoint.GetRandomPoint();
+
             pooledObject.SetActive(true);
-            Debug.Log($@"spawn enemy_{pooledObject.name}");
+            Debug.Log($@"spawn enemy_{pooledObject.transform.position}");
         }
     
     }
+
+
 }

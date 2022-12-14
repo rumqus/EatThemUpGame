@@ -8,7 +8,7 @@ public abstract class Enemy : MonoBehaviour
     private float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
-    private float areaRadius;
+    protected float areaRadius;
     protected float timer; // time for movement
 
 
@@ -32,6 +32,8 @@ public abstract class Enemy : MonoBehaviour
         areaRadius = GetPoint.Instance.Range;
     }
 
+
+
     private void Update()
     {
         ChasePlayer();
@@ -44,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (!Agent.hasPath)
         {
-            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(GetPoint.Instance.transform, areaRadius));
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint());
         }
 
     }
