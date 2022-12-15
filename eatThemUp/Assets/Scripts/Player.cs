@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-
     }
 
     // Update is called once per frame
@@ -76,7 +75,8 @@ public class Player : MonoBehaviour
             {
                 //if true - player is bigger
                 ChangeSize(enemy.Size, enemy.LevelofSize);
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
+                //Destroy(other.gameObject);
             }
             else
             {

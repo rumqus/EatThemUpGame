@@ -9,6 +9,9 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
+    [SerializeField] private float upStep;
+    private bool Up;
+
 
     private GetPoint spawnpoint; 
 
@@ -16,6 +19,7 @@ public class PooledObjects : MonoBehaviour
 
     private void Start()
     {
+
         spawnpoint = GetPoint.Instance;
         objectPooler = ObjectPooler.SharedInstance;
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
@@ -34,7 +38,6 @@ public class PooledObjects : MonoBehaviour
         {
             GameObject pooledObject = enemys[i];
             pooledObject.transform.position = spawnpoint.GetRandomPoint();
-
             pooledObject.SetActive(true);
             Debug.Log($@"spawn enemy_{pooledObject.transform.position}");
         }
