@@ -125,9 +125,6 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-        //transform.localScale = new Vector3(1f, 1f, 1f);
-        //SmoothScale(transform.localScale, new Vector3(1f, 1f, 1f));
-       
     }
 
     /// <summary>
@@ -150,19 +147,6 @@ public class Player : MonoBehaviour
             transform.localScale = Vector3.Lerp(startScale,endScale, speedGrowth * Time.deltaTime);
         }
     }
-
-    //IEnumerator ScaleUpAndDown(Transform transform, Vector3 upScale, float duration)
-    //{
-    //    Vector3 initialScale = transform.localScale;
-
-    //    for (float time = 0; time < duration * 2; time += Time.deltaTime)
-    //    {
-    //        float progress = Mathf.PingPong(time, duration) / duration;
-    //        transform.localScale = Vector3.Lerp(initialScale, upScale, progress);
-    //        yield return null;
-    //    }
-    //    transform.localScale = initialScale;
-    //}
 
     private void CheckSuperSize(bool onSize) 
     {

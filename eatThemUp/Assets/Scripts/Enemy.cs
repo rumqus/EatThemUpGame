@@ -10,6 +10,9 @@ public abstract class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected float areaRadius;
     protected float timer; // time for movement
+    [SerializeField] protected GameObject ChildGO;
+    protected bool Up;
+    protected Vector3 upPosition;
 
 
     public float Size { get; protected set; }
@@ -78,6 +81,14 @@ public abstract class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    
+    protected void StartMovement() 
+    {
+        ChildGO.transform.position = Vector3.MoveTowards(ChildGO.transform.position,upPosition,Time.deltaTime);
+        if (ChildGO.transform.position.y == upPosition.y)
+        {
+            Up = false;
+        }
+        //Debug.Log($"Child Position_{ChildGO.transform.position}");
+    }
 
 }

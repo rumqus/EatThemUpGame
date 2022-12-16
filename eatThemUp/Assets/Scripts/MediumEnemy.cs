@@ -13,11 +13,21 @@ public class MediumEnemy : Enemy
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.RandomRange(50, 75);
+        Up = true;
+        upPosition = new Vector3(ChildGO.transform.position.x, 0.8f, ChildGO.transform.position.z);
 
     }
 
     private void Update()
     {
-        ChasePlayer();
+        if (Up == true)
+        {
+            StartMovement();
+        }
+        else
+        {
+            ChasePlayer();
+            MoveEnemy();
+        }
     }
 }

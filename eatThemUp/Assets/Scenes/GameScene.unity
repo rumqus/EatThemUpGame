@@ -563,7 +563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &239597248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239597247}
   m_LocalRotation: {x: 0.420748, y: -1e-45, z: 1e-45, w: 0.90717757}
-  m_LocalPosition: {x: 0, y: 14.41, z: 1.1000004}
+  m_LocalPosition: {x: 0, y: 14.41, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -991,7 +991,7 @@ GameObject:
   m_Layer: 0
   m_Name: ObjectPooler
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1009,13 +1009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 7643587268516839849, guid: 7dd8537879bdd4f47999f73ac6622af0, type: 3}
-    amountToPool: 10
-    shouldExpand: 1
-  - objectToPool: {fileID: 4550448526595634797, guid: 811a23a4ede36c44f989b8957a805978, type: 3}
-    amountToPool: 10
-    shouldExpand: 1
-  - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
-    amountToPool: 5
+    amountToPool: 20
     shouldExpand: 1
   pooledObjects: []
 --- !u!4 &533830950
@@ -1026,7 +1020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533830948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 28}
+  m_LocalPosition: {x: 0, y: -0.56, z: 28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1250,7 +1244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &728447208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,8 +1583,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.70090926, y: -0.000000010876723, z: 0.000000010688526, w: 0.71325046}
-  m_LocalPosition: {x: 0, y: 51.41, z: 10.5}
+  m_LocalRotation: {x: 0.420748, y: -1e-45, z: 1e-45, w: 0.90717757}
+  m_LocalPosition: {x: 0, y: 14.41, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

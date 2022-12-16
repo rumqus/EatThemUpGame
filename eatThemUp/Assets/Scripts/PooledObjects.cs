@@ -9,8 +9,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
-    [SerializeField] private float upStep;
-    private bool Up;
+    
 
 
     private GetPoint spawnpoint; 
@@ -25,10 +24,7 @@ public class PooledObjects : MonoBehaviour
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
         mediumEnemys = objectPooler.GetAllPooledObjects(1);
         biggestEnemy = objectPooler.GetAllPooledObjects(2);
-
-        SpawnEnemy(smallestEnemys);
-        SpawnEnemy(mediumEnemys);
-        SpawnEnemy(biggestEnemy);
+        StartCoroutine(delaySpawn());
     }
 
     private void SpawnEnemy(List<GameObject> enemys) 
@@ -39,10 +35,19 @@ public class PooledObjects : MonoBehaviour
             GameObject pooledObject = enemys[i];
             pooledObject.transform.position = spawnpoint.GetRandomPoint();
             pooledObject.SetActive(true);
-            Debug.Log($@"spawn enemy_{pooledObject.transform.position}");
+           // Debug.Log($@"spawn enemy_{pooledObject.transform.position}");
         }
     
     }
 
+    IEnumerator delaySpawn() 
+    {
+        yield return new WaitForSeconds(2);
+        SpawnEnemy(smallestEnemys);
+        yield return new WaitForSeconds(2);
+        SpawnEnemy(mediumEnemys);
+        yield return new WaitForSeconds(2);
+        SpawnEnemy(biggestEnemy);
+    }
 
 }
