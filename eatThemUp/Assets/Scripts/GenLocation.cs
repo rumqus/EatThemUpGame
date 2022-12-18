@@ -7,6 +7,7 @@ public class GenLocation : MonoBehaviour
     [SerializeField] private int direction;
     private float rightStep = 75.2f;
     private Player player;
+    [SerializeField] private GameObject manager;
     
 
     private void InstatinateLocation(int direction) 
@@ -25,6 +26,7 @@ public class GenLocation : MonoBehaviour
                     GameObject newLocation = LocationList.locationInstance.pooledLocations[i];
                     newLocation.transform.position = new Vector3(GetComponentInParent<Transform>().position.x + rightStep, 0, 0);
                     newLocation.SetActive(true);
+                    manager.transform.position = new Vector3(transform.position.x + rightStep,0,0);
                     break;
                 }
             }

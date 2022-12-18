@@ -22,9 +22,7 @@ public class LocationList : MonoBehaviour
             GameObject newLocation = Instantiate(locations[i]);
             newLocation.SetActive(false);
             pooledLocations.Add(newLocation);
-            
-            
-
+           
         }
     }
 }
