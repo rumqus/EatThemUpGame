@@ -10,8 +10,6 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
     
-
-
     private GetPoint spawnpoint; 
 
  
@@ -35,7 +33,6 @@ public class PooledObjects : MonoBehaviour
             GameObject pooledObject = enemys[i];
             pooledObject.transform.position = spawnpoint.GetRandomPoint();
             pooledObject.SetActive(true);
-           // Debug.Log($@"spawn enemy_{pooledObject.transform.position}");
         }
     
     }
