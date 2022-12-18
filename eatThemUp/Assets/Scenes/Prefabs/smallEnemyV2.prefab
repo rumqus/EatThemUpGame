@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   levelofSize: 0
+  areaRadius: 40
   ChildGO: {fileID: 6493191435979996338}
 --- !u!65 &4674951478159870795
 BoxCollider:

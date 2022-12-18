@@ -184,4 +184,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 0
   levelofSize: 0
+  areaRadius: 50
   ChildGO: {fileID: 4966353743691419731}
