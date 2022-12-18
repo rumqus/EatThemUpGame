@@ -42,11 +42,11 @@ public class PooledObjects : MonoBehaviour
 
     IEnumerator delaySpawn() 
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SpawnEnemy(smallestEnemys);
         yield return new WaitForSeconds(2);
         SpawnEnemy(mediumEnemys);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         SpawnEnemy(biggestEnemy);
     }
 

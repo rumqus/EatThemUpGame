@@ -13,7 +13,6 @@ public class BigEnemy : Enemy
         LevelofSize = 6f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         Agent.avoidancePriority = Random.RandomRange(0,25);
-        Debug.Log(Agent.isActiveAndEnabled);
         target = PlayerInstance.instancePlayer.player.transform;
         Up = true;
         upPosition = new Vector3(ChildGO.transform.position.x, 1.2f, ChildGO.transform.position.z);
