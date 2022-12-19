@@ -70,6 +70,9 @@ public class Player : MonoBehaviour
         // detecting collision with enemy
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
+            // checking if coin or not
+            GetCoin(other.gameObject);
+
             // compare size with player vs enemy
             if (CompareSizeLevel(enemy.LevelofSize))
             {
@@ -160,4 +163,14 @@ public class Player : MonoBehaviour
         }
     
     }
+
+    private void GetCoin(GameObject other) 
+    {
+        if (other.tag == "coin")
+        {
+            Actions.SpawnCoin(3, other.GetComponent<PooledObjects>().Coins);
+        }
+    
+    }
+
 }
