@@ -13,7 +13,14 @@ public class PooledObjects : MonoBehaviour
 
     private GetPoint spawnpoint;
 
-    public List<GameObject> Coins { get; }
+    public List<GameObject> Coins { get { return coins;} }
+    public List<GameObject> smallestEnemy { get { return smallestEnemys;} }
+    public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
+    public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
+
+
+
+
 
     private void OnEnable()
     {
@@ -36,6 +43,8 @@ public class PooledObjects : MonoBehaviour
         coins = objectPooler.GetAllPooledObjects(3);
         StartCoroutine(DelaySpawn());
     }
+
+
 
 
     /// <summary>
@@ -75,11 +84,15 @@ public class PooledObjects : MonoBehaviour
     /// <param name="objects"></param>
     private void WrapCorSpawn(int time, List<GameObject> objects) 
     {
-        StartCoroutine(ReSpawnDelay(time, objects));
-    
+        StartCoroutine(ReSpawnDelay(time, objects));    
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="time"></param>
+    /// <param name="objects"></param>
+    /// <returns></returns>
     IEnumerator ReSpawnDelay(int time, List<GameObject> objects) 
     {
         yield return new WaitForSeconds(time);
@@ -88,9 +101,10 @@ public class PooledObjects : MonoBehaviour
 
     private void ReSpawnEnemy(List<GameObject> objects)
     {
-        for (int i = 0; i < coins.Count; i++)
+        
+        for (int i = 0; i < objects.Count; i++)
         {
-            if (coins[i] == false)
+            if (objects[i] == false)
             {
                 GameObject pooledObject = coins[i];
                 pooledObject.transform.position = spawnpoint.GetRandomPoint();
