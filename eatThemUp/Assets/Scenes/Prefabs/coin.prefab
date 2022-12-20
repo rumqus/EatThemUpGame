@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 5925958203000751113}
   m_Layer: 7
   m_Name: coin
-  m_TagString: enemy
+  m_TagString: coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

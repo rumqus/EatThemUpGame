@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Changing size of Player
     /// </summary>
-    private void ChangeSize(float enemySize, float enemyLevel)
+    private bool ChangeSize(float enemySize, float enemyLevel)
     {
         pointsSize += enemySize; //прибавляем очки роста
         if (pointsSize / 3 > 1)
@@ -48,8 +48,6 @@ public class Player : MonoBehaviour
             {
                 Vector3 newScale = transform.localScale + new Vector3(stepSize, stepSize, stepSize);
                 levelOfSize++;
-                //SmoothScale(transform.localScale,newScale);
-                //transform.localScale = Vector3.Lerp(transform.localScale, newScale, speedGrowth * Time.deltaTime); 
                 transform.position = Vector3.Lerp(transform.position, transform.position + stepPosition, speedGrowth * Time.deltaTime);
                 pointsSize = 1f;
             }
@@ -62,11 +60,13 @@ public class Player : MonoBehaviour
         enemyLevelS = enemyLevel;
         enemySizeS = enemySize;
         debugPanel.GetComponent<DebugPanel>().Showdata();
+        return true;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // невероятно монструозная херня
         // detecting collision with enemy
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
@@ -77,9 +77,12 @@ public class Player : MonoBehaviour
             if (CompareSizeLevel(enemy.LevelofSize))
             {
                 //if true - player is bigger
-                ChangeSize(enemy.Size, enemy.LevelofSize);
-                other.gameObject.SetActive(false);
-                //Destroy(other.gameObject);
+                if (ChangeSize(enemy.Size, enemy.LevelofSize))
+                {
+                    other.gameObject.SetActive(false);
+
+                }
+                
             }
             else
             {
@@ -168,7 +171,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "coin")
         {
-            Actions.SpawnCoin(3, other.GetComponent<PooledObjects>().Coins);
+            Actions.SpawnCoin();
         }
     
     }

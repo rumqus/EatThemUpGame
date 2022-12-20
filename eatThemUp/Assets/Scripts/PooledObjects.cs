@@ -24,12 +24,12 @@ public class PooledObjects : MonoBehaviour
 
     private void OnEnable()
     {
-        Actions.SpawnCoin += WrapCorSpawn; 
+        Actions.SpawnCoin += SpawnCoin; 
     }
 
     private void OnDisable()
     {
-        Actions.SpawnCoin -= WrapCorSpawn;
+        Actions.SpawnCoin -= SpawnCoin;
     }
 
     private void Start()
@@ -74,6 +74,8 @@ public class PooledObjects : MonoBehaviour
         SpawnEnemy(mediumEnemys);
         yield return new WaitForSeconds(3);
         SpawnEnemy(biggestEnemy);
+        yield return new WaitForSeconds(5);
+        SpawnCoin();
     }
 
 
@@ -98,21 +100,57 @@ public class PooledObjects : MonoBehaviour
         yield return new WaitForSeconds(time);
         ReSpawnEnemy(objects);
     }
-
+    /// <summary>
+    /// method of respawning enemy
+    /// </summary>
+    /// <param name="objects"></param>
     private void ReSpawnEnemy(List<GameObject> objects)
     {
-        
+        int count = 0;
         for (int i = 0; i < objects.Count; i++)
         {
-            if (objects[i] == false)
+            if (count < 2)
             {
-                GameObject pooledObject = coins[i];
-                pooledObject.transform.position = spawnpoint.GetRandomPoint();
-                pooledObject.SetActive(true);
-                break;
+                if (objects[i] == false)
+                {
+                    GameObject pooledObject = objects[i];
+                    pooledObject.transform.position = spawnpoint.GetRandomPoint();
+                    pooledObject.SetActive(true);
+                    count++;
+                }
             }
         }
     
+    }
+
+    /// <summary>
+    /// Method of spawning and respawning coins with wrapped corutine
+    /// </summary>
+    private void SpawnCoin() 
+    {
+        StartCoroutine(DelayCoinSpawn());
+    }
+
+    IEnumerator DelayCoinSpawn() 
+    {
+        // монструозная херня
+        int count = 0;
+        yield return new WaitForSeconds(5);
+        // after delay spawn coin
+        for (int i = 0; i < coins.Count; i++)
+        {
+            if (count < 2)
+            {
+                if (coins[i].activeSelf == false)
+                {
+                    GameObject pooledObject = coins[i];
+                    pooledObject.transform.position = spawnpoint.GetRandomPoint();
+                    pooledObject.SetActive(true);
+                    count++;
+                    
+                }
+            }
+        }
     }
 
 }
