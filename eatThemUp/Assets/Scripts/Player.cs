@@ -178,13 +178,18 @@ public class Player : MonoBehaviour
     
     }
 
+    /// <summary>
+    /// method - wrapping action
+    /// </summary>
+    /// <param name="enemy"></param>
     private void RespawnEnemy(GameObject enemy) 
     {
         foreach (var item in dic) 
         {
             if (enemy.tag == item.Value)
             {
-                Actions.RespawnEnemy(1, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key));
+                Actions.RespawnEnemy(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key));
+                
             }
         }
     }

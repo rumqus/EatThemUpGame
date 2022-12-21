@@ -46,14 +46,12 @@ public class PooledObjects : MonoBehaviour
     /// <param name="enemys"></param>
     private void SpawnEnemy(List<GameObject> enemys, int count) 
     {
-        
         for (int i = 0; i < count; i++)
         {
             GameObject pooledObject = enemys[i];
             pooledObject.transform.position = spawnpoint.GetRandomPoint();
             pooledObject.SetActive(true);
         }
-    
     }
     /// <summary>
     /// Spawning enemys with delay in start scene
@@ -71,7 +69,6 @@ public class PooledObjects : MonoBehaviour
         SpawnCoin();
     }
 
-
     /// <summary>
     /// wrapping coroutine to sign it on action
     /// </summary>
@@ -79,11 +76,11 @@ public class PooledObjects : MonoBehaviour
     /// <param name="objects"></param>
     private void WrapCorSpawn(int time, List<GameObject> objects) 
     {
-        StartCoroutine(ReSpawnDelay(time, objects));    
+        StartCoroutine(ReSpawnDelay(time, objects));
     }
 
     /// <summary>
-    /// 
+    /// Coroutine to delay spawnEnemy
     /// </summary>
     /// <param name="time"></param>
     /// <param name="objects"></param>
@@ -102,9 +99,9 @@ public class PooledObjects : MonoBehaviour
         int count = 0;
         for (int i = 0; i < objects.Count; i++)
         {
-            if (count < 2)
+            if (count < 1)
             {
-                if (objects[i] == false)
+                if (objects[i].activeSelf == false)
                 {
                     GameObject pooledObject = objects[i];
                     pooledObject.transform.position = spawnpoint.GetRandomPoint();

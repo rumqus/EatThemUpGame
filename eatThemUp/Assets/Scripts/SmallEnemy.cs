@@ -7,7 +7,6 @@ public class SmallEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-
         Size = 0.25f;
         LevelofSize = 0.25f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
@@ -15,6 +14,7 @@ public class SmallEnemy : Enemy
         Agent.avoidancePriority = Random.Range(76, 99);
         Up = true;
         upPosition = new Vector3(ChildGO.transform.position.x, 0.8f, ChildGO.transform.position.z);
+        Debug.Log("Ã¿À€ÿ –Œƒ»À—ﬂ");
     }
 
     private void Update()
