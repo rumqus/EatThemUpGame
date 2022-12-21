@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float stepSize; // step of increasing size player
     [SerializeField] private float timer;
     private bool onOffSuperSize;
-    
+    private Dictionary<int, string> dic;
+    private int randomTime;
 
     // debug panel
     public float enemySizeS;
@@ -28,12 +29,14 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
+        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"}};
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckSuperSize(onOffSuperSize);
+        randomTime = Random.Range(3,8);
     }
 
     /// <summary>
@@ -80,9 +83,8 @@ public class Player : MonoBehaviour
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
                     other.gameObject.SetActive(false);
-
+                    RespawnEnemy(enemy.gameObject);
                 }
-                
             }
             else
             {
@@ -174,6 +176,17 @@ public class Player : MonoBehaviour
             Actions.SpawnCoin();
         }
     
+    }
+
+    private void RespawnEnemy(GameObject enemy) 
+    {
+        foreach (var item in dic) 
+        {
+            if (enemy.tag == item.Value)
+            {
+                Actions.RespawnEnemy(1, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key));
+            }
+        }
     }
 
 }

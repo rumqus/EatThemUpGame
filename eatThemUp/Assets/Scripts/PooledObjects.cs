@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PooledObjects : MonoBehaviour
 {
-
     private ObjectPooler objectPooler;
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
-
     private GetPoint spawnpoint;
 
     public List<GameObject> Coins { get { return coins;} }
@@ -18,18 +16,16 @@ public class PooledObjects : MonoBehaviour
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
     public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
 
-
-
-
-
     private void OnEnable()
     {
-        Actions.SpawnCoin += SpawnCoin; 
+        Actions.SpawnCoin += SpawnCoin;
+        Actions.RespawnEnemy += WrapCorSpawn;
     }
 
     private void OnDisable()
     {
         Actions.SpawnCoin -= SpawnCoin;
+        Actions.RespawnEnemy -= WrapCorSpawn;
     }
 
     private void Start()
@@ -44,17 +40,14 @@ public class PooledObjects : MonoBehaviour
         StartCoroutine(DelaySpawn());
     }
 
-
-
-
     /// <summary>
     /// method of spawning enemy
     /// </summary>
     /// <param name="enemys"></param>
-    private void SpawnEnemy(List<GameObject> enemys) 
+    private void SpawnEnemy(List<GameObject> enemys, int count) 
     {
         
-        for (int i = 0; i < enemys.Count; i++)
+        for (int i = 0; i < count; i++)
         {
             GameObject pooledObject = enemys[i];
             pooledObject.transform.position = spawnpoint.GetRandomPoint();
@@ -69,11 +62,11 @@ public class PooledObjects : MonoBehaviour
     IEnumerator DelaySpawn() 
     {
         yield return new WaitForSeconds(1);
-        SpawnEnemy(smallestEnemys);
+        SpawnEnemy(smallestEnemys, 20);
         yield return new WaitForSeconds(2);
-        SpawnEnemy(mediumEnemys);
+        SpawnEnemy(mediumEnemys, 15);
         yield return new WaitForSeconds(3);
-        SpawnEnemy(biggestEnemy);
+        SpawnEnemy(biggestEnemy, 7);
         yield return new WaitForSeconds(5);
         SpawnCoin();
     }
@@ -131,6 +124,10 @@ public class PooledObjects : MonoBehaviour
         StartCoroutine(DelayCoinSpawn());
     }
 
+    /// <summary>
+    /// count < 1 - change amount of coins spawn
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DelayCoinSpawn() 
     {
         // монструозная херня
@@ -139,7 +136,7 @@ public class PooledObjects : MonoBehaviour
         // after delay spawn coin
         for (int i = 0; i < coins.Count; i++)
         {
-            if (count < 2)
+            if (count < 1)
             {
                 if (coins[i].activeSelf == false)
                 {

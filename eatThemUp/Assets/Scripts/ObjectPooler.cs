@@ -48,11 +48,9 @@ public class ObjectPooler : MonoBehaviour
 
 	public GameObject GetPooledObject(int index)
 	{
-
 		int curSize = pooledObjectsList[index].Count;
 		for (int i = positions[index] + 1; i < positions[index] + pooledObjectsList[index].Count; i++)
 		{
-
 			if (!pooledObjectsList[index][i % curSize].activeInHierarchy)
 			{
 				positions[index] = i % curSize;
@@ -62,13 +60,11 @@ public class ObjectPooler : MonoBehaviour
 
 		if (itemsToPool[index].shouldExpand)
 		{
-
 			GameObject obj = (GameObject)Instantiate(itemsToPool[index].objectToPool);
 			obj.SetActive(false);
 			obj.transform.parent = this.transform;
 			pooledObjectsList[index].Add(obj);
 			return obj;
-
 		}
 		return null;
 	}
@@ -78,7 +74,6 @@ public class ObjectPooler : MonoBehaviour
 		return pooledObjectsList[index];
 	}
 
-
 	public int AddObject(GameObject GO, int amt = 3, bool exp = true)
 	{
 		ObjectPoolItem item = new ObjectPoolItem(GO, amt, exp);
@@ -87,7 +82,6 @@ public class ObjectPooler : MonoBehaviour
 		ObjectPoolItemToPooledObject(currLen);
 		return currLen;
 	}
-
 
 	void ObjectPoolItemToPooledObject(int index)
 	{
