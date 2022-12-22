@@ -64,7 +64,6 @@ public class Player : MonoBehaviour
         enemySizeS = enemySize;
         debugPanel.GetComponent<DebugPanel>().Showdata();
         return true;
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -111,7 +110,6 @@ public class Player : MonoBehaviour
             return true;
         }
         else return false;
-
     }
     /// <summary>
     /// player get super size to eat biggest enemy, переделать что бы игрок уменьшался в изначальное состояние
@@ -126,7 +124,6 @@ public class Player : MonoBehaviour
         
         StartCoroutine(TimeSuperSize(timer));
     }
-
     private IEnumerator TimeSuperSize(float timer)
     {
         yield return new WaitForSeconds(timer);
@@ -155,7 +152,6 @@ public class Player : MonoBehaviour
             transform.localScale = Vector3.Lerp(startScale,endScale, speedGrowth * Time.deltaTime);
         }
     }
-
     private void CheckSuperSize(bool onSize) 
     {
         if (onSize == true)
@@ -165,8 +161,7 @@ public class Player : MonoBehaviour
         else 
         {
             SmoothScale(transform.localScale, new Vector3(1, 1, 1));
-        }
-    
+        }    
     }
 
     private void GetCoin(GameObject other) 
@@ -174,8 +169,7 @@ public class Player : MonoBehaviour
         if (other.tag == "coin")
         {
             Actions.SpawnCoin();
-        }
-    
+        }    
     }
 
     /// <summary>
