@@ -11,4 +11,5 @@ public class PlayerInstance : MonoBehaviour
     {
         instancePlayer = this;
     }
+
 }
