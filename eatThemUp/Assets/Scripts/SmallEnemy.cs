@@ -14,7 +14,6 @@ public class SmallEnemy : Enemy
         Agent.avoidancePriority = Random.Range(76, 99);
         Up = true;
         upPosition = new Vector3(ChildGO.transform.position.x, 0.8f, ChildGO.transform.position.z);
-        Debug.Log("Ã¿À€ÿ –Œƒ»À—ﬂ");
     }
 
     private void Update()
