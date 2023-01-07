@@ -30,7 +30,6 @@ public class PooledObjects : MonoBehaviour
 
     private void Start()
     {
-
         spawnpoint = GetPoint.Instance;
         objectPooler = ObjectPooler.SharedInstance;
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
@@ -49,7 +48,7 @@ public class PooledObjects : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             GameObject pooledObject = enemys[i];
-            pooledObject.transform.position = spawnpoint.GetRandomPoint();
+            pooledObject.transform.position = spawnpoint.GetRandomPoint(GetPoint.Instance.transform, GetPoint.Instance.Range);
             pooledObject.SetActive(true);
         }
     }
