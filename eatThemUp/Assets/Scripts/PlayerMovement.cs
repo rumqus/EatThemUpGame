@@ -6,16 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private Rigidbody playerRb;
+    [SerializeField] private GameObject player;
     private Vector3 movement;
-   
  
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,13 +20,16 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         transform.LookAt(playerRb.position + movement);
+
     }
     /// <summary>
     /// Метод передвижения игрока
     /// </summary>
     private void MovePlayer() 
     {
-        playerRb.MovePosition(playerRb.position + movement * speed * Time.fixedDeltaTime);
+        playerRb.MovePosition(playerRb.position + movement.normalized * speed * Time.deltaTime);
+        //player.transform.Translate(player.transform.position + movement * speed * Time.deltaTime);
+        
     }
     /// <summary>
     /// метод получения ввода игрока
