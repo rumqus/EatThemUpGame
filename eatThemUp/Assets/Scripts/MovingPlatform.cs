@@ -10,33 +10,32 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private GameObject movingPlatform;
     private int currentWaypoint;
     // Start is called before the first frame update
-    void Start()
-    {
-        if (waypoints.Count <= 0) return;
-        currentWaypoint = 0;
-    }
+    //void Start()
+    //{
+    //    if (waypoints.Count <= 0) return;
+    //    currentWaypoint = 0;
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        MovePlatform();
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    MovePlatform();
+    //}
 
-    void MovePlatform() 
-    {
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].transform.position,
-            (moveSpeed * Time.deltaTime));
+    //void MovePlatform() 
+    //{
+    //    transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].transform.position,
+    //        (moveSpeed * Time.deltaTime));
 
-        if (Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position) <= 0)
-        {
-            currentWaypoint++;
-        }
+    //    if (Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position) <= 0)
+    //    {
+    //        currentWaypoint++;
+    //    }
 
-        if (currentWaypoint != waypoints.Count) return;
-        waypoints.Reverse();
-        currentWaypoint = 0;
-
-    }
+    //    if (currentWaypoint != waypoints.Count) return;
+    //    waypoints.Reverse();
+    //    currentWaypoint = 0;
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
