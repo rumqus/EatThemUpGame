@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private List<Transform> waypoints;
+    private List<Transform> waypoints = new List<Transform>();
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject movingPlatform;
     private Transform wayPointUp;
     private Transform wayPointDown;
     private int currentWaypoint;
+    [SerializeField] Vector3 step;
 
-    private void Awake()
-    {
-        wayPointUp.position = new Vector3(movingPlatform.transform.position.x, movingPlatform.transform.position.y + 5, movingPlatform.transform.position.z);
-        wayPointDown.position = new Vector3(movingPlatform.transform.position.x, movingPlatform.transform.position.y - 5, movingPlatform.transform.position.z);
-        waypoints.Add(wayPointUp);
-        waypoints.Add(wayPointDown);
-    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        wayPointDown = movingPlatform.transform;
+        wayPointUp = movingPlatform.transform;
+        wayPointUp.position = new Vector3(0,5,0);
+        wayPointDown.position = new Vector3(0, -5, 0);
+        waypoints.Add(wayPointUp);
+        waypoints.Add(wayPointDown);
+
         if (waypoints.Count <= 0) return;
         currentWaypoint = 0;
     }
