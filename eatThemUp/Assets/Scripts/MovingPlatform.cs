@@ -4,31 +4,24 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private List<Transform> waypoints = new List<Transform>();
+    [SerializeField]private List<Transform> waypoints = new List<Transform>();
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject movingPlatform;
-    private Transform wayPointUp;
-    private Transform wayPointDown;
     private int currentWaypoint;
     [SerializeField] Vector3 step;
+    Vector3 originalScale;
 
     // Start is called before the first frame update
     void Start()
     {
-        wayPointDown = movingPlatform.transform;
-        wayPointUp = movingPlatform.transform;
-        wayPointUp.position = new Vector3(0,5,0);
-        wayPointDown.position = new Vector3(0, -5, 0);
-        waypoints.Add(wayPointUp);
-        waypoints.Add(wayPointDown);
-
+        originalScale = player.transform.lossyScale;
         if (waypoints.Count <= 0) return;
         currentWaypoint = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MovePlatform();
     }
@@ -36,7 +29,7 @@ public class MovingPlatform : MonoBehaviour
     void MovePlatform()
     {
         movingPlatform.transform.position = Vector3.MoveTowards(movingPlatform.transform.position, waypoints[currentWaypoint].transform.position,
-            (moveSpeed * Time.deltaTime));
+            (moveSpeed * Time.fixedDeltaTime));
 
         if (Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position) <= 0)
         {
@@ -50,14 +43,16 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-        player.transform.parent = movingPlatform.transform;
-            //transform.parent = transform;
+        if (!other.gameObject.CompareTag("Player")) return;
+        player.transform.SetParent(movingPlatform.transform);
+        player.transform.localScale = originalScale;
+        Debug.Log("collision start");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.gameObject.CompareTag("Player")) return;
         player.transform.parent = null;
+        Debug.Log("collision exit");
     }
 }
