@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218209079819578468}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.28, y: -2.74, z: 168.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,7 +84,6 @@ MonoBehaviour:
   - {fileID: 218209081194419415}
   - {fileID: 218209081551460232}
   movingPlatform: {fileID: 218209080047322832}
-  moveSpeed: 3
   player: {fileID: 0}
 --- !u!65 &218209080047322846
 BoxCollider:
@@ -188,8 +187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218209081767335638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 12.298926, y: 5.2709804, z: 8.443378}
+  m_LocalPosition: {x: -2.036, y: 0, z: -0}
+  m_LocalScale: {x: 8.2279825, y: 5.2709804, z: 8.443378}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 218209080047322833}
