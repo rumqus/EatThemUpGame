@@ -15,7 +15,7 @@ public class BigEnemy : Enemy
         Agent.avoidancePriority = Random.RandomRange(0,25);
         target = PlayerInstance.instancePlayer.player.transform;
         Up = true;
-        upPosition = new Vector3(ChildGO.transform.position.x, 1.2f, ChildGO.transform.position.z);
+        upPosition = new Vector3(ChildGO.transform.position.x, 13f, ChildGO.transform.position.z);
     }
 
     private void Update()

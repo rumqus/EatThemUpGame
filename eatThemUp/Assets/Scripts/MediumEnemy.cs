@@ -14,7 +14,7 @@ public class MediumEnemy : Enemy
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.RandomRange(50, 75);
         Up = true;
-        upPosition = new Vector3(ChildGO.transform.position.x, 0.8f, ChildGO.transform.position.z);
+        upPosition = new Vector3(ChildGO.transform.position.x, 12f, ChildGO.transform.position.z);
 
     }
 

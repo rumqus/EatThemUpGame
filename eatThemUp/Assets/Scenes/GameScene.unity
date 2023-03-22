@@ -4522,7 +4522,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &533830949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4537,7 +4537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 7643587268516839849, guid: 7dd8537879bdd4f47999f73ac6622af0, type: 3}
-    amountToPool: 60
+    amountToPool: 10
     shouldExpand: 0
   - objectToPool: {fileID: 5499465805134898507, guid: 0c0ba0046b812904884fafe693e55022, type: 3}
     amountToPool: 10
@@ -4557,7 +4557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533830948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 20.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7134,7 +7134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956222110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: 115.5}
+  m_LocalPosition: {x: 66.7, y: 0, z: 140.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

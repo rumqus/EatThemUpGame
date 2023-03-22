@@ -13,7 +13,8 @@ public class SmallEnemy : Enemy
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
         Up = true;
-        upPosition = new Vector3(ChildGO.transform.position.x, 11f, ChildGO.transform.position.z);
+        upPosition = new Vector3(ChildGO.transform.position.x, 12, ChildGO.transform.position.z);
+        
     }
 
     private void Update()
