@@ -53,7 +53,7 @@ public class PooledObjects : MonoBehaviour
         }
     }
     /// <summary>
-    /// Spawning enemys with delay in start scene
+    /// Spawning enemys with delay in start scene, SpawnEnemy(type of the enemy, number of the enemy)
     /// </summary>
     /// <returns></returns>
     IEnumerator DelaySpawn() 
