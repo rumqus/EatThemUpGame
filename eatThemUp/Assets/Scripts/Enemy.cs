@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
-        areaRadius = GetPoint.Instance.Range;
+        areaRadius = 50;
     }
 
 

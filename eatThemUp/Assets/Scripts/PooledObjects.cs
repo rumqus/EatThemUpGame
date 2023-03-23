@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PooledObjects : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> spawnAreas;
     private ObjectPooler objectPooler;
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
@@ -30,7 +31,7 @@ public class PooledObjects : MonoBehaviour
 
     private void Start()
     {
-        spawnpoint = GetPoint.Instance;
+        spawnpoint = GetComponent<GetPoint>();
         objectPooler = ObjectPooler.SharedInstance;
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
         mediumEnemys = objectPooler.GetAllPooledObjects(1);
@@ -45,12 +46,18 @@ public class PooledObjects : MonoBehaviour
     /// <param name="enemys"></param>
     private void SpawnEnemy(List<GameObject> enemys, int count) 
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < spawnAreas.Count; i++)
         {
-            GameObject pooledObject = enemys[i];
-            pooledObject.transform.position = spawnpoint.GetRandomPoint(GetPoint.Instance.transform, GetPoint.Instance.Range);
-            pooledObject.SetActive(true);
+            for (int j = 0; j < count; j++)
+            {
+                GameObject pooledObject = enemys[j];
+                pooledObject.transform.position = spawnpoint.GetRandomPoint(spawnAreas[i].transform, spawnAreas[i].GetComponent<GetPoint>().Range);
+                pooledObject.SetActive(true);
+            }
+
         }
+
+        
     }
     /// <summary>
     /// Spawning enemys with delay in start scene, SpawnEnemy(type of the enemy, number of the enemy)
@@ -59,11 +66,11 @@ public class PooledObjects : MonoBehaviour
     IEnumerator DelaySpawn() 
     {
         yield return new WaitForSeconds(1);
-        SpawnEnemy(smallestEnemys, 20);
+        SpawnEnemy(smallestEnemys, 5);
         yield return new WaitForSeconds(2);
-        SpawnEnemy(mediumEnemys, 15);
+        SpawnEnemy(mediumEnemys, 5);
         yield return new WaitForSeconds(3);
-        SpawnEnemy(biggestEnemy, 7);
+        SpawnEnemy(biggestEnemy, 5);
         yield return new WaitForSeconds(5);
         SpawnCoin();
     }
