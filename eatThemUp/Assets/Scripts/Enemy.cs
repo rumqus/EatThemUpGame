@@ -47,10 +47,10 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected void MoveEnemy()
     {
-        if (!Agent.hasPath)
-        {
-            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
-        }
+        //if (!Agent.hasPath)
+        //{
+        //    Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+        //}
 
     }
 
