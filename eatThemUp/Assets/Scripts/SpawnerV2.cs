@@ -8,11 +8,20 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int range;
     [SerializeField] float yPos;
     [SerializeField] GameObject prefab;
+    [SerializeField] GameObject objectPooler;
+    
+
+
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnItem();
+        
+        SpawnItem(objectPooler.GetComponent<PooledObjects>().smallestEnemy,10);
     }
 
     // Update is called once per frame
@@ -21,12 +30,14 @@ public class SpawnerV2 : MonoBehaviour
         
     }
 
-    void SpawnItem() 
+    void SpawnItem(List<GameObject> enemys,int number) 
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < number; i++)
         {
-            Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2),yPos, Random.Range(-range / 2, range / 2));
-            Instantiate(prefab, pos, Quaternion.identity, transform.parent);
+            Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+            GameObject poolledObject = enemys[i];
+            poolledObject.transform.position = pos;
+            poolledObject.SetActive(true);
         }
     
     }

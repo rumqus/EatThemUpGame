@@ -13,6 +13,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject ChildGO;
     protected bool Up;
     protected Vector3 upPosition;
+    public string tag;
+
 
 
     public float Size { get; protected set; }
@@ -88,7 +90,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Up = false;
         }
-        //Debug.Log($"Child Position_{ChildGO.transform.position}");
+        
     }
 
 }

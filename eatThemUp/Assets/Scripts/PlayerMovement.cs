@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer() 
     {
         playerRb.MovePosition(playerRb.position + movement.normalized * speed * Time.deltaTime);
-        //player.transform.Translate(player.transform.position + movement * speed * Time.deltaTime);
+        
         
     }
     /// <summary>

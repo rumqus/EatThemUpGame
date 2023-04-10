@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class SmallEnemy : Enemy
 {
+    
 
     // Start is called before the first frame update
     void Start()
@@ -12,8 +13,9 @@ public class SmallEnemy : Enemy
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
-        Up = true;
-        upPosition = new Vector3(ChildGO.transform.position.x, 12, ChildGO.transform.position.z);
+        
+        //Up = true;
+        //upPosition = new Vector3(ChildGO.transform.position.x, 12, ChildGO.transform.position.z);
         
     }
 
