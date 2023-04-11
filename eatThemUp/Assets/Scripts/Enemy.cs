@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     protected bool Up;
     protected Vector3 upPosition;
     [SerializeField]bool grounded;
+    
 
 
 
@@ -64,7 +65,11 @@ public abstract class Enemy : MonoBehaviour
             if (!Agent.hasPath)
             {
                 Debug.Log("set destination");
+                Debug.Log($@"{Agent.ToString()}");
+                Debug.Log($@"{GetPoint.Instance.GetRandomPoint(transform, areaRadius).ToString()}");
                 Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+                
+
             }
         }
     }

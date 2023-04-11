@@ -173,6 +173,7 @@ MonoBehaviour:
   levelofSize: 0
   areaRadius: 40
   ChildGO: {fileID: 6493191435979996338}
+  grounded: 0
 --- !u!65 &4674951478159870795
 BoxCollider:
   m_ObjectHideFlags: 0

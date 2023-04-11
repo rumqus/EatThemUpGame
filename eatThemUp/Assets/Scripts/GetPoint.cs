@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class GetPoint : MonoBehaviour
 {
 
-    public GetPoint Instance;
+    public static GetPoint Instance;
 
     public float Range;
     private void Awake()
