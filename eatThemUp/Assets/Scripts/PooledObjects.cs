@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PooledObjects : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> spawnAreas;
-    public ObjectPooler objectPooler;
+    
+    private ObjectPooler objectPooler;
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
@@ -16,6 +16,11 @@ public class PooledObjects : MonoBehaviour
     public List<GameObject> smallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
     public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
+
+    private void Awake()
+    {
+        
+    }
 
     private void OnEnable()
     {

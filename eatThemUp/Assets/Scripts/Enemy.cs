@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject ChildGO;
     protected bool Up;
     protected Vector3 upPosition;
-    public string tag;
+    [SerializeField]bool grounded;
 
 
 
@@ -35,13 +35,20 @@ public abstract class Enemy : MonoBehaviour
     private void Start()
     {
         areaRadius = 50;
+        grounded = false;
     }
-
-
 
     private void Update()
     {
         ChasePlayer();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            grounded = true;
+        }
     }
 
     /// <summary>
@@ -49,13 +56,18 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected void MoveEnemy()
     {
-        //if (!Agent.hasPath)
-        //{
-        //    Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
-        //}
-
+        Debug.Log("start moving");
+        if (grounded == true)
+        {
+            Debug.Log("grounded true");
+            GetComponent<Rigidbody>().isKinematic = true;
+            if (!Agent.hasPath)
+            {
+                Debug.Log("set destination");
+                Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+            }
+        }
     }
-
 
     /// <summary>
     /// checking distance between player and enemy
@@ -81,16 +93,6 @@ public abstract class Enemy : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
-
-    protected void StartMovement() 
-    {
-        ChildGO.transform.position = Vector3.MoveTowards(ChildGO.transform.position,upPosition,Time.deltaTime);
-        if (ChildGO.transform.position.y == upPosition.y)
-        {
-            Up = false;
-        }
-        
     }
 
 }
