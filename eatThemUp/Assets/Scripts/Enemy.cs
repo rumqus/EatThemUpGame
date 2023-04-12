@@ -8,13 +8,13 @@ public abstract class Enemy : MonoBehaviour
     private float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
-    [SerializeField]protected float areaRadius;
+    [SerializeField] protected float areaRadius;
     protected float timer; // time for movement
     [SerializeField] protected GameObject ChildGO;
     protected bool Up;
     protected Vector3 upPosition;
-    [SerializeField]bool grounded;
-    
+    [SerializeField] bool grounded;
+
 
 
 
@@ -57,20 +57,10 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected void MoveEnemy()
     {
-        Debug.Log("start moving");
-        if (grounded == true)
+        if (!Agent.hasPath && grounded == true)
         {
-            Debug.Log("grounded true");
             GetComponent<Rigidbody>().isKinematic = true;
-            if (!Agent.hasPath)
-            {
-                Debug.Log("set destination");
-                Debug.Log($@"{Agent.ToString()}");
-                Debug.Log($@"{GetPoint.Instance.GetRandomPoint(transform, areaRadius).ToString()}");
-                Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
-                
-
-            }
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
         }
     }
 
@@ -90,7 +80,6 @@ public abstract class Enemy : MonoBehaviour
         {
             MoveEnemy();
         }
-
     }
 
     protected void FaceToPlayer()

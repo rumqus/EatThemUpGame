@@ -17,10 +17,7 @@ public class PooledObjects : MonoBehaviour
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
     public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
 
-    private void Awake()
-    {
-        
-    }
+    
 
     private void OnEnable()
     {

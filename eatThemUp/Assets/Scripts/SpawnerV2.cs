@@ -9,29 +9,35 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] float yPos;
     [SerializeField] GameObject prefab;
     [SerializeField] GameObject objectPooler;
+    [SerializeField] int smallEnemyCount;
+    [SerializeField] int mediumEnemyCount;
+    [SerializeField] int bigEnemyCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnItem(objectPooler.GetComponent<PooledObjects>().smallestEnemy,10);
+        SpawnItem(objectPooler.GetComponent<PooledObjects>().smallestEnemy,smallEnemyCount);
     }
 
     void SpawnItem(List<GameObject> enemys,int number) 
     {
-        for (int i = 0; i < number; i++)
+        int countActived = 0;
+        if (countActived < number)
         {
-            Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
-            GameObject poolledObject = enemys[i];
-            poolledObject.GetComponent<Rigidbody>().isKinematic = false;
-            poolledObject.transform.position = pos;
-            poolledObject.SetActive(true);
-        }
-    
-    }
+            for (int i = 0; i < enemys.Count; i++)
+            {
+                if (enemys[i].gameObject.active == false)
+                {
+                    Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+                    GameObject poolledObject = enemys[i];
+                    poolledObject.GetComponent<Rigidbody>().isKinematic = false;
+                    poolledObject.transform.position = pos;
+                    poolledObject.SetActive(true);
+                    countActived++;
+                }
+            }
 
-    void ReSpawnItem() 
-    {
-    
+        }
     }
 
     private void OnDrawGizmosSelected()

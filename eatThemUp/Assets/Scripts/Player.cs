@@ -72,8 +72,6 @@ public class Player : MonoBehaviour
         // detecting collision with enemy
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            // checking if coin or not
-            GetCoin(other.gameObject);
 
             // compare size with player vs enemy
             if (CompareSizeLevel(enemy.LevelofSize))
@@ -82,7 +80,7 @@ public class Player : MonoBehaviour
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
                     other.gameObject.SetActive(false);
-                    RespawnEnemy(enemy.gameObject);
+                    
                 }
             }
             else
@@ -117,11 +115,7 @@ public class Player : MonoBehaviour
     private void GetSuperSize()
     {
         onOffSuperSize = true;
-        levelOfSize = 10;
-        //DebugSmooth(transform.localScale, new Vector3(3, 3, 3));
-        //SmoothScale(transform.localScale, new Vector3(3f, 3f, 3f));
-        //transform.localScale = new Vector3(3f, 3f, 3f);
-        
+        levelOfSize = 10;        
         StartCoroutine(TimeSuperSize(timer));
     }
     private IEnumerator TimeSuperSize(float timer)
@@ -142,9 +136,6 @@ public class Player : MonoBehaviour
         transform.localScale = Vector3.Lerp(transform.localScale, newSize, speedGrowth * Time.deltaTime);
     }
 
-   
-
-
     private void DebugSmooth(Vector3 startScale, Vector3 endScale) 
     {
         for (float time = 0; time < 2; time +=Time.deltaTime)
@@ -161,30 +152,6 @@ public class Player : MonoBehaviour
         else 
         {
             SmoothScale(transform.localScale, new Vector3(1, 1, 1));
-        }    
-    }
-
-    private void GetCoin(GameObject other) 
-    {
-        if (other.tag == "coin")
-        {
-            Actions.SpawnCoin();
-        }    
-    }
-
-    /// <summary>
-    /// method - wrapping action
-    /// </summary>
-    /// <param name="enemy"></param>
-    private void RespawnEnemy(GameObject enemy) 
-    {
-        foreach (var item in dic) 
-        {
-            if (enemy.tag == item.Value)
-            {
-                Actions.RespawnEnemy(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key));
-                
-            }
         }
     }
 
