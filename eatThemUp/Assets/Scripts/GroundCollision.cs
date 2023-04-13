@@ -12,7 +12,9 @@ public class GroundCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
+            enemy.GetComponent<Enemy>().grounded = true;
             enemy.GetComponent<NavMeshAgent>().enabled = true;
+
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnerV2 : MonoBehaviour
 {
@@ -13,20 +14,32 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int mediumEnemyCount;
     [SerializeField] int bigEnemyCount;
 
+    private void OnEnable()
+    {
+        Actions.RespawnEnemy += SpawnItem;
+    }
+
+    private void OnDisable()
+    {
+        Actions.RespawnEnemy -= SpawnItem;
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        SpawnItem(objectPooler.GetComponent<PooledObjects>().smallestEnemy,smallEnemyCount);
+        SpawnItem(objectPooler.GetComponent<PooledObjects>().smallestEnemy, smallEnemyCount);
     }
-
-    void SpawnItem(List<GameObject> enemys,int number) 
+    void SpawnItem(List<GameObject> enemys, int number)
     {
         int countActived = 0;
-        if (countActived < number)
+
+        for (int i = 0; i < enemys.Count; i++)
         {
-            for (int i = 0; i < enemys.Count; i++)
+            if (enemys[i].gameObject.active == false)
             {
-                if (enemys[i].gameObject.active == false)
+                if (countActived < number)
                 {
                     Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
                     GameObject poolledObject = enemys[i];
@@ -36,14 +49,12 @@ public class SpawnerV2 : MonoBehaviour
                     countActived++;
                 }
             }
-
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.3f);
-        Gizmos.DrawSphere(center,range);
-        
+        Gizmos.DrawSphere(center, range);
     }
 }

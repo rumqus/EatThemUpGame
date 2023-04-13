@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -66,21 +67,44 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// returning an object to its initial state
+    /// </summary>
+    /// <param name="enemy"></param>
+    private void ResetEnemy(GameObject enemy) 
+    {
+        enemy.GetComponent<NavMeshAgent>().enabled = false;
+        enemy.GetComponent<Rigidbody>().isKinematic = false;
+        enemy.GetComponent<Enemy>().grounded = false;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
+        
         // невероятно монструозная херня
         // detecting collision with enemy
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-
             // compare size with player vs enemy
             if (CompareSizeLevel(enemy.LevelofSize))
             {
                 //if true - player is bigger
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
-                    other.gameObject.SetActive(false);
+                    other.gameObject.SetActive(false); // disabling eated object
+                    ResetEnemy(other.gameObject);
                     
+                    foreach (var item in dic) // detecting what object was eated
+                    {
+                        if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
+                        {
+                            StartCoroutine(DelaySpawn(5, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
+                            //Coroutine to delay spawn of object
+                            //item.key == GetAllPooledObjects(item.Key) == type of enemy, 0 == 0 == smallenemy
+                        }
+                    }
+
                 }
             }
             else
@@ -154,5 +178,13 @@ public class Player : MonoBehaviour
             SmoothScale(transform.localScale, new Vector3(1, 1, 1));
         }
     }
+
+    IEnumerator DelaySpawn(int seconds,List<GameObject> listEnemys,int number) 
+    {
+        yield return new WaitForSeconds(seconds);
+        Actions.RespawnEnemy(listEnemys,number);
+    }
+
+    
 
 }

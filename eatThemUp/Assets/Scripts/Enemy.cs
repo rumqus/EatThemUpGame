@@ -13,10 +13,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject ChildGO;
     protected bool Up;
     protected Vector3 upPosition;
-    [SerializeField] bool grounded;
-
-
-
+    public bool grounded;
 
     public float Size { get; protected set; }
 
@@ -42,14 +39,6 @@ public abstract class Enemy : MonoBehaviour
     private void Update()
     {
         ChasePlayer();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "ground")
-        {
-            grounded = true;
-        }
     }
 
     /// <summary>
