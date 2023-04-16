@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
                     {
                         if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
                         {
-                            StartCoroutine(DelaySpawn(5, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
+                            StartCoroutine(DelaySpawn(3, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
                             //Coroutine to delay spawn of object
                             //item.key == GetAllPooledObjects(item.Key) == type of enemy, 0 == 0 == smallenemy
                         }
