@@ -92,18 +92,23 @@ public class Player : MonoBehaviour
                 //if true - player is bigger
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
-                    other.gameObject.SetActive(false); // disabling eated object
-                    ResetEnemy(other.gameObject);
                     
+                    ResetEnemy(other.gameObject);
+                    other.gameObject.SetActive(false);
+                   
                     foreach (var item in dic) // detecting what object was eated
-                    {
+                    { 
                         if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
                         {
-                            StartCoroutine(DelaySpawn(3, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
+                            StartCoroutine(DelaySpawn(2,ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
                             //Coroutine to delay spawn of object
                             //item.key == GetAllPooledObjects(item.Key) == type of enemy, 0 == 0 == smallenemy
                         }
+                        
+                        
                     }
+                    
+
 
                 }
             }
@@ -181,10 +186,12 @@ public class Player : MonoBehaviour
 
     IEnumerator DelaySpawn(int seconds,List<GameObject> listEnemys,int number) 
     {
+        
         yield return new WaitForSeconds(seconds);
-        Actions.RespawnEnemy(listEnemys,number);
-    }
+        Actions.RespawnEnemy(listEnemys,1);
+        yield return new WaitForSeconds(seconds + seconds);
+        Actions.DisableObjects(listEnemys,4);
 
-    
+    }
 
 }

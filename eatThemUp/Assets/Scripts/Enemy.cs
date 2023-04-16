@@ -15,6 +15,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 upPosition;
     public bool grounded;
 
+
     public float Size { get; protected set; }
 
     public float LevelofSize { get; protected set; }

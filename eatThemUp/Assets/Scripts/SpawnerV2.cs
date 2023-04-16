@@ -8,11 +8,12 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] private Vector3 center;
     [SerializeField] int range;
     [SerializeField] float yPos;
-    [SerializeField] GameObject prefab;
-    [SerializeField] GameObject objectPooler;
+    [SerializeField] private GameObject objectPooler;
     [SerializeField] int smallEnemyCount;
     [SerializeField] int mediumEnemyCount;
     [SerializeField] int bigEnemyCount;
+    [SerializeField] private GameObject self;
+    
 
     private void OnEnable()
     {
@@ -31,39 +32,48 @@ public class SpawnerV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartSpawn(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().smallestEnemy);
+        StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
+        StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
+
     }
 
-    private void Update()
+    void StartSpawn(int count,List<GameObject> items) 
     {
-        StartSpawnEnemy(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().smallestEnemy);
+        for (int i = 0; i < count; i++)
+        {
+            float DelayTime = Random.Range(1, 5);
+            StartCoroutine(DelaySpawnStart(items, 1, DelayTime));
+        }
     }
 
-    void StartSpawnEnemy(float count,List<GameObject> items) 
-    {
 
-    }
-
-    void SpawnItem(List<GameObject> enemys, int number)
+    private void SpawnItem(List<GameObject> enemys, int number)
     {
         int countActived = 0;
         for (int i = 0; i < enemys.Count; i++)
         {
             if (enemys[i].active == false && countActived < number)
             {
-                Actions.SpawnOneItem(enemys[i]);
+                //Actions.SpawnOneItem(enemys[i]);
+                Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+               
+                GameObject poolledObject = enemys[i];
+                poolledObject.GetComponent<Rigidbody>().isKinematic = false;
+                poolledObject.transform.position = pos;
+                enemys[i].SetActive(true);
+
                 countActived++;
             }
         }
         
     }
 
-    
-
-
     void SpawnOneEnemy(GameObject enemy) 
     {
+        
         Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+        Debug.Log(pos);
         GameObject poolledObject = enemy;
         poolledObject.GetComponent<Rigidbody>().isKinematic = false;
         poolledObject.transform.position = pos;

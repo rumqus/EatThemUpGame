@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PooledObjects : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
+    [SerializeField] private int locations;
     
 
     public List<GameObject> Coins { get { return coins;} }
@@ -23,21 +25,61 @@ public class PooledObjects : MonoBehaviour
     {
         //Actions.SpawnCoin += SpawnCoin;
         //Actions.RespawnEnemy += WrapCorSpawn;
+        Actions.DisableObjects += DisableItems;
     }
 
     private void OnDisable()
     {
         //Actions.SpawnCoin -= SpawnCoin;
         //Actions.RespawnEnemy -= WrapCorSpawn;
+        Actions.DisableObjects -= DisableItems;
     }
 
-    private void Start()
+    private void Awake()
     {
         objectPooler = ObjectPooler.SharedInstance;
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
         mediumEnemys = objectPooler.GetAllPooledObjects(1);
         biggestEnemy = objectPooler.GetAllPooledObjects(2);
         coins = objectPooler.GetAllPooledObjects(3);
+    }
+
+    private void Start()
+    {
+        
+        
+    }
+
+
+    void DisableItems(List<GameObject> items,int locations) 
+    {
+        List<GameObject> activeList = new List<GameObject>();
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].active == true)
+            {
+                activeList.Add(items[i]);
+            }
+
+        }
+        if (activeList.Count > 0)
+        {
+            int count = 0;
+            for (int j = activeList.Count -1; j <= activeList.Count; j--)
+            {
+                if (count < locations )
+                {
+                    activeList[j].GetComponent<NavMeshAgent>().enabled = false;
+                    activeList[j].GetComponent<Rigidbody>().isKinematic = false;
+                    activeList[j].GetComponent<Enemy>().grounded = false;
+                    activeList[j].SetActive(false);
+                    count++;
+
+                }
+                
+            }
+        }
+    
     }
 
     ///// <summary>
