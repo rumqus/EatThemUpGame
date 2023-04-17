@@ -90,6 +90,7 @@ public class ObjectPooler : MonoBehaviour
 		for (int i = 0; i < item.amountToPool; i++)
 		{
 			GameObject obj = (GameObject)Instantiate(item.objectToPool);
+			obj.gameObject.name = $@"{obj.gameObject.name}_{i}";
 			obj.SetActive(false);
 			obj.transform.parent = this.transform;
 			pooledObjects.Add(obj);

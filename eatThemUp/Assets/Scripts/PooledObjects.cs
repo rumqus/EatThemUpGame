@@ -12,26 +12,20 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
     [SerializeField] private int locations;
-    
 
+    public const int LOCATION = 4;
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> smallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
     public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
 
-    
-
     private void OnEnable()
     {
-        //Actions.SpawnCoin += SpawnCoin;
-        //Actions.RespawnEnemy += WrapCorSpawn;
         Actions.DisableObjects += DisableItems;
     }
 
     private void OnDisable()
     {
-        //Actions.SpawnCoin -= SpawnCoin;
-        //Actions.RespawnEnemy -= WrapCorSpawn;
         Actions.DisableObjects -= DisableItems;
     }
 
@@ -44,42 +38,41 @@ public class PooledObjects : MonoBehaviour
         coins = objectPooler.GetAllPooledObjects(3);
     }
 
-    private void Start()
-    {
-        
-        
-    }
-
-
     void DisableItems(List<GameObject> items,int locations) 
     {
+        int count = locations-1;
+        items.Reverse();
         List<GameObject> activeList = new List<GameObject>();
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].active == true)
+            if (items[i].active == true && count > 0 )
             {
+                
                 activeList.Add(items[i]);
             }
 
         }
+
+
         if (activeList.Count > 0)
         {
-            int count = 0;
-            for (int j = activeList.Count -1; j <= activeList.Count; j--)
+            for (int j = activeList.Count - 1; j > 0; j--)
             {
-                if (count < locations )
+                if (count > 0)
                 {
                     activeList[j].GetComponent<NavMeshAgent>().enabled = false;
                     activeList[j].GetComponent<Rigidbody>().isKinematic = false;
                     activeList[j].GetComponent<Enemy>().grounded = false;
                     activeList[j].SetActive(false);
-                    count++;
-
+                    count--;
                 }
-                
+                else
+                {
+                    return;
+                }
             }
         }
-    
+
     }
 
     ///// <summary>
