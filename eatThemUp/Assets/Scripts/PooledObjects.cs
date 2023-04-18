@@ -40,38 +40,42 @@ public class PooledObjects : MonoBehaviour
 
     void DisableItems(List<GameObject> items,int locations) 
     {
-        int count = locations-1;
-        items.Reverse();
-        List<GameObject> activeList = new List<GameObject>();
+        int count = locations - 1;
+        //items.Reverse();
+        //List<GameObject> activeList = new List<GameObject>();
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].active == true && count > 0 )
+            if (items[i].active == true && count > 0)
             {
-                
-                activeList.Add(items[i]);
+                items[i].GetComponent<NavMeshAgent>().enabled = false;
+                items[i].GetComponent<Rigidbody>().isKinematic = false;
+                items[i].GetComponent<Enemy>().grounded = false;
+                items[i].SetActive(false);
+                count--;
+                //activeList.Add(items[i]);
             }
 
         }
 
 
-        if (activeList.Count > 0)
-        {
-            for (int j = activeList.Count - 1; j > 0; j--)
-            {
-                if (count > 0)
-                {
-                    activeList[j].GetComponent<NavMeshAgent>().enabled = false;
-                    activeList[j].GetComponent<Rigidbody>().isKinematic = false;
-                    activeList[j].GetComponent<Enemy>().grounded = false;
-                    activeList[j].SetActive(false);
-                    count--;
-                }
-                else
-                {
-                    return;
-                }
-            }
-        }
+        //if (activeList.Count > 0)
+        //{
+        //    for (int j = activeList.Count - 1; j > 0; j--)
+        //    {
+        //        if (count > 0)
+        //        {
+        //            activeList[j].GetComponent<NavMeshAgent>().enabled = false;
+        //            activeList[j].GetComponent<Rigidbody>().isKinematic = false;
+        //            activeList[j].GetComponent<Enemy>().grounded = false;
+        //            activeList[j].SetActive(false);
+        //            count--;
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+        //    }
+        //}
 
     }
 

@@ -186,12 +186,10 @@ public class Player : MonoBehaviour
 
     IEnumerator DelaySpawn(int seconds,List<GameObject> listEnemys,int number) 
     {
-        
         yield return new WaitForSeconds(seconds);
         Actions.RespawnEnemy(listEnemys,1);
         yield return new WaitForSeconds(seconds + seconds);
         Actions.DisableObjects(listEnemys,PooledObjects.LOCATION);
-
     }
 
 }

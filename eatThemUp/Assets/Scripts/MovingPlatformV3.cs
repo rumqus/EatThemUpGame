@@ -7,9 +7,14 @@ public class MovingPlatformV3 : MonoBehaviour
     [SerializeField] private List<Transform> waypoints;
     [SerializeField] private GameObject movingPlatform;
     private float moveSpeed;
-    [SerializeField] private GameObject player;
+    private GameObject player;
     private int currentWaypoint;
     private Vector3 originalScale;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // Start is called before the first frame update
     private void Start()

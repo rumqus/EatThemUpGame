@@ -145,8 +145,8 @@ MonoBehaviour:
   center: {x: 0, y: 5.13, z: 0}
   range: 45
   yPos: 26
-  prefab: {fileID: 7643587268516839849, guid: 7dd8537879bdd4f47999f73ac6622af0, type: 3}
   objectPooler: {fileID: 0}
   smallEnemyCount: 10
   mediumEnemyCount: 5
   bigEnemyCount: 5
+  self: {fileID: 0}
