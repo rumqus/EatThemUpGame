@@ -44,7 +44,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4108603778313786523}
   - component: {fileID: 4108603778313786517}
-  - component: {fileID: 4108603778313786516}
   m_Layer: 0
   m_Name: MPlatformV3
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MonoBehaviour:
   - {fileID: 4108603779041937053}
   - {fileID: 4108603778954380738}
   movingPlatform: {fileID: 4108603778313786522}
---- !u!65 &4108603778313786516
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4108603778313786522}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7598274, y: 5.7191486, z: 0.81665266}
-  m_Center: {x: -0.007652165, y: 2.1431518, z: -0.0605151}
 --- !u!1 &4108603778465612956
 GameObject:
   m_ObjectHideFlags: 0
