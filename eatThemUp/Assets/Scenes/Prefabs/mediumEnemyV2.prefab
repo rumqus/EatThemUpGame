@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea1a4c80f4531a47ad88f1edc9f8052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  levelofSize: 0
+  size: 0.3
+  levelofSize: 1
   areaRadius: 40
   ChildGO: {fileID: 4550448526268593101}
   grounded: 0

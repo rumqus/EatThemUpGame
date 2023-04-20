@@ -59,10 +59,12 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected void ChasePlayer()
     {
+        Debug.Log(LevelofSize);
         float distance = Vector3.Distance(target.position, transform.position);
 
         if (distance < radius && LevelofSize > target.GetComponent<Player>().LevelOfsize)
         {
+
             Agent.SetDestination(target.position);
             FaceToPlayer();
         }
