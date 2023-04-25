@@ -11,11 +11,6 @@ public class DebugPanel : MonoBehaviour
 
     public void Showdata() 
     {
-        LevelPlayer.text = player.GetComponent<Player>().LevelOfsize.ToString();
-        SizePlayer.text = player.GetComponent<Player>().PointSize.ToString();
-        SizeEnemy.text = player.GetComponent<Player>().enemySizeS.ToString();
-        LevelEnemy.text = player.GetComponent<Player>().enemyLevelS.ToString();
 
-        
     }
 }
