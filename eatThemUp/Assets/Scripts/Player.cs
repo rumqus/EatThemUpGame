@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
                     
                     ResetEnemy(other.gameObject);
                     other.gameObject.SetActive(false);
+                    
                    
                     foreach (var item in dic) // detecting what object was eated
                     { 
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour
                         
                         
                     }
-                    
+                    Actions.SumPoint();
 
 
                 }
