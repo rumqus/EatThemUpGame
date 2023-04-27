@@ -12,6 +12,7 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int smallEnemyCount;
     [SerializeField] int mediumEnemyCount;
     [SerializeField] int bigEnemyCount;
+    [SerializeField] int coins;
     [SerializeField] private GameObject self;
     
 
@@ -35,19 +36,28 @@ public class SpawnerV2 : MonoBehaviour
         StartSpawn(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().smallestEnemy);
         StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
-
+        StartSpawn(coins,objectPooler.GetComponent<PooledObjects>().Coins);
     }
 
+    /// <summary>
+    /// wraping corutine to spawn enemys\coins in start
+    /// </summary>
+    /// <param name="count"></param>
+    /// <param name="items"></param>
     void StartSpawn(int count,List<GameObject> items) 
     {
         for (int i = 0; i < count; i++)
         {
-            float DelayTime = Random.Range(1, 5);
+            float DelayTime = Random.Range(1, 5); // delay time to spawn
             StartCoroutine(DelaySpawnStart(items, 1, DelayTime));
         }
     }
 
-
+    /// <summary>
+    /// method of spawning enemys
+    /// </summary>
+    /// <param name="enemys"></param>
+    /// <param name="number"></param>
     private void SpawnItem(List<GameObject> enemys, int number)
     {
         int countActived = 0;
@@ -55,14 +65,12 @@ public class SpawnerV2 : MonoBehaviour
         {
             if (enemys[i].active == false && countActived < number)
             {
-                //Actions.SpawnOneItem(enemys[i]);
                 Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
                
                 GameObject poolledObject = enemys[i];
                 poolledObject.GetComponent<Rigidbody>().isKinematic = false;
                 poolledObject.transform.position = pos;
                 enemys[i].SetActive(true);
-
                 countActived++;
             }
         }
@@ -80,7 +88,9 @@ public class SpawnerV2 : MonoBehaviour
         enemy.SetActive(true);
     }
 
-
+    /// <summary>
+    /// tech to draw spawning area
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.3f);

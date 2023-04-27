@@ -342,7 +342,7 @@ MonoBehaviour:
   - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
     amountToPool: 50
     shouldExpand: 0
-  - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
+  - objectToPool: {fileID: 8982359932727671362, guid: 5e8b73a4f8072604daa46d505d60bd66, type: 3}
     amountToPool: 10
     shouldExpand: 0
   pooledObjects: []
@@ -5308,6 +5308,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1250786673}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: coins
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: center.x
       value: 0
       objectReference: {fileID: 0}
@@ -5321,15 +5325,15 @@ PrefabInstance:
       objectReference: {fileID: 51785201}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bigEnemyCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: mediumEnemyCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
