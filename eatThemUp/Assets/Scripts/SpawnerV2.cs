@@ -14,6 +14,8 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int bigEnemyCount;
     [SerializeField] int coins;
     [SerializeField] private GameObject self;
+    [SerializeField] float delayTimeCoin;
+    private float currentDelayCoin;
     
 
     private void OnEnable()
@@ -37,7 +39,28 @@ public class SpawnerV2 : MonoBehaviour
         StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
         StartSpawn(coins,objectPooler.GetComponent<PooledObjects>().Coins);
+        currentDelayCoin = delayTimeCoin;
     }
+
+    private void Update()
+    {
+        SpawnCoin(currentDelayCoin);
+    }
+
+    /// <summary>
+    /// method of spawning coins over timer, another timer in coins.cs
+    /// </summary>
+    /// <param name="delaySpawn"></param>
+    private void SpawnCoin(float delaySpawn) 
+    {
+        delaySpawn = delaySpawn - Time.deltaTime;
+        if (delaySpawn < 0)
+        {
+            StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
+            currentDelayCoin = delayTimeCoin;
+        }    
+    }
+
 
     /// <summary>
     /// wraping corutine to spawn enemys\coins in start

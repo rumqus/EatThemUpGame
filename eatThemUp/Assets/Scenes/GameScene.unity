@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eatPointsLabel: {fileID: 875264548}
-  coinsLabel: {fileID: 0}
+  coinsLabel: {fileID: 171604178}
 --- !u!1001 &431921437
 PrefabInstance:
   m_ObjectHideFlags: 0

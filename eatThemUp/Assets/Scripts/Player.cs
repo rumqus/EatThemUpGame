@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"}};
+        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"},{3,"coin"} };
     }
 
     // Update is called once per frame
@@ -92,25 +92,25 @@ public class Player : MonoBehaviour
                 //if true - player is bigger
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
-                    
                     ResetEnemy(other.gameObject);
                     other.gameObject.SetActive(false);
-                    
-                   
-                    foreach (var item in dic) // detecting what object was eated
-                    { 
-                        if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
-                        {
-                            StartCoroutine(DelaySpawn(2,ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key),1));
-                            //Coroutine to delay spawn of object
-                            //item.key == GetAllPooledObjects(item.Key) == type of enemy, 0 == 0 == smallenemy
-                        }
-                        
-                        
+
+                    // sum coins if eat coin else spawn another enemy
+                    if (other.tag == "coin")
+                    {
+                        Actions.SumCoins();
                     }
-                    Actions.SumPoint();
-
-
+                    else 
+                    {
+                        foreach (var item in dic) // detecting what object was eated
+                        {
+                            if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
+                            {
+                                StartCoroutine(DelaySpawn(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
+                            }
+                        }
+                        Actions.SumPoint();
+                    }
                 }
             }
             else
@@ -122,7 +122,6 @@ public class Player : MonoBehaviour
                 //удаялем игрока
                 // закачиваем игру
             }
-
         }
     }
 
