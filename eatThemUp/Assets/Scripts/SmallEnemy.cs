@@ -10,6 +10,7 @@ public class SmallEnemy : Enemy
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
+        Size = Random.Range(0.25f,0.4f);
         
     }
 

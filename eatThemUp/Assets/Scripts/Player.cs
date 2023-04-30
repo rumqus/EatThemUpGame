@@ -16,10 +16,6 @@ public class Player : MonoBehaviour
     private Dictionary<int, string> dic;
     private int randomTime;
 
-    // debug panel
-    public float enemySizeS;
-    public float enemyLevelS;
-    public GameObject debugPanel;
 
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
     public int LevelOfsize { get { return levelOfSize; } private set { levelOfSize = value; } }
@@ -60,10 +56,6 @@ public class Player : MonoBehaviour
                 GetSuperSize();
             }
         }
-
-        enemyLevelS = enemyLevel;
-        enemySizeS = enemySize;
-        debugPanel.GetComponent<DebugPanel>().Showdata();
         return true;
     }
 
@@ -110,6 +102,7 @@ public class Player : MonoBehaviour
                             }
                         }
                         Actions.SumPoint();
+                        Actions.Debug(pointsSize.ToString(), levelOfSize.ToString(), enemy.Size.ToString(),enemy.LevelofSize.ToString(),onOffSuperSize.ToString());
                     }
                 }
             }

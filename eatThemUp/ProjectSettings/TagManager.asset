@@ -10,6 +10,7 @@ TagManager:
   - mediumEnemy
   - bigEnemy
   - ground
+  - bonus
   layers:
   - Default
   - TransparentFX
