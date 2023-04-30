@@ -13,7 +13,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> coins;
     [SerializeField] private int locations;
 
-    public const int LOCATION = 1;
+    public const int LOCATION = 2;
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> smallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
