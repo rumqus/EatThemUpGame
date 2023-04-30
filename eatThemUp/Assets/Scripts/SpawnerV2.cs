@@ -44,17 +44,17 @@ public class SpawnerV2 : MonoBehaviour
 
     private void Update()
     {
-        SpawnCoin(currentDelayCoin);
+        SpawnCoin();
     }
 
     /// <summary>
     /// method of spawning coins over timer, another timer in coins.cs
     /// </summary>
     /// <param name="delaySpawn"></param>
-    private void SpawnCoin(float delaySpawn) 
+    private void SpawnCoin() 
     {
-        delaySpawn = delaySpawn - Time.deltaTime;
-        if (delaySpawn < 0)
+        currentDelayCoin = currentDelayCoin - Time.deltaTime;
+        if (currentDelayCoin < 0)
         {
             StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
             currentDelayCoin = delayTimeCoin;

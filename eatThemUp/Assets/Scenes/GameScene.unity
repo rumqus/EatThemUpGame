@@ -5325,15 +5325,19 @@ PrefabInstance:
       objectReference: {fileID: 51785201}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bigEnemyCount
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: delayTimeCoin
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: mediumEnemyCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}

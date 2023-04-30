@@ -4,8 +4,7 @@ using UnityEngine.AI;
 
 public class Coin : Enemy
 {
-    [SerializeField] private float lifeTime;
-    [SerializeField] private float DwlaySpawnCoin;
+    [SerializeField] private float lifeTimeInspector;
     private float currentLifeTime;
     
 
@@ -15,29 +14,30 @@ public class Coin : Enemy
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.RandomRange(50, 75);
-        currentLifeTime = lifeTime;
+        currentLifeTime = lifeTimeInspector;
     }
 
     private void Update()
     {
         MoveEnemy();
-        DisableCoin(currentLifeTime);
+        DisableCoin();
+
     }
 
     /// <summary>
     /// method of disabling coin on over lifeTime, another timer(of spawning) in SpawnerV2.cs
     /// </summary>
     /// <param name="lifeTime"></param>
-    void DisableCoin(float lifeTime) 
+    void DisableCoin() 
     {
-        lifeTime = lifeTime - Time.deltaTime;
-        if (lifeTime <= 0)
+        currentLifeTime = currentLifeTime - Time.deltaTime;
+        if (currentLifeTime <= 0)
         {
            gameObject.GetComponent<NavMeshAgent>().enabled = false;
            gameObject.GetComponent<Rigidbody>().isKinematic = false;
            gameObject.GetComponent<Enemy>().grounded = false;
            gameObject.SetActive(false);
-           currentLifeTime = lifeTime;
+           currentLifeTime = lifeTimeInspector;
         }
     
     }

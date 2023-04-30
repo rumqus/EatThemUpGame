@@ -202,6 +202,7 @@ MonoBehaviour:
   areaRadius: 50
   ChildGO: {fileID: 2753101668821926242}
   grounded: 0
+  lifeTimeInspector: 60
 --- !u!114 &8112949673225356534
 MonoBehaviour:
   m_ObjectHideFlags: 0
