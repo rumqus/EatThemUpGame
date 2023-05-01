@@ -13,6 +13,7 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int mediumEnemyCount;
     [SerializeField] int bigEnemyCount;
     [SerializeField] int coins;
+    [SerializeField] int bonus;
     [SerializeField] private GameObject self;
     [SerializeField] float delayTimeCoin;
     private float currentDelayCoin;
@@ -35,10 +36,12 @@ public class SpawnerV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // spawning objects on start game
         StartSpawn(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().SmallestEnemy);
         StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
         StartSpawn(coins,objectPooler.GetComponent<PooledObjects>().Coins);
+        StartSpawn(bonus, objectPooler.GetComponent<PooledObjects>().Bonus);
         currentDelayCoin = delayTimeCoin;
     }
 

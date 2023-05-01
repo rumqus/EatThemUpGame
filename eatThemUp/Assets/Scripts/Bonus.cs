@@ -24,6 +24,7 @@ public class Bonus : Enemy
 
     private void SetRandomChildGo() 
     {
+        ChildGO = randomChild;
         randomChild.SetActive(true);
     }
 

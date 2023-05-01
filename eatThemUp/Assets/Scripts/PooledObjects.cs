@@ -12,7 +12,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
     private List<GameObject> bonus;
-    [SerializeField] private int locations;
+ 
 
     public const int LOCATION = 2;
     public List<GameObject> Coins { get { return coins;} }
@@ -40,11 +40,15 @@ public class PooledObjects : MonoBehaviour
         coins = objectPooler.GetAllPooledObjects(3);
     }
 
+
+    /// <summary>
+    /// disabling unnecessary elements on locations, with respawning objects
+    /// </summary>
+    /// <param name="items"></param>
+    /// <param name="locations"></param>
     void DisableItems(List<GameObject> items,int locations) 
     {
         int count = locations - 1;
-        //items.Reverse();
-        //List<GameObject> activeList = new List<GameObject>();
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].active == true && count > 0)
