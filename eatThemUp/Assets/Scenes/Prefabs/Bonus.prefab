@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 8112949673225356534}
   - component: {fileID: 7358720427007773511}
   m_Layer: 7
-  m_Name: BonusSpeed
+  m_Name: Bonus
   m_TagString: coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
