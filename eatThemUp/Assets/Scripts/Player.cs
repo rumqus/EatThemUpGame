@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"},{3,"coin"} };
+        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"},{3,"coin"},{4,"bonus"} };
     }
 
     // Update is called once per frame

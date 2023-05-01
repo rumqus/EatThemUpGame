@@ -35,7 +35,7 @@ public class SpawnerV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartSpawn(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().smallestEnemy);
+        StartSpawn(smallEnemyCount,objectPooler.GetComponent<PooledObjects>().SmallestEnemy);
         StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
         StartSpawn(coins,objectPooler.GetComponent<PooledObjects>().Coins);

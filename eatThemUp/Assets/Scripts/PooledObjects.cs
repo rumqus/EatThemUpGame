@@ -11,13 +11,15 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
+    private List<GameObject> bonus;
     [SerializeField] private int locations;
 
     public const int LOCATION = 2;
     public List<GameObject> Coins { get { return coins;} }
-    public List<GameObject> smallestEnemy { get { return smallestEnemys;} }
+    public List<GameObject> SmallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
     public List<GameObject> MediumEnemys { get { return mediumEnemys;} }
+    public List<GameObject> Bonus { get { return bonus; } }
 
     private void OnEnable()
     {

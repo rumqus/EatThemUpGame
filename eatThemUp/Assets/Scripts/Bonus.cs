@@ -29,7 +29,13 @@ public class Bonus : Enemy
 
     private void DisableChildGO(GameObject item)
     {
-
+        for (int i = 0; i < childGO.Count; i++)
+        {
+            if (childGO[i].activeInHierarchy)
+            {
+                childGO[i].SetActive(false);
+            }
+        }
     }
 }
 
