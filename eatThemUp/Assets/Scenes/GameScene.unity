@@ -376,7 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcaaa2c580c46f4bb997f3fd6a37cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locations: 0
 --- !u!1001 &64556008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4526,6 +4525,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: c453ebafca7be774caefcdd8eeca9029, type: 2}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: bonus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: coins
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: center.x
       value: -55.2
       objectReference: {fileID: 0}
@@ -4539,15 +4546,15 @@ PrefabInstance:
       objectReference: {fileID: 51785201}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bigEnemyCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: mediumEnemyCount
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
@@ -6214,6 +6221,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c453ebafca7be774caefcdd8eeca9029, type: 2}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: bonus
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: coins
       value: 1

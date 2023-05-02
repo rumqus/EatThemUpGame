@@ -22,12 +22,19 @@ public class Bonus : Enemy
         MoveEnemy();
     }
 
+    /// <summary>
+    /// acticating childGO
+    /// </summary>
     private void SetRandomChildGo() 
     {
         ChildGO = randomChild;
         randomChild.SetActive(true);
     }
 
+    /// <summary>
+    /// disabling ChilGo
+    /// </summary>
+    /// <param name="item"></param>
     private void DisableChildGO(GameObject item)
     {
         for (int i = 0; i < childGO.Count; i++)
