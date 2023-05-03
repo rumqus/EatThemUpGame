@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-        dic = new Dictionary<int, string> {{ 0, "smallEnemy" },{ 1, "mediumEnemy"},{2, "bigEnemy"},{3,"coin"},{4,"bonus"} };
+        dic = new Dictionary<int, string> {{ 0,"smallEnemy" },{ 1,"mediumEnemy"},{2,"bigEnemy"},{3,"coin"},{4,"bonus"} };
     }
 
     // Update is called once per frame
@@ -87,17 +87,20 @@ public class Player : MonoBehaviour
                     ResetEnemy(other.gameObject);
                     other.gameObject.SetActive(false);
 
-                    // sum coins if eat coin else spawn another enemy
-                    if (other.tag == "coin")
-                    {
-                        Actions.SumCoins();
-                    }
-                    else 
                     {
                         foreach (var item in dic) // detecting what object was eated
                         {
                             if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
                             {
+                                if (item.Value == "coin") // if eat coins, sumcoins
+                                {
+                                    Actions.SumCoins();
+                                }
+                                if (item.Value == "bonus")
+                                {
+                                    Actions.DisableChildGO(other.gameObject);
+                                    // Do bonus;
+                                }
                                 StartCoroutine(DelaySpawn(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
                             }
                         }

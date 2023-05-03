@@ -38,6 +38,7 @@ public class PooledObjects : MonoBehaviour
         mediumEnemys = objectPooler.GetAllPooledObjects(1);
         biggestEnemy = objectPooler.GetAllPooledObjects(2);
         coins = objectPooler.GetAllPooledObjects(3);
+        bonus = objectPooler.GetAllPooledObjects(4);
     }
 
 

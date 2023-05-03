@@ -7,6 +7,17 @@ public class Bonus : Enemy
 {
     [SerializeField] private List<GameObject> childGO;
     private GameObject randomChild;
+
+    private void OnEnable()
+    {
+        Actions.DisableChildGO += DisableChildGO;
+    }
+
+    private void OnDisable()
+    {
+        Actions.DisableChildGO -= DisableChildGO;
+    }
+
     void Start()
     {
         randomChild = childGO[Random.Range(0, childGO.Count -1)];
@@ -14,6 +25,7 @@ public class Bonus : Enemy
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
         Size = Random.Range(0.25f, 0.4f);
+        SetRandomChildGo();
     }
 
     private void Update()
@@ -35,14 +47,11 @@ public class Bonus : Enemy
     /// disabling ChilGo
     /// </summary>
     /// <param name="item"></param>
-    private void DisableChildGO(GameObject item)
+    public void DisableChildGO()
     {
         for (int i = 0; i < childGO.Count; i++)
         {
-            if (childGO[i].activeInHierarchy)
-            {
-                childGO[i].SetActive(false);
-            }
+            ChildGO.SetActive(false);
         }
     }
 }

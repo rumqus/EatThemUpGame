@@ -627,7 +627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165271384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.16, y: 12.085, z: -30.523}
+  m_LocalPosition: {x: 9.16, y: 11.29, z: -30.523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -912,8 +912,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239597247}
-  m_LocalRotation: {x: 0.27327105, y: 0.000000040542613, z: -0.000000011517513, w: 0.96193707}
-  m_LocalPosition: {x: 9.16, y: 42.085, z: -79.063}
+  m_LocalRotation: {x: 0.27327105, y: -0.000000040542613, z: 0.000000011517513, w: 0.96193707}
+  m_LocalPosition: {x: 9.16, y: 41.29, z: -79.063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1403,7 +1403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &426059093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3407,8 +3407,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.27327105, y: 0.000000040542613, z: -0.000000011517513, w: 0.96193707}
-  m_LocalPosition: {x: 9.16, y: 42.085, z: -79.063}
+  m_LocalRotation: {x: 0.27327105, y: -0.000000040542613, z: 0.000000011517513, w: 0.96193707}
+  m_LocalPosition: {x: 9.16, y: 41.29, z: -79.063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4526,7 +4526,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c453ebafca7be774caefcdd8eeca9029, type: 2}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bonus
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: coins
@@ -6223,7 +6223,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c453ebafca7be774caefcdd8eeca9029, type: 2}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bonus
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: coins
