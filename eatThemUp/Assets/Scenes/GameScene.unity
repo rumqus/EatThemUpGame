@@ -4526,7 +4526,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c453ebafca7be774caefcdd8eeca9029, type: 2}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bonus
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: coins
@@ -6236,6 +6236,10 @@ PrefabInstance:
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: bigEnemyCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: DelayTimeBonus
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount

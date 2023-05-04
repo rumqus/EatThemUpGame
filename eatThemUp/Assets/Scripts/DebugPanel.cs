@@ -9,8 +9,4 @@ public class DebugPanel : MonoBehaviour
     [SerializeField] private Text LevelEnemy;
     [SerializeField] private GameObject player;
 
-    public void Showdata() 
-    {
-
-    }
 }

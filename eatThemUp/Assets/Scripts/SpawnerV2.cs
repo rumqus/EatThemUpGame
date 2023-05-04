@@ -5,18 +5,20 @@ using UnityEngine.AI;
 
 public class SpawnerV2 : MonoBehaviour
 {
-    [SerializeField] private Vector3 center;
-    [SerializeField] int range;
-    [SerializeField] float yPos;
-    [SerializeField] private GameObject objectPooler;
-    [SerializeField] int smallEnemyCount;
-    [SerializeField] int mediumEnemyCount;
-    [SerializeField] int bigEnemyCount;
-    [SerializeField] int coins;
-    [SerializeField] int bonus;
+    [SerializeField] private Vector3 center; // center of spawning area
+    [SerializeField] int range; // radius of spawning area
+    [SerializeField] float yPos; // up position of spawn
+    [SerializeField] private GameObject objectPooler; // reference to gameobject pooledobject
+    [SerializeField] int smallEnemyCount; // number to spawn
+    [SerializeField] int mediumEnemyCount; // number to spawn
+    [SerializeField] int bigEnemyCount; // number to spawn
+    [SerializeField] int coins; // number to spawn
+    [SerializeField] int bonus; // number to spawn
     [SerializeField] private GameObject self;
-    [SerializeField] float delayTimeCoin;
+    [SerializeField] float delayTimeCoin; 
     private float currentDelayCoin;
+    [SerializeField] float delayTimeBonus;
+    private float currentDelayBonus;
     
 
     private void OnEnable()
@@ -41,13 +43,15 @@ public class SpawnerV2 : MonoBehaviour
         StartSpawn(mediumEnemyCount,objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount,objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
         StartSpawn(coins,objectPooler.GetComponent<PooledObjects>().Coins);
-        StartSpawn(bonus, objectPooler.GetComponent<PooledObjects>().Bonus);
+        StartSpawn(bonus,objectPooler.GetComponent<PooledObjects>().Bonus);
         currentDelayCoin = delayTimeCoin;
+        currentDelayBonus = delayTimeBonus;
     }
 
     private void Update()
     {
         SpawnCoin();
+        SpawnBonus();
     }
 
     /// <summary>
@@ -63,6 +67,21 @@ public class SpawnerV2 : MonoBehaviour
             currentDelayCoin = delayTimeCoin;
         }    
     }
+    /// <summary>
+    /// method of spawning bonus over timer,another timer in bonus.cs
+    /// </summary>
+    private void SpawnBonus()
+    {
+        Debug.Log(currentDelayBonus);
+        currentDelayBonus = currentDelayBonus - Time.deltaTime;
+        if (currentDelayBonus < 0)
+        {
+            StartSpawn(bonus, objectPooler.GetComponent<PooledObjects>().Bonus);
+            currentDelayBonus = delayTimeBonus;
+        }
+    }
+
+
 
 
     /// <summary>
