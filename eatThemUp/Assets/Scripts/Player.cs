@@ -189,4 +189,7 @@ public class Player : MonoBehaviour
         Actions.DisableObjects(listEnemys,PooledObjects.LOCATION);
     }
 
+
+
+
 }

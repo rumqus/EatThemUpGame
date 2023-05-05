@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Actions : MonoBehaviour
 {
+    public static Action<float> bonusSpeed;
+    public static Action<float> freezeBonus;
+    public static Action<float> invertBonus;
     public static Action<List<GameObject>,int> RespawnEnemy;
     public static Action<GameObject> SpawnOneItem;
     public static Action<List<GameObject>, int> DisableObjects;

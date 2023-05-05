@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bonus : Enemy
+public class BonusFreeze : Bonus, IGetBonus
 {
-    [SerializeField] protected List<GameObject> childGO;
-    protected GameObject randomChild;
-    [SerializeField] protected float lifeTimeInspector;
-    protected float currentLifeTime;
-
+    [SerializeField] private List<GameObject> childGO;
+    private GameObject randomChild;
+    [SerializeField] private float lifeTimeInspector;
+    private float currentLifeTime;
+    [SerializeField] float freezeTime;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class Bonus : Enemy
     /// <summary>
     /// activating childGO
     /// </summary>
-    private void SetRandomChildGo() 
+    private void SetRandomChildGo()
     {
         randomChild = childGO[Random.Range(0, childGO.Count - 1)];
         ChildGO = randomChild;
@@ -66,5 +66,8 @@ public class Bonus : Enemy
         }
     }
 
+    public void Getbonus()
+    {
+        Actions.freezeBonus(freezeTime);
+    }
 }
-
