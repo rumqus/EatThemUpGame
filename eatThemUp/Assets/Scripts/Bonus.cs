@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Bonus : Enemy
 {
-    [SerializeField] protected List<GameObject> childGO;
+    [SerializeField] private List<GameObject> childGO;
     protected GameObject randomChild;
     [SerializeField] protected float lifeTimeInspector;
     protected float currentLifeTime;
@@ -65,6 +65,9 @@ public class Bonus : Enemy
             currentLifeTime = lifeTimeInspector;
         }
     }
+
+
+
 
 }
 

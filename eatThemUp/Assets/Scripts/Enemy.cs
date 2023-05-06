@@ -47,11 +47,15 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected void MoveEnemy()
     {
-        if (!Agent.hasPath && grounded == true)
+        if (Agent != null)
         {
-            GetComponent<Rigidbody>().isKinematic = true;
-            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+            if (!Agent.hasPath && grounded == true)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+            }
         }
+
     }
 
     /// <summary>

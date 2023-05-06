@@ -98,8 +98,7 @@ public class Player : MonoBehaviour
                                 }
                                 if (item.Value == "bonus")
                                 {
-                                    
-                                    // Do bonus;
+                                    other.gameObject.GetComponent<IGetBonus>().Getbonus();
                                     other.gameObject.GetComponent<Bonus>().DisableChildGO();
                                 }
                                 StartCoroutine(DelaySpawn(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
