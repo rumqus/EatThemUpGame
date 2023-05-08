@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour, IGrounded
 {
     [SerializeField] private float size; // points of size enemy
     [SerializeField] private int levelofSize; // Level of enemy
@@ -84,4 +84,8 @@ public abstract class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
+    public void GroundedON()
+    {
+        grounded = true;
+    }
 }

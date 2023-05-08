@@ -334,19 +334,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 7643587268516839849, guid: e0ff5e23d81f8f046b406e3e47c2078f, type: 3}
-    amountToPool: 100
+    amountToPool: 5
     shouldExpand: 0
   - objectToPool: {fileID: 4550448526595634797, guid: 811a23a4ede36c44f989b8957a805978, type: 3}
-    amountToPool: 50
+    amountToPool: 5
     shouldExpand: 0
   - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
-    amountToPool: 50
+    amountToPool: 5
     shouldExpand: 0
   - objectToPool: {fileID: 8982359932727671362, guid: 5e8b73a4f8072604daa46d505d60bd66, type: 3}
-    amountToPool: 10
+    amountToPool: 5
     shouldExpand: 0
   - objectToPool: {fileID: 8982359932727671362, guid: 4d292fdd259183b4fa490f314f2ccb58, type: 3}
-    amountToPool: 10
+    amountToPool: 5
     shouldExpand: 0
   pooledObjects: []
 --- !u!4 &51785203
@@ -4609,10 +4609,10 @@ RectTransform:
   m_Father: {fileID: 1763199050}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -518.55444, y: 0}
-  m_SizeDelta: {x: 136.8932, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 68.446594, y: 0}
+  m_SizeDelta: {x: 136.89319, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603019211
 MonoBehaviour:

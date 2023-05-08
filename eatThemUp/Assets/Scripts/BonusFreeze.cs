@@ -1,19 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class BonusFreeze : Bonus, IGetBonus
+
+public class BonusFreeze : MonoBehaviour, IGetBonus
 {
 
     [SerializeField] float freezeTime;
 
-    private void Start()
-    {
-        Agent = GetComponentInParent<Bonus>().Agent;
-    }
-
-    public void Getbonus()
+    public void GetBonus()
     {
         Actions.freezeBonus(freezeTime);
     }

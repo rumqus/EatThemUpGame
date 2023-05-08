@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IGetBonus
+interface IGrounded 
 {
-    void GetBonus();
+    void GroundedON();
+
 }
+

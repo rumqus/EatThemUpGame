@@ -66,8 +66,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.61354995, z: 2.3369691}
-  m_Center: {x: 0, y: 0.19322504, z: -0.13362563}
+  m_Size: {x: 1, y: 0.8789661, z: 2.3369691}
+  m_Center: {x: 0, y: 0.060516953, z: -0.13362563}
 --- !u!195 &8982359932727671364
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -115,16 +115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3a0c3662350841bdbb4d6ebde7ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  levelofSize: 0
-  areaRadius: 70
-  ChildGO: {fileID: 0}
-  grounded: 0
   childGO:
   - {fileID: 2870265445643331571}
   - {fileID: 7223825932210667348}
   - {fileID: 7476063495337562155}
-  lifeTimeInspector: 10
+  lifeTimeInspector: 60
+  areaRadius: 70
+  ChildGO: {fileID: 0}
+  grounded: 0
 --- !u!1001 &3104197194428390050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,13 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84784b7ea5b1003479f0ce87559014fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  levelofSize: 0
-  areaRadius: 0
-  ChildGO: {fileID: 0}
-  grounded: 0
-  childGO: []
-  lifeTimeInspector: 0
   speedBonus: 1
 --- !u!195 &3495062530646461833
 NavMeshAgent:
@@ -345,13 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84784b7ea5b1003479f0ce87559014fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  levelofSize: 0
-  areaRadius: 0
-  ChildGO: {fileID: 0}
-  grounded: 0
-  childGO: []
-  lifeTimeInspector: 0
   speedBonus: 1
 --- !u!195 &6375965532811336263
 NavMeshAgent:
@@ -458,26 +442,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ec8f0505395556d44b6d2d493bda7839, type: 3}
   m_PrefabInstance: {fileID: 7710507750623636858}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6407875082031579378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7476063495337562155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84784b7ea5b1003479f0ce87559014fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 0
-  levelofSize: 0
-  areaRadius: 0
-  ChildGO: {fileID: 0}
-  grounded: 0
-  childGO: []
-  lifeTimeInspector: 0
-  speedBonus: 1
 --- !u!195 &3821637851163773142
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -500,3 +464,16 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6407875082031579378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476063495337562155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84784b7ea5b1003479f0ce87559014fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBonus: 1

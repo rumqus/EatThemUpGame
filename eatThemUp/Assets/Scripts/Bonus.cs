@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bonus : Enemy
+public class Bonus : MonoBehaviour, IGrounded
 {
     [SerializeField] private List<GameObject> childGO;
-    protected GameObject randomChild;
-    [SerializeField] protected float lifeTimeInspector;
-    protected float currentLifeTime;
+    private GameObject randomChild;
+    [SerializeField] private float lifeTimeInspector;
+    private float currentLifeTime;
+    private Transform target; // target - player to chase and look
+    private NavMeshAgent agent;
+    [SerializeField] private float areaRadius;
+    private float timer; // time for movement
+    [SerializeField] private GameObject ChildGO; // child of current GO
+    private Vector3 upPosition; // start position îf the object
+    public bool grounded; // detecting object is on the ground
+    private Rigidbody bonusRB; // bonus rigidbody
+
+    public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
 
 
     void Start()
     {
-        Agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+        bonusRB = GetComponent<Rigidbody>();
         target = PlayerInstance.instancePlayer.player.transform;
-        Agent.avoidancePriority = Random.Range(76, 99);
-        Size = Random.Range(0.25f, 0.4f);
+        agent.avoidancePriority = Random.Range(76, 99);
         currentLifeTime = lifeTimeInspector;
         SetRandomChildGo();
     }
@@ -26,10 +36,30 @@ public class Bonus : Enemy
         MoveEnemy();
         DisableBonus();
     }
+
+    /// <summary>
+    /// merhod of moving bonus
+    /// </summary>
+    protected void MoveEnemy()
+    {
+        if (agent != null)
+        {
+            if (!agent.hasPath && grounded == true)
+            {
+                bonusRB.isKinematic = true;
+                agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+
+            }
+        }
+    }
+
+    
+
+
     /// <summary>
     /// activating childGO
     /// </summary>
-    private void SetRandomChildGo() 
+    private void SetRandomChildGo()
     {
         randomChild = childGO[Random.Range(0, childGO.Count - 1)];
         ChildGO = randomChild;
@@ -57,17 +87,20 @@ public class Bonus : Enemy
         if (currentLifeTime <= 0)
         {
             DisableChildGO();
-            gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Enemy>().grounded = false;
-            gameObject.SetActive(false);
+            agent.enabled = false;
+            bonusRB.isKinematic = false;
+            grounded = false;
             SetRandomChildGo();
             currentLifeTime = lifeTimeInspector;
+            gameObject.SetActive(false); // disabling bonus
+            Debug.Log("End_BonusLife");
         }
     }
 
 
-
-
+    public void GroundedON()
+    {
+        grounded = true;
+    }
 }
 

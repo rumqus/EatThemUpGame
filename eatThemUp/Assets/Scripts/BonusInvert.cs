@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class BonusInvert : Bonus, IGetBonus
+
+public class BonusInvert : MonoBehaviour, IGetBonus
 {
     //[SerializeField] private List<GameObject> childGO;
     //private GameObject randomChild;
@@ -11,10 +9,6 @@ public class BonusInvert : Bonus, IGetBonus
     //private float currentLifeTime;
     [SerializeField] float invertTime;
 
-    private void Start()
-    {
-        Agent = GetComponentInParent<Bonus>().Agent;
-    }
 
 
     //void Start()
@@ -73,7 +67,7 @@ public class BonusInvert : Bonus, IGetBonus
     //    }
     //}
 
-    public void Getbonus()
+    public void GetBonus()
     {
         Actions.invertBonus(invertTime);
     }
