@@ -40,6 +40,7 @@ public class Bonus : MonoBehaviour, IGrounded
     private void OnEnable()
     {
         //Actions.SetRandomBonus += SetOnDestroy;
+        SetRandomChildGo(); // Set new bonus
     }
 
     private void OnDisable()
@@ -98,7 +99,6 @@ public class Bonus : MonoBehaviour, IGrounded
             agent.enabled = false;
             bonusRB.isKinematic = false;
             grounded = false;
-            SetRandomChildGo();
             currentLifeTime = lifeTimeInspector;
             gameObject.SetActive(false); // disabling bonus
             //Debug.Log("End_BonusLife");
