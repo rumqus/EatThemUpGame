@@ -14,7 +14,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> bonus;
  
 
-    public const int LOCATION = 2;
+    public const int LOCATION = 1;
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> SmallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }

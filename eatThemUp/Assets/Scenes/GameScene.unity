@@ -6251,7 +6251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: delayTimeBonus
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount

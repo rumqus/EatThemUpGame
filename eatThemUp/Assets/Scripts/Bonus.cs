@@ -37,6 +37,16 @@ public class Bonus : MonoBehaviour, IGrounded
         DisableBonus();
     }
 
+    private void OnEnable()
+    {
+        //Actions.SetRandomBonus += SetOnDestroy;
+    }
+
+    private void OnDisable()
+    {
+        //Actions.SetRandomBonus -= SetOnDestroy;
+    }
+
     /// <summary>
     /// merhod of moving bonus
     /// </summary>
@@ -48,12 +58,9 @@ public class Bonus : MonoBehaviour, IGrounded
             {
                 bonusRB.isKinematic = true;
                 agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
-
             }
         }
     }
-
-    
 
 
     /// <summary>
@@ -69,12 +76,13 @@ public class Bonus : MonoBehaviour, IGrounded
     /// disabling ChilGo
     /// </summary>
     /// <param name="item"></param>
-    public void DisableChildGO()
+    private void DisableChildGO()
     {
         for (int i = 0; i < childGO.Count; i++)
         {
             ChildGO.SetActive(false);
         }
+        
     }
 
     /// <summary>
@@ -93,8 +101,18 @@ public class Bonus : MonoBehaviour, IGrounded
             SetRandomChildGo();
             currentLifeTime = lifeTimeInspector;
             gameObject.SetActive(false); // disabling bonus
-            Debug.Log("End_BonusLife");
+            //Debug.Log("End_BonusLife");
         }
+    }
+
+    /// <summary>
+    /// Sets new random bonus when plaer hits bonus
+    /// </summary>
+    void SetOnDestroy() 
+    {
+        randomChild = childGO[Random.Range(0, childGO.Count - 1)];
+        ChildGO = randomChild;
+        Debug.Log(ChildGO.name);
     }
 
 

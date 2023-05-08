@@ -70,6 +70,13 @@ public class Player : MonoBehaviour
         enemy.GetComponent<Enemy>().grounded = false;
     }
 
+    private void ResetBonus(GameObject bonus) 
+    {
+        bonus.GetComponent<NavMeshAgent>().enabled = false;
+        bonus.GetComponent<Rigidbody>().isKinematic = false;
+        bonus.GetComponent<Bonus>().grounded = false;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -86,7 +93,6 @@ public class Player : MonoBehaviour
                 {
                     ResetEnemy(other.gameObject);
                     other.gameObject.SetActive(false);
-
                     {
                         foreach (var item in dic) // detecting what object was eated
                         {
@@ -114,7 +120,7 @@ public class Player : MonoBehaviour
                 // закачиваем игру
             }
         }
-        else if (other.TryGetComponent<Bonus>(out Bonus bonus))
+        if (other.TryGetComponent<Bonus>(out Bonus bonus))
         {
             foreach (GameObject child in bonus.ChildrenGO) 
             {
@@ -123,7 +129,9 @@ public class Player : MonoBehaviour
                     child.GetComponent<IGetBonus>().GetBonus();
                 }
             }
-            other.gameObject.GetComponent<Bonus>().DisableChildGO();
+            ResetBonus(other.gameObject);
+            other.gameObject.SetActive(false);
+            
 
         }
     }
