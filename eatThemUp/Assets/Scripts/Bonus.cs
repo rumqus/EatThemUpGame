@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bonus : MonoBehaviour, IGrounded
+public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
 {
     [SerializeField] private List<GameObject> childGO;
     private GameObject randomChild;
@@ -17,6 +17,8 @@ public class Bonus : MonoBehaviour, IGrounded
     private Vector3 upPosition; // start position îf the object
     public bool grounded; // detecting object is on the ground
     private Rigidbody bonusRB; // bonus rigidbody
+    private float currentSpeed; // speed of navMesh
+    private float freezeTime; // time of freezingEnemy
 
     public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
 
@@ -29,6 +31,7 @@ public class Bonus : MonoBehaviour, IGrounded
         agent.avoidancePriority = Random.Range(76, 99);
         currentLifeTime = lifeTimeInspector;
         SetRandomChildGo();
+        currentSpeed = GetComponent<NavMeshAgent>().speed;
     }
 
     private void Update()
@@ -39,13 +42,8 @@ public class Bonus : MonoBehaviour, IGrounded
 
     private void OnEnable()
     {
-        //Actions.SetRandomBonus += SetOnDestroy;
         SetRandomChildGo(); // Set new bonus
-    }
 
-    private void OnDisable()
-    {
-        //Actions.SetRandomBonus -= SetOnDestroy;
     }
 
     /// <summary>
@@ -83,7 +81,6 @@ public class Bonus : MonoBehaviour, IGrounded
         {
             ChildGO.SetActive(false);
         }
-        
     }
 
     /// <summary>
@@ -101,7 +98,6 @@ public class Bonus : MonoBehaviour, IGrounded
             grounded = false;
             currentLifeTime = lifeTimeInspector;
             gameObject.SetActive(false); // disabling bonus
-            //Debug.Log("End_BonusLife");
         }
     }
 
@@ -120,5 +116,22 @@ public class Bonus : MonoBehaviour, IGrounded
     {
         grounded = true;
     }
+
+    /// <summary>
+    /// method to freeze all object ob location
+    /// </summary>
+    public void FreezeAll()
+    {
+        GetComponent<NavMeshAgent>().speed = 0;
+        StartCoroutine(FreezeTime(freezeTime));
+    }
+
+    IEnumerator FreezeTime(float freezeTime) 
+    {
+        yield return new WaitForSeconds(freezeTime);
+        GetComponent<NavMeshAgent>().speed = currentSpeed;
+    }
+
+
 }
 

@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894b7a0be0e06e948817d63b5bc43463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 30
   playerRb: {fileID: 165271390}
   player: {fileID: 165271384}
 --- !u!54 &165271390
@@ -6246,12 +6246,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
+      propertyPath: delayTimeCoin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: DelayTimeBonus
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: delayTimeBonus
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9147646564388583367, guid: e9b18647c87aeeb428b76898cbb8487e, type: 3}
       propertyPath: smallEnemyCount

@@ -12,9 +12,11 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
     private List<GameObject> bonus;
+    private List<List<GameObject>> AllpooledObject;
  
 
     public const int LOCATION = 1;
+    public const float FREEZETIME = 3;
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> SmallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
@@ -24,6 +26,7 @@ public class PooledObjects : MonoBehaviour
     private void OnEnable()
     {
         Actions.DisableObjects += DisableItems;
+        Actions.freezeAll += FreezeAllObjects;
     }
 
     private void OnDisable()
@@ -39,6 +42,21 @@ public class PooledObjects : MonoBehaviour
         biggestEnemy = objectPooler.GetAllPooledObjects(2);
         coins = objectPooler.GetAllPooledObjects(3);
         bonus = objectPooler.GetAllPooledObjects(4);
+        AllpooledObject = new List<List<GameObject>>() { smallestEnemys, mediumEnemys, biggestEnemy, coins, bonus };
+    }
+
+    /// <summary>
+    /// method of freezing all pooled objects
+    /// </summary>
+    private void FreezeAllObjects() 
+    {
+        foreach (List<GameObject> list in AllpooledObject)
+        {
+            foreach (GameObject item in list)
+            {
+                item.GetComponent<IFreezeAll>().FreezeAll();
+            }
+        }
     }
 
 

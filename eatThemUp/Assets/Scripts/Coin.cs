@@ -2,10 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Coin : Enemy
+public class Coin : Enemy, IFreezeAll
 {
     [SerializeField] private float lifeTimeInspector;
     private float currentLifeTime;
+    private float currentSpeed;
     
 
     // Start is called before the first frame update
@@ -15,6 +16,8 @@ public class Coin : Enemy
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.RandomRange(50, 75);
         currentLifeTime = lifeTimeInspector;
+        currentSpeed = GetComponent<NavMeshAgent>().speed;
+
     }
 
     private void Update()
@@ -42,5 +45,16 @@ public class Coin : Enemy
     
     }
 
+    public void FreezeAll()
+    {
+        GetComponent<NavMeshAgent>().speed = 0;
+        StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
+    }
+
+    IEnumerator FreezeTime(float freezeTime)
+    {
+        yield return new WaitForSeconds(freezeTime);
+        GetComponent<NavMeshAgent>().speed = currentSpeed;
+    }
 
 }
