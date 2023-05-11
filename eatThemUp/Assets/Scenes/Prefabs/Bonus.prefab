@@ -121,14 +121,6 @@ MonoBehaviour:
   - {fileID: 7223825932210667348}
   - {fileID: 7476063495337562155}
   - {fileID: 4862218089192951390}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   lifeTimeInspector: 7
   areaRadius: 70
   ChildGO: {fileID: 0}

@@ -119,7 +119,6 @@ public class SpawnerV2 : MonoBehaviour
 
     void SpawnOneEnemy(GameObject enemy)
     {
-
         Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
         Debug.Log(pos);
         GameObject poolledObject = enemy;
