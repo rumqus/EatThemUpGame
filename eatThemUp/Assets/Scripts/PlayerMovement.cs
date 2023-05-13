@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private GameObject player;
+    [SerializeField] AnimateController animate;
     private Vector3 movement;
 
     private void OnEnable()
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
+        ChangeAnimState();
         
     }
 
@@ -52,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
-    
+
     }
 
     /// <summary>
@@ -101,5 +103,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void ChangeAnimState() 
+    {
+        if (movement.x == 0 && movement.z == 0)
+        {
+            animate.SetBool("run", false);
+        }
+        else 
+        {
+            animate.SetBool("run", true);
+        }
+       
+    }
    
 }

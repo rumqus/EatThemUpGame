@@ -98,57 +98,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &9147646564388583365
-GameObject:
+--- !u!1001 &3160041057909789206
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9147646564388583366}
-  - component: {fileID: 9147646564388583367}
-  m_Layer: 6
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9147646564388583366
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5400787865633807833}
+    m_Modifications:
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.029
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41015533
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97161114
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.23658378
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+--- !u!4 &9147646564388583366 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6136225466583410128, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
+  m_PrefabInstance: {fileID: 3160041057909789206}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9147646564388583365}
-  m_LocalRotation: {x: -0, y: -0.23658378, z: -0, w: 0.97161114}
-  m_LocalPosition: {x: 0.029, y: 0.41015533, z: -0.057}
-  m_LocalScale: {x: 0.010659532, y: 0.043633547, z: 0.010774774}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5400787865633807833}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9147646564388583367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9147646564388583365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 417f554206eda6b46aaebe2acfaf7a18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 5.13, z: 0}
-  range: 45
-  yPos: 26
-  objectPooler: {fileID: 0}
-  smallEnemyCount: 0
-  mediumEnemyCount: 0
-  bigEnemyCount: 0
-  coins: 2
-  self: {fileID: 9147646564388583365}
-  delayTimeCoin: 70
