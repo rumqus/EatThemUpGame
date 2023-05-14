@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     /// <summary>
-    /// Метод передвижения игрока
+    /// moving player
     /// </summary>
     private void MovePlayer() 
     {
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
     /// <summary>
-    /// метод получения ввода игрока
+    /// get input from player
     /// </summary>
     private void GetInput() 
     {
@@ -103,6 +103,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// accessing animator on player to change animation state 
+    /// </summary>
     private void ChangeAnimState() 
     {
         if (movement.x == 0 && movement.z == 0)

@@ -11,6 +11,7 @@ TagManager:
   - bigEnemy
   - ground
   - bonus
+  - obstacle
   layers:
   - Default
   - TransparentFX
