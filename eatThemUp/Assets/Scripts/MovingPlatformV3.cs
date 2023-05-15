@@ -33,10 +33,11 @@ public class MovingPlatformV3 : MonoBehaviour
 
     private void HandleMovement()
     {
+        Debug.Log(Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position));
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].transform.position,
             (moveSpeed * Time.deltaTime));
 
-        if (Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position) <= 0)
+        if (Vector3.Distance(waypoints[currentWaypoint].transform.position, transform.position) <= 0.03)
         {
             currentWaypoint++;
         }
