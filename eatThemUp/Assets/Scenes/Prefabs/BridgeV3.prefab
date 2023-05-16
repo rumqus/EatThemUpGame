@@ -14,8 +14,8 @@ GameObject:
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 40
   m_IsActive: 1
 --- !u!4 &973936194279553629
 Transform:
@@ -207,8 +207,8 @@ GameObject:
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 40
   m_IsActive: 1
 --- !u!4 &7539591816082376547
 Transform:
@@ -252,8 +252,8 @@ GameObject:
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 40
   m_IsActive: 1
 --- !u!4 &5564140861638158277
 Transform:
@@ -332,8 +332,8 @@ GameObject:
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 40
   m_IsActive: 1
 --- !u!4 &3937093944334299913
 Transform:
@@ -571,6 +571,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
       propertyPath: m_Name
       value: Bridge_Modular_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
@@ -829,6 +837,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
       propertyPath: m_Name
       value: Bridge_Modular_base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04bf867acac07b24d808cf4aac004428, type: 3}
