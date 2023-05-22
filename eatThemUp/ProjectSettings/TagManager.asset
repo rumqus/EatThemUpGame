@@ -12,6 +12,7 @@ TagManager:
   - ground
   - bonus
   - obstacle
+  - camera
   layers:
   - Default
   - TransparentFX
