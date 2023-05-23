@@ -5,7 +5,7 @@ public abstract class Enemy : MonoBehaviour, IGrounded
 {
     [SerializeField] private float size; // points of size enemy
     [SerializeField] private int levelofSize; // Level of enemy
-    private float radius = 10f; // radius of enemy start acting
+    protected float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
     [SerializeField] protected float areaRadius;
@@ -61,10 +61,8 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     protected void ChasePlayer()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-
         if (distance < radius && LevelofSize > target.GetComponent<Player>().LevelOfsize)
         {
-
             Agent.SetDestination(target.position);
             FaceToPlayer();
         }

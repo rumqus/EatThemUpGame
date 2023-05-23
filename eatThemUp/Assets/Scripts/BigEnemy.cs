@@ -7,6 +7,7 @@ public class BigEnemy : Enemy, IFreezeAll
 {
 
     private float currentSpeed;
+    [SerializeField] GameObject alert;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,25 @@ public class BigEnemy : Enemy, IFreezeAll
     {
         yield return new WaitForSeconds(freezeTime);
         GetComponent<NavMeshAgent>().speed = currentSpeed;
+    }
+
+    /// <summary>
+    /// checking distance between player and enemy
+    /// </summary>
+    protected void ChasePlayer()
+    {
+        float distance = Vector3.Distance(target.position, transform.position);
+        if (distance < radius && LevelofSize > target.GetComponent<Player>().LevelOfsize)
+        {
+            alert.SetActive(true);
+            Agent.SetDestination(target.position);
+            FaceToPlayer();
+        }
+        else
+        {
+            alert.SetActive(false);
+            MoveEnemy();
+        }
     }
 
 }

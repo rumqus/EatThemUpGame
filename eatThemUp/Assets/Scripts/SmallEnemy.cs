@@ -10,7 +10,7 @@ public class SmallEnemy : Enemy, IFreezeAll
     {
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
-        Agent.avoidancePriority = Random.Range(76, 99);
+        Agent.avoidancePriority = Random.Range(25, 73);
         Size = Random.Range(0.25f,0.4f);
         currentSpeed = GetComponent<NavMeshAgent>().speed;
     }
