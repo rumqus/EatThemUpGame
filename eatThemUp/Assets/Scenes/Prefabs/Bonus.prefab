@@ -121,10 +121,11 @@ MonoBehaviour:
   - {fileID: 3187532633438497466}
   - {fileID: 3187532633438497466}
   - {fileID: 3187532633438497466}
-  lifeTimeInspector: 10
+  lifeTimeInspector: 15
   areaRadius: 70
   ChildGO: {fileID: 0}
   grounded: 0
+  currentSpeed: 7
 --- !u!1001 &1184161310241787669
 PrefabInstance:
   m_ObjectHideFlags: 0

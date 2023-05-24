@@ -16,7 +16,7 @@ public class PooledObjects : MonoBehaviour
  
 
     public const int LOCATION = 1;
-    public const float FREEZETIME = 3;
+    public const float FREEZETIME = 5;
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> SmallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
