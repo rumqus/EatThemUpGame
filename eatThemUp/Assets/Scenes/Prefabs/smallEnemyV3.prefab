@@ -92,6 +92,8 @@ MonoBehaviour:
   areaRadius: 30
   ChildGO: {fileID: 0}
   grounded: 0
+  enemyAnimator: {fileID: 1656152072274109147}
+  enemyAgent: {fileID: 7643587268516839855}
 --- !u!65 &4674951478159870795
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -198,5 +200,10 @@ PrefabInstance:
 --- !u!4 &1256905573155830485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1221083948262841476, guid: c3c76a247c7e43b19a40ebfcfefa8f19, type: 3}
+  m_PrefabInstance: {fileID: 109007318968575569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1656152072274109147 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1691260113314563210, guid: c3c76a247c7e43b19a40ebfcfefa8f19, type: 3}
   m_PrefabInstance: {fileID: 109007318968575569}
   m_PrefabAsset: {fileID: 0}

@@ -67,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.576561, y: 1.5004411, z: 1.6576146}
-  m_Center: {x: -0.00745821, y: 0.41, z: -0.0028321147}
+  m_Size: {x: 1.576561, y: 1.748276, z: 1.6576146}
+  m_Center: {x: -0.00745821, y: 0.2860825, z: -0.0028321147}
 --- !u!195 &8982359932727671364
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8982359932727671362}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.39
+  m_Radius: 0.2
   m_Speed: 7
   m_Acceleration: 6
   avoidancePriority: 50
@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childGO:
-  - {fileID: 3017368943240142639}
-  - {fileID: 2327832439502516929}
-  - {fileID: 2067035276629520964}
   - {fileID: 3187532633438497466}
-  lifeTimeInspector: 7
+  - {fileID: 3187532633438497466}
+  - {fileID: 3187532633438497466}
+  - {fileID: 3187532633438497466}
+  lifeTimeInspector: 10
   areaRadius: 70
   ChildGO: {fileID: 0}
   grounded: 0
@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_Name
-      value: Question (2)
+      value: QuestionInvert
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_IsActive
@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_Name
-      value: Question (3)
+      value: QuestionFreezeAll
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_IsActive
@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_Name
-      value: Question
+      value: QuestionSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_IsActive
@@ -477,7 +477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_Name
-      value: Question (1)
+      value: QuestionFreeZeSelf
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5314fcc3d5140746a892ff94c012fa7, type: 3}
       propertyPath: m_IsActive

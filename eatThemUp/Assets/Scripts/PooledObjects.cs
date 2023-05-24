@@ -54,7 +54,11 @@ public class PooledObjects : MonoBehaviour
         {
             foreach (GameObject item in list)
             {
-                item.GetComponent<IFreezeAll>().FreezeAll();
+                if (item.activeInHierarchy == true)
+                {
+                    item.GetComponent<IFreezeAll>().FreezeAll();
+                }
+                
             }
         }
     }

@@ -9,5 +9,6 @@ public class BonusSpeed : MonoBehaviour, IGetBonus
     public void GetBonus()
     {
         Actions.bonusSpeed(speedBonus);
+        Debug.Log("Speed Bonus");
     }
 }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] AnimateController animate;
     private Vector3 movement;
+    bool invert = false;
 
     private void OnEnable()
     {
@@ -52,8 +53,19 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void GetInput() 
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.z = Input.GetAxisRaw("Vertical");
+        if (invert)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal") * -1;
+            movement.z = Input.GetAxisRaw("Vertical") * -1;
+        }
+        else 
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.z = Input.GetAxisRaw("Vertical");
+
+        }
+
+
 
     }
 
@@ -74,12 +86,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float currentSpeed = speed;
         speed = 0;
+        gameObject.GetComponent<AnimateController>().enabled = false;
         StartCoroutine(waitTime(freezeTime));
         
         IEnumerator waitTime(float time)
         {
             yield return new WaitForSeconds(time);
             speed = currentSpeed;
+            gameObject.GetComponent<AnimateController>().enabled = true;
         }
 
     }
@@ -90,14 +104,13 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="invertTime"></param>
     private void GetInvertMoveBonus(float invertTime)
     {
-        movement.x = movement.x * -1;
-        movement.z = movement.z * -1;
+        invert = true;
+        StartCoroutine(waitTime(invertTime));
 
         IEnumerator waitTime(float time)
         {
             yield return new WaitForSeconds(time);
-            movement.x = movement.x * -1;
-            movement.z = movement.z * -1;
+            invert = false;
 
         }
 

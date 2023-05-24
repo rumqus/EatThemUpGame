@@ -7,7 +7,9 @@ public class BigEnemy : Enemy, IFreezeAll
 {
 
     private float currentSpeed;
-    [SerializeField] GameObject alert;
+    [SerializeField] private GameObject alert;
+    [SerializeField] private Animator animController;
+    [SerializeField] private NavMeshAgent enemyAgent;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +33,16 @@ public class BigEnemy : Enemy, IFreezeAll
     /// </summary>
     public void FreezeAll()
     {
-        GetComponent<NavMeshAgent>().speed = 0;
+        enemyAgent.speed = 0;
+        animController.enabled = false;
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
 
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
-        GetComponent<NavMeshAgent>().speed = currentSpeed;
+        enemyAgent.speed = currentSpeed;
+        animController.enabled = true;
     }
 
     /// <summary>

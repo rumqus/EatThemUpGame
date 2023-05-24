@@ -32,6 +32,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
         currentLifeTime = lifeTimeInspector;
         SetRandomChildGo();
         currentSpeed = GetComponent<NavMeshAgent>().speed;
+
     }
 
     private void Update()
@@ -67,9 +68,10 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     /// </summary>
     private void SetRandomChildGo()
     {
-        randomChild = childGO[Random.Range(0, childGO.Count - 1)];
+        randomChild = childGO[Random.Range(0, childGO.Count)];
         ChildGO = randomChild;
         randomChild.SetActive(true);
+
     }
     /// <summary>
     /// disabling ChilGo
@@ -96,7 +98,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
             agent.enabled = false;
             bonusRB.isKinematic = false;
             grounded = false;
-            currentLifeTime = lifeTimeInspector;
+            currentLifeTime = lifeTimeInspector; // reset lifeTime
             gameObject.SetActive(false); // disabling bonus
         }
     }
@@ -108,7 +110,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     {
         randomChild = childGO[Random.Range(0, childGO.Count - 1)];
         ChildGO = randomChild;
-        Debug.Log(ChildGO.name);
+
     }
 
 
@@ -122,14 +124,14 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     /// </summary>
     public void FreezeAll()
     {
-        GetComponent<NavMeshAgent>().speed = 0;
+       agent.speed = 0;
         StartCoroutine(FreezeTime(freezeTime));
     }
 
     IEnumerator FreezeTime(float freezeTime) 
     {
         yield return new WaitForSeconds(freezeTime);
-        GetComponent<NavMeshAgent>().speed = currentSpeed;
+        agent.speed = currentSpeed;
     }
 
 

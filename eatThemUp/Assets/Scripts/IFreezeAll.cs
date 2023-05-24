@@ -5,6 +5,4 @@ using UnityEngine;
 public interface IFreezeAll
 {
     void FreezeAll();
-
-
 }

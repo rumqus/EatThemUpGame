@@ -5,6 +5,8 @@ using UnityEngine.AI;
 public class SmallEnemy : Enemy, IFreezeAll
 {
     private float currentSpeed;
+    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] private NavMeshAgent enemyAgent;
 // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +28,15 @@ public class SmallEnemy : Enemy, IFreezeAll
     /// </summary>
     public void FreezeAll()
     {
-        GetComponent<NavMeshAgent>().speed = 0;
+        enemyAgent.speed = 0;
+        enemyAnimator.enabled = false;
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
 
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
-        GetComponent<NavMeshAgent>().speed = currentSpeed;
+        enemyAgent.speed = currentSpeed;
+        enemyAnimator.enabled = true;
     }
 }
