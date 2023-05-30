@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d9eb530dde60b478330285601d8653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4966353744019478003}
+  item: {fileID: 4966353744019478003}
 --- !u!114 &1203581354631618672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,9 +481,10 @@ MonoBehaviour:
   areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
+  currentSpeed: 4
   alert: {fileID: 480182489336442637}
   animController: {fileID: 1043565709750468197}
-  enemyAgent: {fileID: 4966353744019478005}
+  itemAgent: {fileID: 4966353744019478005}
 --- !u!1 &5102903834440197990
 GameObject:
   m_ObjectHideFlags: 0

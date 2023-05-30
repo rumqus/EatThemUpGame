@@ -6,10 +6,10 @@ using UnityEngine.AI;
 public class BigEnemy : Enemy, IFreezeAll
 {
 
-    private float currentSpeed;
     [SerializeField] private GameObject alert;
     [SerializeField] private Animator animController;
-    [SerializeField] private NavMeshAgent enemyAgent;
+    [SerializeField] private NavMeshAgent itemAgent;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,13 @@ public class BigEnemy : Enemy, IFreezeAll
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
-        currentSpeed = GetComponent<NavMeshAgent>().speed;
+
+    }
+
+    private void OnEnable()
+    {
+        animController.enabled = true;
+        itemAgent.speed = currentSpeed;
     }
 
     // Update is called once per frame
@@ -29,11 +35,11 @@ public class BigEnemy : Enemy, IFreezeAll
     }
 
     /// <summary>
-    /// method to freeze all object ob location
+    /// method to freeze all objects on location
     /// </summary>
     public void FreezeAll()
     {
-        enemyAgent.speed = 0;
+        agent.speed = 0;
         animController.enabled = false;
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
@@ -41,7 +47,7 @@ public class BigEnemy : Enemy, IFreezeAll
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
-        enemyAgent.speed = currentSpeed;
+        agent.speed = currentSpeed;
         animController.enabled = true;
     }
 
@@ -62,6 +68,11 @@ public class BigEnemy : Enemy, IFreezeAll
             alert.SetActive(false);
             MoveEnemy();
         }
+    }
+
+    public void GroundedON()
+    {
+        grounded = true;
     }
 
 }

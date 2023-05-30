@@ -105,6 +105,7 @@ MonoBehaviour:
   areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
+  currentSpeed: 8
   enemyAnimator: {fileID: 1729440925695451534}
   enemyAgent: {fileID: 4550448526595634795}
 --- !u!114 &8548303533201688760
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d9eb530dde60b478330285601d8653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4550448526595634797}
+  item: {fileID: 4550448526595634797}
 --- !u!1001 &1114822632689067268
 PrefabInstance:
   m_ObjectHideFlags: 0

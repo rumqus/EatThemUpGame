@@ -12,7 +12,7 @@ public class SpawnerV2 : MonoBehaviour
     [SerializeField] int smallEnemyCount; // number to spawn
     [SerializeField] int mediumEnemyCount; // number to spawn
     [SerializeField] int bigEnemyCount; // number to spawn
-    [SerializeField] int coins; // number to spawn
+    //[SerializeField] int coins; // number to spawn
     [SerializeField] int bonus; // number to spawn
     [SerializeField] private GameObject self;
     [SerializeField] float delayTimeCoin;
@@ -42,14 +42,14 @@ public class SpawnerV2 : MonoBehaviour
         StartSpawn(smallEnemyCount, objectPooler.GetComponent<PooledObjects>().SmallestEnemy);
         StartSpawn(mediumEnemyCount, objectPooler.GetComponent<PooledObjects>().MediumEnemys);
         StartSpawn(bigEnemyCount, objectPooler.GetComponent<PooledObjects>().BiggestEnemy);
-        StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
+        //StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
         StartSpawn(bonus, objectPooler.GetComponent<PooledObjects>().Bonus);
         currentDelayCoin = delayTimeCoin;
         currentDelayBonus = delayTimeBonus;
     }
     private void Update()
     {
-        SpawnCoin();
+        //SpawnCoin();
         SpawnBonus();
     }
 
@@ -57,15 +57,15 @@ public class SpawnerV2 : MonoBehaviour
     /// method of spawning coins over timer, another timer in coins.cs
     /// </summary>
     /// <param name="delaySpawn"></param>
-    private void SpawnCoin()
-    {
-        currentDelayCoin = currentDelayCoin - Time.deltaTime;
-        if (currentDelayCoin < 0)
-        {
-            StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
-            currentDelayCoin = delayTimeCoin;
-        }
-    }
+    //private void SpawnCoin()
+    //{
+    //    currentDelayCoin = currentDelayCoin - Time.deltaTime;
+    //    if (currentDelayCoin < 0)
+    //    {
+    //        StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
+    //        currentDelayCoin = delayTimeCoin;
+    //    }
+    //}
     /// <summary>
     /// method of spawning bonus over timer,another timer in bonus.cs
     /// </summary>

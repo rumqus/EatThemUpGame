@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class GroundCollision : MonoBehaviour
 {
 
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject item;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ground")
         {
-            enemy.GetComponent<IGrounded>().GroundedON();
-            enemy.GetComponent<NavMeshAgent>().enabled = true;
+            item.GetComponent<IGrounded>().GroundedON();
+            item.GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 }

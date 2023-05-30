@@ -19,6 +19,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     private Rigidbody bonusRB; // bonus rigidbody
     [SerializeField] private float currentSpeed; // speed of navMesh
     private float freezeTime; // time of freezingEnemy
+    
 
     public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
 
@@ -49,7 +50,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     }
 
     /// <summary>
-    /// merhod of moving bonus
+    /// method of moving bonus
     /// </summary>
     protected void MoveEnemy()
     {
@@ -111,13 +112,12 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     {
         randomChild = childGO[Random.Range(0, childGO.Count - 1)];
         ChildGO = randomChild;
-
     }
-
 
     public void GroundedON()
     {
         grounded = true;
+        agent.speed = currentSpeed;
     }
 
     /// <summary>

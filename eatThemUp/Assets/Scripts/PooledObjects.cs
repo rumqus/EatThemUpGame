@@ -17,6 +17,7 @@ public class PooledObjects : MonoBehaviour
 
     public const int LOCATION = 1;
     public const float FREEZETIME = 5;
+    
     public List<GameObject> Coins { get { return coins;} }
     public List<GameObject> SmallestEnemy { get { return smallestEnemys;} }
     public List<GameObject> BiggestEnemy { get { return biggestEnemy;} }
@@ -40,9 +41,8 @@ public class PooledObjects : MonoBehaviour
         smallestEnemys = objectPooler.GetAllPooledObjects(0);
         mediumEnemys = objectPooler.GetAllPooledObjects(1);
         biggestEnemy = objectPooler.GetAllPooledObjects(2);
-        coins = objectPooler.GetAllPooledObjects(3);
-        bonus = objectPooler.GetAllPooledObjects(4);
-        AllpooledObject = new List<List<GameObject>>() { smallestEnemys, mediumEnemys, biggestEnemy, coins, bonus };
+        bonus = objectPooler.GetAllPooledObjects(3);
+        AllpooledObject = new List<List<GameObject>>() { smallestEnemys, mediumEnemys, biggestEnemy, bonus };
     }
 
     /// <summary>

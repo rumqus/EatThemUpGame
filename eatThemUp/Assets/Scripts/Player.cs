@@ -99,10 +99,6 @@ public class Player : MonoBehaviour
                         {
                             if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
                             {
-                                if (item.Value == "coin") // if eat coins, sumcoins
-                                {
-                                    Actions.SumCoins();
-                                }
                                 StartCoroutine(DelaySpawn(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
                             }
                         }
@@ -188,7 +184,7 @@ public class Player : MonoBehaviour
     {
         if (onSize == true)
         {
-            SmoothScale(transform.localScale, new Vector3(3, 3, 3));
+            SmoothScale(transform.localScale, new Vector3(2, 2, 2));
         }
         else
         {
