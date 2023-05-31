@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
     {
         if (onSize == true)
         {
-            SmoothScale(transform.localScale, new Vector3(2, 2, 2));
+            SmoothScale(transform.localScale, new Vector3(1.5f, 1.5f, 1.5f));
         }
         else
         {

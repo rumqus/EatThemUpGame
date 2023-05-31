@@ -344,9 +344,6 @@ MonoBehaviour:
   - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
     amountToPool: 5
     shouldExpand: 0
-  - objectToPool: {fileID: 8982359932727671362, guid: 5e8b73a4f8072604daa46d505d60bd66, type: 3}
-    amountToPool: 5
-    shouldExpand: 0
   - objectToPool: {fileID: 8982359932727671362, guid: 4d292fdd259183b4fa490f314f2ccb58, type: 3}
     amountToPool: 5
     shouldExpand: 0
@@ -509,6 +506,14 @@ PrefabInstance:
     - target: {fileID: 1374582143805962502, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
       propertyPath: m_LocalPosition.z
       value: -26.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374582143987639517, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374582143987639517, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20.2
       objectReference: {fileID: 0}
     - target: {fileID: 1484435601054780570, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
       propertyPath: m_RootOrder
@@ -7145,6 +7150,14 @@ PrefabInstance:
     - target: {fileID: 1484435601054780571, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
       propertyPath: m_Name
       value: Plants
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794332044916662647, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794332044916662647, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4a8ed04ae0d17468acb6bbb5579490, type: 3}
