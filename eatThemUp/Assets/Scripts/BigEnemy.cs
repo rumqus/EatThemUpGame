@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BigEnemy : Enemy, IFreezeAll
+public class BigEnemy : Enemy, IFreezeAll, IGrounded
 {
 
     [SerializeField] private GameObject alert;
     [SerializeField] private Animator animController;
     [SerializeField] private NavMeshAgent itemAgent;
+    private float currentSpeed;
    
 
     // Start is called before the first frame update
     void Start()
     {
+        currentSpeed = 5f;
         LevelofSize = 6f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
@@ -24,7 +26,6 @@ public class BigEnemy : Enemy, IFreezeAll
     private void OnEnable()
     {
         animController.enabled = true;
-        itemAgent.speed = currentSpeed;
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class BigEnemy : Enemy, IFreezeAll
     /// </summary>
     public void FreezeAll()
     {
-        agent.speed = 0;
+        Agent.speed = 0;
         animController.enabled = false;
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
@@ -47,8 +48,8 @@ public class BigEnemy : Enemy, IFreezeAll
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
-        agent.speed = currentSpeed;
         animController.enabled = true;
+        Agent.speed = currentSpeed;
     }
 
     /// <summary>
@@ -73,6 +74,7 @@ public class BigEnemy : Enemy, IFreezeAll
     public void GroundedON()
     {
         grounded = true;
+        Agent.speed = currentSpeed;
     }
 
 }

@@ -2,15 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SmallEnemy : Enemy, IFreezeAll
+public class SmallEnemy : Enemy, IFreezeAll, IGrounded
 {
 
     [SerializeField] private Animator enemyAnimator;
-    [SerializeField] private NavMeshAgent enemyAgent;
+    private float currentSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentSpeed = 8f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(25, 73);
@@ -26,7 +27,7 @@ public class SmallEnemy : Enemy, IFreezeAll
     private void OnEnable()
     {
         enemyAnimator.enabled = true;
-        enemyAgent.speed = currentSpeed;
+
     }
 
     /// <summary>
@@ -34,7 +35,7 @@ public class SmallEnemy : Enemy, IFreezeAll
     /// </summary>
     public void FreezeAll()
     {
-        enemyAgent.speed = 0;
+        Agent.speed = 0;
         enemyAnimator.enabled = false;
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
@@ -43,5 +44,14 @@ public class SmallEnemy : Enemy, IFreezeAll
     {
         yield return new WaitForSeconds(freezeTime);
         enemyAnimator.enabled = true;
+        Agent.speed = currentSpeed;
     }
+
+    public void GroundedON()
+    {
+        grounded = true;
+        Agent.speed = currentSpeed;
+    }
+
+
 }

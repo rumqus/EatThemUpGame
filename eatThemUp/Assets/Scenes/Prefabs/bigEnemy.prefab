@@ -439,7 +439,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 4
+  m_Speed: 5
   m_Acceleration: 6
   avoidancePriority: 55
   m_AngularSpeed: 120
@@ -481,7 +481,6 @@ MonoBehaviour:
   areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
-  currentSpeed: 4
   alert: {fileID: 480182489336442637}
   animController: {fileID: 1043565709750468197}
   itemAgent: {fileID: 4966353744019478005}

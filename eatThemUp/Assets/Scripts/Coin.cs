@@ -6,8 +6,7 @@ public class Coin : Enemy, IFreezeAll
 {
     [SerializeField] private float lifeTimeInspector;
     private float currentLifeTime;
-    private float currentSpeed;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +15,6 @@ public class Coin : Enemy, IFreezeAll
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.RandomRange(50, 75);
         currentLifeTime = lifeTimeInspector;
-        currentSpeed = GetComponent<NavMeshAgent>().speed;
-
     }
 
     private void Update()
@@ -54,7 +51,7 @@ public class Coin : Enemy, IFreezeAll
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
-        GetComponent<NavMeshAgent>().speed = currentSpeed;
+
     }
 
 }

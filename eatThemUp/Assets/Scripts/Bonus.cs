@@ -17,8 +17,8 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     private Vector3 upPosition; // start position îf the object
     public bool grounded; // detecting object is on the ground
     private Rigidbody bonusRB; // bonus rigidbody
-    [SerializeField] private float currentSpeed; // speed of navMesh
     private float freezeTime; // time of freezingEnemy
+    private float currentSpeed;
     
 
     public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
@@ -26,13 +26,13 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
 
     void Start()
     {
+        currentSpeed = 9f;
         agent = GetComponent<NavMeshAgent>();
         bonusRB = GetComponent<Rigidbody>();
         target = PlayerInstance.instancePlayer.player.transform;
         agent.avoidancePriority = Random.Range(76, 99);
         currentLifeTime = lifeTimeInspector;
         SetRandomChildGo();
-        agent.speed = currentSpeed;
 
     }
 
@@ -45,8 +45,6 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     private void OnEnable()
     {
         SetRandomChildGo(); // Set new bonus
-        agent.speed = currentSpeed;
-
     }
 
     /// <summary>
@@ -133,6 +131,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     {
         yield return new WaitForSeconds(freezeTime);
         agent.speed = currentSpeed;
+
     }
 
 

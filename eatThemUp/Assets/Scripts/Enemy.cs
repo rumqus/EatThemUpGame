@@ -14,7 +14,7 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     protected bool Up;
     protected Vector3 upPosition;
     public bool grounded;
-    [SerializeField] protected float currentSpeed;
+
 
 
     public float Size { get; protected set; }
@@ -83,7 +83,6 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     public void GroundedON()
     {
         grounded = true;
-        agent.speed = currentSpeed;
 ;
     }
 }

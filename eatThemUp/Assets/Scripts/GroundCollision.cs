@@ -14,6 +14,7 @@ public class GroundCollision : MonoBehaviour
         {
             item.GetComponent<IGrounded>().GroundedON();
             item.GetComponent<NavMeshAgent>().enabled = true;
+            
         }
     }
 }
