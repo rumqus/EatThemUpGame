@@ -9,6 +9,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private GameObject alert;
     [SerializeField] private Animator animController;
     [SerializeField] private NavMeshAgent itemAgent;
+    [SerializeField]private GameObject freezeCanvas;
     private float currentSpeed;
    
 
@@ -20,6 +21,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
+        freezeCanvas.SetActive(false);
 
     }
 
@@ -42,6 +44,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     {
         Agent.speed = 0;
         animController.enabled = false;
+        freezeCanvas.SetActive(true);
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
 
@@ -49,7 +52,9 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     {
         yield return new WaitForSeconds(freezeTime);
         animController.enabled = true;
+        freezeCanvas.SetActive(false);
         Agent.speed = currentSpeed;
+
     }
 
     /// <summary>

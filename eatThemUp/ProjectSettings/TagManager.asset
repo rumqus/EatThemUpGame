@@ -13,6 +13,7 @@ TagManager:
   - bonus
   - obstacle
   - camera
+  - freezeCanvas
   layers:
   - Default
   - TransparentFX

@@ -7,15 +7,18 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
 
     [SerializeField] private Animator enemyAnimator;
     private float currentSpeed;
+    [SerializeField]private GameObject freezeCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
+        freezeCanvas = GameObject.FindGameObjectWithTag("freezeCanvas");
         currentSpeed = 8f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(25, 73);
         Size = Random.Range(0.25f,0.4f);
+        freezeCanvas.SetActive(false);
     }
 
     private void Update()
@@ -37,6 +40,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     {
         Agent.speed = 0;
         enemyAnimator.enabled = false;
+        freezeCanvas.SetActive(true);
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
     }
 
@@ -44,6 +48,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     {
         yield return new WaitForSeconds(freezeTime);
         enemyAnimator.enabled = true;
+        freezeCanvas.SetActive(false);
         Agent.speed = currentSpeed;
     }
 

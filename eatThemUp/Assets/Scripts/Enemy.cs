@@ -48,12 +48,11 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     /// </summary>
     protected void MoveEnemy()
     {
-
-            if (!Agent.hasPath && grounded == true)
-            {
-                GetComponent<Rigidbody>().isKinematic = true;
-                Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
-            }
+        if (!Agent.hasPath && grounded == true)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+        }
     }
 
     /// <summary>
