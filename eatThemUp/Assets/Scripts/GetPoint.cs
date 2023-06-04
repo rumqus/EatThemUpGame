@@ -17,7 +17,6 @@ public class GetPoint : MonoBehaviour
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-
         for (int i = 0; i < 1000; i++)
         {
             Vector3 randomPoint = center + Random.insideUnitSphere * range;
