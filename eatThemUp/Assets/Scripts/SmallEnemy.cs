@@ -7,7 +7,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
 
     [SerializeField] private Animator enemyAnimator;
     private float currentSpeed;
-    [SerializeField]private GameObject freezeCanvas;
+    private GameObject freezeCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     private void OnEnable()
     {
         enemyAnimator.enabled = true;
+        Debug.Log(GameObject.FindGameObjectWithTag("freezeCanvas"));
 
     }
 
