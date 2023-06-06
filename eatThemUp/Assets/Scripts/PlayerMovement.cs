@@ -8,8 +8,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private GameObject player;
     [SerializeField] AnimateController animate;
+    private Player freezeCanvas;
+    private float currentSpeed;
+
     private Vector3 movement;
     bool invert = false;
+
+
+    private void Start()
+    {
+        freezeCanvas = player.GetComponent<Player>();
+        freezeCanvas.FreezeOff();
+        currentSpeed = speed;
+    }
 
     private void OnEnable()
     {
@@ -30,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
         ChangeAnimState();
+
         
     }
 
@@ -62,11 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.z = Input.GetAxisRaw("Vertical");
-
         }
-
-
-
     }
 
     /// <summary>
@@ -84,15 +92,16 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="freezeTime"></param>
     private void GetFreezeBonus(float freezeTime)
     {
-        float currentSpeed = speed;
         speed = 0;
         gameObject.GetComponent<AnimateController>().enabled = false;
+        freezeCanvas.FreezeOn();
         StartCoroutine(waitTime(freezeTime));
-        
+
         IEnumerator waitTime(float time)
         {
             yield return new WaitForSeconds(time);
             speed = currentSpeed;
+            freezeCanvas.FreezeOff();
             gameObject.GetComponent<AnimateController>().enabled = true;
         }
 
@@ -111,9 +120,7 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(time);
             invert = false;
-
         }
-
     }
 
     /// <summary>

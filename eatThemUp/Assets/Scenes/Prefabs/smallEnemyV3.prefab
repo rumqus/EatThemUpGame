@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2536213457169303591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0436, y: 0.0267, z: -0.0112}
-  m_LocalScale: {x: 1.7718257, y: 1.9987733, z: 1.7065533}
+  m_LocalPosition: {x: -0.0436, y: 0.0267, z: -0.0545}
+  m_LocalScale: {x: 1.7718257, y: 1.9987733, z: 2.0928934}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8904451532418281336}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1534208097078976980}
   - component: {fileID: 5847347721615638351}
   m_Layer: 7
-  m_Name: Canvas (1)
+  m_Name: SmallCanvas
   m_TagString: freezeCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,11 +301,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1
   levelofSize: 1
-  areaRadius: 30
+  areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
   enemyAnimator: {fileID: 1656152072274109147}
-  freezeCanvas: {fileID: 6439719785475190914}
+  canvas: {fileID: 6439719785475190914}
 --- !u!65 &4674951478159870795
 BoxCollider:
   m_ObjectHideFlags: 0

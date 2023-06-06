@@ -613,7 +613,7 @@ MonoBehaviour:
   alert: {fileID: 480182489336442637}
   animController: {fileID: 1043565709750468197}
   itemAgent: {fileID: 4966353744019478005}
-  freezeCanvas: {fileID: 1489669502364865591}
+  canvas: {fileID: 1489669502364865591}
 --- !u!1 &5102903834440197990
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,8 +765,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7842694381062087469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.06, z: 0}
-  m_LocalScale: {x: 5.2493196, y: 3.652816, z: 3.0326686}
+  m_LocalPosition: {x: 0, y: 0.1356, z: 0}
+  m_LocalScale: {x: 5.2493196, y: 4.0440326, z: 3.0326686}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8027917548737723182}

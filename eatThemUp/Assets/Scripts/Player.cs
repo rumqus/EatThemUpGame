@@ -16,10 +16,20 @@ public class Player : MonoBehaviour
     private bool onOffSuperSize;
     private Dictionary<int, string> dic;
     private int randomTime;
+    [SerializeField] GameObject canvas;
+    private GameObject freezeCanvas;
+    private Rigidbody playerRB;
 
 
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
     public int LevelOfsize { get { return levelOfSize; } private set { levelOfSize = value; } }
+
+    private void Awake()
+    {
+        freezeCanvas = canvas;
+        playerRB = GetComponent<Rigidbody>();
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +38,18 @@ public class Player : MonoBehaviour
         levelOfSize = 1;
         onOffSuperSize = false;
         dic = new Dictionary<int, string> { { 0, "smallEnemy" }, { 1, "mediumEnemy" }, { 2, "bigEnemy" }, { 3, "coin" }, { 4, "bonus" } };
+        freezeCanvas.SetActive(false);
+    }
+
+    public void FreezeOn()
+    {
+        freezeCanvas.SetActive(true);
+    }
+
+    public void FreezeOff()
+    {
+        freezeCanvas.SetActive(false);
+        playerRB.freezeRotation = false;
     }
 
     // Update is called once per frame
@@ -184,7 +206,7 @@ public class Player : MonoBehaviour
     {
         if (onSize == true)
         {
-            SmoothScale(transform.localScale, new Vector3(1.5f, 1.5f, 1.5f));
+            SmoothScale(transform.localScale, new Vector3(2f, 2f, 2f));
         }
         else
         {

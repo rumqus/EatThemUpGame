@@ -117,10 +117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childGO:
-  - {fileID: 3187532633438497466}
-  - {fileID: 3187532633438497466}
-  - {fileID: 3187532633438497466}
-  - {fileID: 3187532633438497466}
+  - {fileID: 2327832439502516929}
+  - {fileID: 2327832439502516929}
+  - {fileID: 2327832439502516929}
+  - {fileID: 2327832439502516929}
   lifeTimeInspector: 15
   areaRadius: 70
   ChildGO: {fileID: 0}

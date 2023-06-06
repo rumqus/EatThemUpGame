@@ -7,12 +7,17 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
 
     [SerializeField] private Animator enemyAnimator;
     private float currentSpeed;
+    [SerializeField] GameObject canvas;
     private GameObject freezeCanvas;
 
+
+    private void Awake()
+    {
+        freezeCanvas = canvas;
+    }
     // Start is called before the first frame update
     void Start()
-    {
-        freezeCanvas = GameObject.FindGameObjectWithTag("freezeCanvas");
+    {        
         currentSpeed = 8f;
         Agent = gameObject.GetComponent<NavMeshAgent>();
         target = PlayerInstance.instancePlayer.player.transform;
@@ -23,14 +28,17 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
 
     private void Update()
     {
-       ChasePlayer();
-       MoveEnemy();
+        if (Agent.speed != 0)
+        {
+            ChasePlayer();
+            MoveEnemy();
+        }
     }
 
     private void OnEnable()
     {
         enemyAnimator.enabled = true;
-        Debug.Log(GameObject.FindGameObjectWithTag("freezeCanvas"));
+        freezeCanvas.SetActive(false);
 
     }
 

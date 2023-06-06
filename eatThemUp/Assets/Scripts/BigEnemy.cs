@@ -9,9 +9,15 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private GameObject alert;
     [SerializeField] private Animator animController;
     [SerializeField] private NavMeshAgent itemAgent;
-    [SerializeField]private GameObject freezeCanvas;
+    [SerializeField] private GameObject canvas;
+    private GameObject freezeCanvas;
     private float currentSpeed;
-   
+
+
+    private void Awake()
+    {
+        freezeCanvas = canvas;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +39,11 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     // Update is called once per frame
     void Update()
     {
-        ChasePlayer();
-        MoveEnemy();
+        if (Agent.speed != 0) // checking if object is freezed or not
+        {
+            ChasePlayer();
+            MoveEnemy();
+        }
     }
 
     /// <summary>
