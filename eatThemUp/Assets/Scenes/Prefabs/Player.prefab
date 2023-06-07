@@ -214,6 +214,7 @@ MonoBehaviour:
   stepSize: 1
   timer: 10
   canvas: {fileID: 5616156282933067645}
+  animator: {fileID: 85703192510936021}
 --- !u!114 &7897430581976012677
 MonoBehaviour:
   m_ObjectHideFlags: 0

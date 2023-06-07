@@ -14,9 +14,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float stepSize; // step of increasing size player
     [SerializeField] private float timer;
     private bool onOffSuperSize;
-    private Dictionary<int, string> dic;
+    private Dictionary<int, string> dic; // dictionary of pair index and item :(1, mediumEnemy)
     private int randomTime;
     [SerializeField] GameObject canvas;
+    [SerializeField] Animator animator;
     private GameObject freezeCanvas;
     private Rigidbody playerRB;
 
@@ -44,12 +45,18 @@ public class Player : MonoBehaviour
     public void FreezeOn()
     {
         freezeCanvas.SetActive(true);
+        animator.enabled = false;
     }
 
     public void FreezeOff()
     {
         freezeCanvas.SetActive(false);
-        playerRB.freezeRotation = false;
+        animator.enabled = true;
+    }
+
+    public bool freezeONOFF() 
+    {
+        return freezeCanvas.activeSelf;
     }
 
     // Update is called once per frame

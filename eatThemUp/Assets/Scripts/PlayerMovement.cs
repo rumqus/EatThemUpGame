@@ -42,13 +42,16 @@ public class PlayerMovement : MonoBehaviour
         GetInput();
         ChangeAnimState();
 
-        
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
-        transform.LookAt(playerRb.position + movement);
+        if (freezeCanvas.freezeONOFF() != true)
+        {
+            transform.LookAt(playerRb.position + movement);
+        }
+        
 
     }
     /// <summary>
@@ -56,9 +59,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void MovePlayer() 
     {
-        playerRb.MovePosition(playerRb.position + movement.normalized * speed * Time.deltaTime);
-        
-        
+       playerRb.MovePosition(playerRb.position + movement.normalized * speed * Time.deltaTime);
     }
     /// <summary>
     /// get input from player

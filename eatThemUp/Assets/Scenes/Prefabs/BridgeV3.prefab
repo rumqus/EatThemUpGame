@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09208023, y: 1.4586933, z: 2.023715}
-  m_Center: {x: -0.36504623, y: -0.26631576, z: -0.033916473}
+  m_Size: {x: 0.09208023, y: 1.2922963, z: 2.023715}
+  m_Center: {x: -0.36504638, y: -0.18311732, z: -0.033916473}
 --- !u!1 &1117177696152236260
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +236,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.22577867, y: 1.4586933, z: 2.023715}
-  m_Center: {x: -0.4318952, y: -0.26631576, z: -0.033916533}
+  m_Size: {x: 0.22577879, y: 1.2986462, z: 2.023715}
+  m_Center: {x: -0.4318948, y: -0.3463382, z: -0.03391648}
 --- !u!1 &6424876897956548095
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,8 +281,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.22577867, y: 1.4586933, z: 2.023715}
-  m_Center: {x: -0.4318952, y: -0.26631576, z: -0.033916533}
+  m_Size: {x: 0.22577861, y: 1.3618515, z: 2.023715}
+  m_Center: {x: -0.43189523, y: -0.3147363, z: -0.033916473}
 --- !u!1 &7353440875570641693
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,8 +361,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.101659015, y: 1.4586933, z: 2.023715}
-  m_Center: {x: -0.3698358, y: -0.26631576, z: -0.033916473}
+  m_Size: {x: 0.101658985, y: 1.3157781, z: 2.023715}
+  m_Center: {x: -0.36983618, y: -0.19485877, z: -0.033916473}
 --- !u!1 &7942707890403957574
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,8 +677,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9999998, y: 0.25364918, z: 2.3062024}
-  m_Center: {x: -0.00000011920929, y: 0.83155453, z: -0.06673622}
+  m_Size: {x: 2.6596456, y: 0.25364923, z: 2.3062024}
+  m_Center: {x: -0.017017126, y: 0.83155453, z: -0.06673622}
 --- !u!1001 &5406572671793387428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -769,8 +769,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9999998, y: 0.25364918, z: 2.3062024}
-  m_Center: {x: -0.00000011920929, y: 0.83155453, z: -0.06673622}
+  m_Size: {x: 2.8447027, y: 0.25364923, z: 2.3062024}
+  m_Center: {x: 0.010758877, y: 0.83155453, z: -0.06673622}
 --- !u!1001 &7710427643368247247
 PrefabInstance:
   m_ObjectHideFlags: 0
