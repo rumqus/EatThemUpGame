@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private GameObject player;
     [SerializeField] AnimateController animate;
+    [SerializeField] private float speedBonus;
+    [SerializeField] private GameObject speedCanvas;
+    [SerializeField] private GameObject invertCanvas;
     private Player freezeCanvas;
     private float currentSpeed;
 
@@ -15,11 +18,14 @@ public class PlayerMovement : MonoBehaviour
     bool invert = false;
 
 
+
     private void Start()
     {
         freezeCanvas = player.GetComponent<Player>();
         freezeCanvas.FreezeOff();
         currentSpeed = speed;
+        speedCanvas.SetActive(false);
+        invertCanvas.SetActive(false);
     }
 
     private void OnEnable()
@@ -82,9 +88,18 @@ public class PlayerMovement : MonoBehaviour
     /// method of getting boost to speed of the player
     /// </summary>
     /// <param name="speedBonus"></param>
-    private void GetSpeedBonus(float speedBonus)
+    private void GetSpeedBonus(float timeSpeed)
     {
-        speed = speed + speedBonus;
+        speed = speedBonus;
+        speedCanvas.SetActive(true);
+        StartCoroutine(waitTime(timeSpeed));
+
+        IEnumerator waitTime(float time)
+        {
+            yield return new WaitForSeconds(time);
+            speed = currentSpeed;
+            speedCanvas.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -115,11 +130,13 @@ public class PlayerMovement : MonoBehaviour
     private void GetInvertMoveBonus(float invertTime)
     {
         invert = true;
+        invertCanvas.SetActive(true);
         StartCoroutine(waitTime(invertTime));
 
         IEnumerator waitTime(float time)
         {
             yield return new WaitForSeconds(time);
+            invertCanvas.SetActive(false);
             invert = false;
         }
     }

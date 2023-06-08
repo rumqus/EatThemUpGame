@@ -4,11 +4,11 @@ using UnityEngine;
 public class BonusSpeed : MonoBehaviour, IGetBonus
 {
 
-    [SerializeField] float speedBonus;
+    [SerializeField] float speedBonusTime;
 
     public void GetBonus()
     {
-        Actions.bonusSpeed(speedBonus);
-        Debug.Log("Speed Bonus");
+        Actions.bonusSpeed(speedBonusTime);
+
     }
 }
