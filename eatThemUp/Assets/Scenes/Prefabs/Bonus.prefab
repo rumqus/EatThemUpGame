@@ -118,9 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childGO:
   - {fileID: 2067035276629520964}
-  - {fileID: 2067035276629520964}
-  - {fileID: 2067035276629520964}
-  - {fileID: 2067035276629520964}
+  - {fileID: 2327832439502516929}
+  - {fileID: 3187532633438497466}
+  - {fileID: 3017368943240142639}
   lifeTimeInspector: 15
   areaRadius: 70
   ChildGO: {fileID: 0}

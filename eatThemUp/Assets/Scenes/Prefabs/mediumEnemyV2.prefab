@@ -106,7 +106,7 @@ MonoBehaviour:
   areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
-  enemyAnimator: {fileID: 0}
+  enemyAnimator: {fileID: 3832725521829496669}
   canvas: {fileID: 5666841693261496377}
 --- !u!114 &8548303533201688760
 MonoBehaviour:
@@ -408,5 +408,10 @@ PrefabInstance:
 --- !u!4 &3655281272206204755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1221083948262841476, guid: c3c76a247c7e43b19a40ebfcfefa8f19, type: 3}
+  m_PrefabInstance: {fileID: 2470228325354587095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3832725521829496669 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1691260113314563210, guid: c3c76a247c7e43b19a40ebfcfefa8f19, type: 3}
   m_PrefabInstance: {fileID: 2470228325354587095}
   m_PrefabAsset: {fileID: 0}

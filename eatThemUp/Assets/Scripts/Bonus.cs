@@ -26,14 +26,12 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
 
     void Start()
     {
-        currentSpeed = 9f;
+        currentSpeed = 9f; // speed of bonuis
         agent = GetComponent<NavMeshAgent>();
         bonusRB = GetComponent<Rigidbody>();
         target = PlayerInstance.instancePlayer.player.transform;
         agent.avoidancePriority = Random.Range(76, 99);
-        currentLifeTime = lifeTimeInspector;
-        SetRandomChildGo();
-
+        currentLifeTime = lifeTimeInspector; // lige of bonus
     }
 
     private void Update()
@@ -68,6 +66,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     /// </summary>
     private void SetRandomChildGo()
     {
+        DisableChildGO();
         randomChild = childGO[Random.Range(0, childGO.Count)];
         ChildGO = randomChild;
         randomChild.SetActive(true);
@@ -81,7 +80,7 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     {
         for (int i = 0; i < childGO.Count; i++)
         {
-            ChildGO.SetActive(false);
+            childGO[i].SetActive(false);
         }
     }
 
@@ -131,7 +130,6 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     {
         yield return new WaitForSeconds(freezeTime);
         agent.speed = currentSpeed;
-
     }
 
 
