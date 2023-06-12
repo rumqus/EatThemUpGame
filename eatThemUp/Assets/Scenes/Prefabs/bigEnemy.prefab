@@ -567,7 +567,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4966353744019478003}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.05
+  m_Radius: 0.5
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 55
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1
   levelofSize: 5
-  areaRadius: 25
+  areaRadius: 15
   ChildGO: {fileID: 0}
   grounded: 0
   alert: {fileID: 480182489336442637}
