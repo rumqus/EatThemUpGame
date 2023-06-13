@@ -132,7 +132,6 @@ public class Player : MonoBehaviour
                             }
                         }
                         Actions.SumPoint();
-                        Actions.Debug(pointsSize.ToString(), levelOfSize.ToString(), enemy.Size.ToString(), enemy.LevelofSize.ToString(), onOffSuperSize.ToString());
                     }
                 }
             }

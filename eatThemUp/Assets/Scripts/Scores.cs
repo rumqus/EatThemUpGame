@@ -22,15 +22,11 @@ public class Scores : MonoBehaviour
     private void OnEnable()
     {
         Actions.SumPoint += SumPoints;
-        Actions.SumCoins += SumCoins;
-        Actions.Debug += DebugPanel;
     }
 
     private void OnDisable()
     {
         Actions.SumPoint -= SumPoints;
-        Actions.SumCoins -= SumCoins;
-        Actions.Debug -= DebugPanel;
     }
 
     private void Start()
@@ -44,12 +40,6 @@ public class Scores : MonoBehaviour
         eatPointsLabel.text = eatPoints.ToString();
     }
 
-    void SumCoins()
-    {
-        coins++;
-        coinsLabel.text = coins.ToString();
-    }
-
     /// <summary>
     /// when player eats bonus, player boost speed on bonus
     /// </summary>
@@ -61,22 +51,5 @@ public class Scores : MonoBehaviour
         return speed;
     }
 
-    /// <summary>
-    /// Debug Panel
-    /// </summary>
-    /// <param name="plpoints"></param>
-    /// <param name="plLevel"></param>
-    /// <param name="ePoints"></param>
-    /// <param name="eLevel"></param>
-    /// <param name="super"></param>
-    void DebugPanel(string plpoints, string plLevel, string ePoints, string eLevel, string super) 
-    {
-        Debug.Log("Get data");
-        playerSize.text = plpoints;
-        playerLevel.text = plLevel;
-        enemyLevel.text = eLevel;
-        enemySize.text = ePoints;
-        superSize.text = super;
-
-    }
+    
 }

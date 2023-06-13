@@ -17,6 +17,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     private void Awake()
     {
         freezeCanvas = canvas;
+
     }
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     private void OnEnable()
     {
         animController.enabled = true;
+        freezeCanvas.SetActive(false);
     }
 
     // Update is called once per frame
