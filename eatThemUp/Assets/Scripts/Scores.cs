@@ -22,11 +22,13 @@ public class Scores : MonoBehaviour
     private void OnEnable()
     {
         Actions.SumPoint += SumPoints;
+        Actions.startZeropoints += ZeroPoints;
     }
 
     private void OnDisable()
     {
         Actions.SumPoint -= SumPoints;
+        Actions.startZeropoints -= ZeroPoints;
     }
 
     private void Start()
@@ -51,5 +53,10 @@ public class Scores : MonoBehaviour
         return speed;
     }
 
+    private void ZeroPoints() 
+    {
+        eatPoints = 0;
+        eatPointsLabel.text = eatPoints.ToString();
+    }
     
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Actions : MonoBehaviour
 {
+    public static Action startZeropoints;
     public static Action<float> bonusSpeed;
     public static Action<float> freezeBonus;
     public static Action<float> invertBonus;
