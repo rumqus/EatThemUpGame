@@ -33,6 +33,7 @@ public class PooledObjects : MonoBehaviour
     private void OnDisable()
     {
         Actions.DisableObjects -= DisableItems;
+        Actions.freezeAll -= FreezeAllObjects;
     }
 
     private void Awake()
