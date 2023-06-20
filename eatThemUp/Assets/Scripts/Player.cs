@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
             {
                 // end of the games
                 Debug.Log("Конец игры");
+                Actions.EndGame();
                 //жрем игрока
                 //отыгрываем анимацию пожирания
                 //удаялем игрока
@@ -201,6 +202,11 @@ public class Player : MonoBehaviour
         transform.localScale = Vector3.Lerp(transform.localScale, newSize, speedGrowth * Time.deltaTime);
     }
 
+    /// <summary>
+    /// smooth growing
+    /// </summary>
+    /// <param name="startScale"></param>
+    /// <param name="endScale"></param>
     private void DebugSmooth(Vector3 startScale, Vector3 endScale)
     {
         for (float time = 0; time < 2; time += Time.deltaTime)
@@ -208,6 +214,11 @@ public class Player : MonoBehaviour
             transform.localScale = Vector3.Lerp(startScale, endScale, speedGrowth * Time.deltaTime);
         }
     }
+
+    /// <summary>
+    /// Cheecking is super On Off
+    /// </summary>
+    /// <param name="onSize"></param>
     private void CheckSuperSize(bool onSize)
     {
         if (onSize == true)
@@ -227,6 +238,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(seconds + seconds);
         Actions.DisableObjects(listEnemys, PooledObjects.LOCATION);
     }
+
 
 
 

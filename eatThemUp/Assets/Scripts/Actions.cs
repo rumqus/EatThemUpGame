@@ -15,4 +15,5 @@ public class Actions : MonoBehaviour
     public static Action<GameObject> SpawnOneItem;
     public static Action<List<GameObject>, int> DisableObjects;
     public static Action SumPoint;
+    public static Action EndGame;
 }
