@@ -17,7 +17,6 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     private void Awake()
     {
         freezeCanvas = canvas;
-
     }
 
     // Start is called before the first frame update
@@ -29,7 +28,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
         freezeCanvas.SetActive(false);
-
+        
     }
 
     private void OnEnable()
@@ -54,6 +53,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     public void FreezeAll()
     {
         Agent.speed = 0;
+        Agent.enabled = false;
         animController.enabled = false;
         freezeCanvas.SetActive(true);
         StartCoroutine(FreezeTime(PooledObjects.FREEZETIME));
@@ -62,10 +62,10 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     IEnumerator FreezeTime(float freezeTime)
     {
         yield return new WaitForSeconds(freezeTime);
+        Agent.enabled = true;
         animController.enabled = true;
         freezeCanvas.SetActive(false);
         Agent.speed = currentSpeed;
-
     }
 
     /// <summary>

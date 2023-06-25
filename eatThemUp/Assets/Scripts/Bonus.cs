@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
+public class Bonus : MonoBehaviour, IGrounded
 {
     [SerializeField] private List<GameObject> childGO;
     private GameObject randomChild;
@@ -120,17 +120,17 @@ public class Bonus : MonoBehaviour, IGrounded, IFreezeAll
     /// <summary>
     /// method to freeze all object ob location
     /// </summary>
-    public void FreezeAll()
-    {
-       agent.speed = 0;
-       StartCoroutine(FreezeTime(freezeTime));
-    }
+    //public void FreezeAll()
+    //{
+    //   agent.speed = 0;
+    //   StartCoroutine(FreezeTime(freezeTime));
+    //}
 
-    IEnumerator FreezeTime(float freezeTime) 
-    {
-        yield return new WaitForSeconds(freezeTime);
-        agent.speed = currentSpeed;
-    }
+    //IEnumerator FreezeTime(float freezeTime) 
+    //{
+    //    yield return new WaitForSeconds(freezeTime);
+    //    agent.speed = currentSpeed;
+    //}
 
 
 }

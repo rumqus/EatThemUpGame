@@ -57,9 +57,11 @@ public class PooledObjects : MonoBehaviour
             {
                 if (item.activeInHierarchy == true)
                 {
-                    item.GetComponent<IFreezeAll>().FreezeAll();
+                    if (item.TryGetComponent<Enemy>(out Enemy enemy) && enemy.grounded == true)
+                    {
+                        item.GetComponent<IFreezeAll>().FreezeAll();
+                    }
                 }
-                
             }
         }
     }

@@ -82,6 +82,5 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     public void GroundedON()
     {
         grounded = true;
-;
     }
 }
