@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private Rigidbody playerRb;
+    [SerializeField] private float speed; // speed of player
+    [SerializeField] private Rigidbody playerRb; 
     [SerializeField] private GameObject player;
     [SerializeField] AnimateController animate;
     [SerializeField] private float speedBonus;
     [SerializeField] private GameObject speedCanvas;
-    [SerializeField] private GameObject invertCanvas;
-    private Player freezeCanvas;
-    private float currentSpeed;
-
+    [SerializeField] private GameObject invertCanvas; // icon of invert bonus inside
+    private Player freezeCanvas; // when freezed activated
+    private float currentSpeed; 
     private Vector3 movement;
     bool invert = false;
+    [SerializeField] bool isMobile; // serialized for debug in game mode
+
+    [SerializeField] private GameObject mobileController;
+    private bl_Joystick joystick;
+
+
+
+    // importing checker is Mobile or not;
+
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    private static extern bool IsMobile();
 
 
 
     private void Start()
     {
+        CheckMobile();
+        joystick = mobileController.GetComponent<bl_Joystick>();
+        mobileController.SetActive(false);
         freezeCanvas = player.GetComponent<Player>();
         freezeCanvas.FreezeOff();
         currentSpeed = speed;
@@ -28,11 +41,34 @@ public class PlayerMovement : MonoBehaviour
         invertCanvas.SetActive(false);
     }
 
+    private void CheckMobile()
+    {
+        isMobile = false;
+#if !UNITY_EDITOR && UNITY_WEBGL
+        isMobile = IsMobile();
+#endif
+
+    }
+
+
     private void OnEnable()
     {
         Actions.bonusSpeed += GetSpeedBonus;
         Actions.freezeBonus += GetFreezeBonus;
         Actions.invertBonus += GetInvertMoveBonus;
+    }
+
+    private void ActivateMobileController() 
+    {
+        if (isMobile == true)
+        {
+            //activate mobile controller
+            mobileController.SetActive(true);
+        }
+        else 
+        {
+            // do something
+        }
     }
 
     private void OnDisable()
@@ -47,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
         ChangeAnimState();
-
     }
 
     private void FixedUpdate()
@@ -67,21 +102,41 @@ public class PlayerMovement : MonoBehaviour
     {
        playerRb.MovePosition(playerRb.position + movement.normalized * speed * Time.deltaTime);
     }
+
+
     /// <summary>
     /// get input from player
     /// </summary>
     private void GetInput() 
     {
-        if (invert)
+        if (isMobile)
         {
-            movement.x = Input.GetAxisRaw("Horizontal") * -1;
-            movement.z = Input.GetAxisRaw("Vertical") * -1;
+            if (invert)
+            {
+                movement.x = joystick.Horizontal * -1;
+                movement.z = joystick.Vertical * -1;
+            }
+            else
+            {
+                movement.x = joystick.Horizontal;
+                movement.z = joystick.Vertical;
+            }
         }
         else 
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.z = Input.GetAxisRaw("Vertical");
+            if (invert)
+            {
+                movement.x = Input.GetAxisRaw("Horizontal") * -1;
+                movement.z = Input.GetAxisRaw("Vertical") * -1;
+            }
+            else
+            {
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.z = Input.GetAxisRaw("Vertical");
+            }
         }
+
+       
     }
 
     /// <summary>

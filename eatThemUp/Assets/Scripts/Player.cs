@@ -137,13 +137,9 @@ public class Player : MonoBehaviour
             }
             else
             {
-                // end of the games
+                // end of the game
                 Debug.Log("Конец игры");
                 Actions.EndGame();
-                //жрем игрока
-                //отыгрываем анимацию пожирания
-                //удаялем игрока
-                // закачиваем игру
             }
         }
         if (other.TryGetComponent<Bonus>(out Bonus bonus))
