@@ -15,12 +15,16 @@ public class UIGame : MonoBehaviour
     //[SerializeField] private GameObject soundButton;
     //[SerializeField] private GameObject pauseButton;
     //[SerializeField] private GameObject unPauseButton;
+    [SerializeField] private GameObject joystick;
+    private bool ismobile;
+
     
     [SerializeField] private Animator transAnimator;
 
     private void Awake()
     {
         transAnimator.speed = 0;
+
     }
 
     private void OnEnable()
@@ -37,6 +41,8 @@ public class UIGame : MonoBehaviour
     private void Start()
     {
         UIpanel.SetActive(false);
+        
+        
     }
 
     /// <summary>
@@ -63,6 +69,10 @@ public class UIGame : MonoBehaviour
     public void Pause() 
     {
         UIpanel.SetActive(true);
+        if (PlayerMovement.isMobile == true)
+        {
+            joystick.SetActive(false);
+        }
         Time.timeScale = 0;
     }
 
@@ -73,6 +83,11 @@ public class UIGame : MonoBehaviour
     {
         UIpanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    private void Update()
+    {
+       
     }
 
     private void EndGame() 

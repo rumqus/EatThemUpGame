@@ -9,6 +9,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     private float currentSpeed;
     [SerializeField] GameObject canvas;
     private GameObject freezeCanvas;
+    [SerializeField] GameObject participleDust;
 
 
  
@@ -45,6 +46,11 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         freezeCanvas.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        participleDust.SetActive(false);
+    }
+
     /// <summary>
     /// method to freeze all object ob location
     /// </summary>
@@ -66,10 +72,14 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         Agent.speed = currentSpeed;
     }
 
+    /// <summary>
+    /// checking grounded
+    /// </summary>
     public void GroundedON()
     {
         grounded = true;
         Agent.speed = currentSpeed;
+        participleDust.SetActive(true);
     }
 
 

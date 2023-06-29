@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed; 
     private Vector3 movement;
     bool invert = false;
-    [SerializeField] bool isMobile; // serialized for debug in game mode
+    public static bool isMobile; // serialized for debug in game mode
+    [SerializeField] private bool debugMobile;
 
     [SerializeField] private GameObject mobileController;
     private bl_Joystick joystick;
@@ -65,10 +66,7 @@ public class PlayerMovement : MonoBehaviour
             //activate mobile controller
             mobileController.SetActive(true);
         }
-        else 
-        {
-            // do something
-        }
+
     }
 
     private void OnDisable()
@@ -83,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
         ChangeAnimState();
+        isMobile = debugMobile;
     }
 
     private void FixedUpdate()
@@ -201,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void ChangeAnimState() 
     {
-        if (movement.x == 0 && movement.z == 0)
+        if (movement.x == 0f && movement.z == 0f)
         {
             animate.SetBool("run", false);
         }
