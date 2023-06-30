@@ -10,14 +10,13 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] GameObject canvas;
     private GameObject freezeCanvas;
     [SerializeField] GameObject participleDust;
-
-
- 
+    private GameObject participles;
 
 
     private void Awake()
     {
         freezeCanvas = canvas;
+        participles = participleDust;
     }
     // Start is called before the first frame update
     void Start()
@@ -28,6 +27,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         Agent.avoidancePriority = Random.Range(25, 73);
         Size = Random.Range(0.25f, 0.4f);
         freezeCanvas.SetActive(false);
+        participleDust.SetActive(false);
 
     }
 
@@ -44,12 +44,10 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     {
         enemyAnimator.enabled = true;
         freezeCanvas.SetActive(false);
+        participles.SetActive(true);
     }
 
-    private void OnDisable()
-    {
-        participleDust.SetActive(false);
-    }
+
 
     /// <summary>
     /// method to freeze all object ob location
@@ -79,7 +77,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     {
         grounded = true;
         Agent.speed = currentSpeed;
-        participleDust.SetActive(true);
+        participles.SetActive(true);
     }
 
 
