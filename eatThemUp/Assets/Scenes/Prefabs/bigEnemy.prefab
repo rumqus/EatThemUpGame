@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 4966353744019478005}
   - component: {fileID: 1474729616585993396}
   - component: {fileID: 1203581354631618672}
-  - component: {fileID: 8383449995258063920}
+  - component: {fileID: 8315897196774389854}
   m_Layer: 7
   m_Name: bigEnemy
   m_TagString: bigEnemy
@@ -615,7 +615,7 @@ MonoBehaviour:
   animController: {fileID: 1043565709750468197}
   itemAgent: {fileID: 4966353744019478005}
   canvas: {fileID: 1489669502364865591}
---- !u!82 &8383449995258063920
+--- !u!82 &8315897196774389854
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,19 +624,19 @@ AudioSource:
   m_GameObject: {fileID: 4966353744019478003}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f2f6cccd13ed9c46bd881f3ed0cffc4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9d155487b4eab1040a7f9bd107fe3fcb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 0.8
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -646,73 +646,19 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.01
-      value: 1
-      inSlope: -100.03984
-      outSlope: -100.03984
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.02
-      value: 0.5
-      inSlope: -25.00996
-      outSlope: -25.00996
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.04
-      value: 0.25
-      inSlope: -6.25249
-      outSlope: -6.25249
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.16
-      value: 0.0625
-      inSlope: -0.39078063
-      outSlope: -0.39078063
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.20272644
-      value: 0.06817627
-      inSlope: -1.5631225
-      outSlope: -1.5631225
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.32
-      value: 0.03125
-      inSlope: -0.09769516
-      outSlope: -0.09769516
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.64
-      value: 0.015625
-      inSlope: -0.02442379
-      outSlope: -0.02442379
+      time: 0.0059080496
+      value: 1.0033417
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.01
-      inSlope: -0.010003988
-      outSlope: -0.010003988
+      value: 0
+      inSlope: -1.0416666
+      outSlope: -1.0416666
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -725,7 +671,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -755,7 +701,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

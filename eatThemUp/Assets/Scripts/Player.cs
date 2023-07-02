@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] Animator animator;
     private GameObject freezeCanvas;
     private Rigidbody playerRB;
+    [SerializeField] AudioSource playerSound;
+
+    
 
 
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
     {
         freezeCanvas = canvas;
         playerRB = GetComponent<Rigidbody>();
+
     }
 
 
@@ -83,6 +87,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                Actions.SfxPlay("superSize");
                 GetSuperSize();
             }
         }
@@ -121,6 +126,7 @@ public class Player : MonoBehaviour
                 //if true - player is bigger
                 if (ChangeSize(enemy.Size, enemy.LevelofSize))
                 {
+                    Actions.SfxPlay("eat");
                     ResetEnemy(other.gameObject);
                     other.gameObject.SetActive(false);
                     {
@@ -172,16 +178,18 @@ public class Player : MonoBehaviour
         else return false;
     }
     /// <summary>
-    /// player get super size to eat biggest enemy, переделать что бы игрок уменьшался в изначальное состояние
+    /// player get super size to eat biggest enemy
     /// </summary>
     private void GetSuperSize()
     {
+        
         onOffSuperSize = true;
         levelOfSize = 10;
         StartCoroutine(TimeSuperSize(timer));
     }
     private IEnumerator TimeSuperSize(float timer)
     {
+
         yield return new WaitForSeconds(timer);
         pointsSize = 1f;
         levelOfSize = 1;
@@ -205,6 +213,7 @@ public class Player : MonoBehaviour
     /// <param name="endScale"></param>
     private void DebugSmooth(Vector3 startScale, Vector3 endScale)
     {
+        
         for (float time = 0; time < 2; time += Time.deltaTime)
         {
             transform.localScale = Vector3.Lerp(startScale, endScale, speedGrowth * Time.deltaTime);
@@ -234,9 +243,5 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(seconds + seconds);
         Actions.DisableObjects(listEnemys, PooledObjects.LOCATION);
     }
-
-
-
-
 
 }

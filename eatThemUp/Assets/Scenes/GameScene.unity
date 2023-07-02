@@ -1048,7 +1048,21 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 558d2e7389156b4498c200217ab50f1e, type: 3}
   - name: 6
     clip: {fileID: 8300000, guid: 57866b706d95ec84887d04950096f6a8, type: 3}
-  sfx: []
+  sfx:
+  - name: eat
+    clip: {fileID: 8300000, guid: 6b6078703b0039d439786caea344b56f, type: 3}
+  - name: death
+    clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  - name: freeze
+    clip: {fileID: 8300000, guid: d9eb2bc929b32ba478db53156fefbf70, type: 3}
+  - name: invert
+    clip: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+  - name: superSize
+    clip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  - name: button
+    clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  - name: speed
+    clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
   musicSource: {fileID: 1001391631}
   sfxSource: {fileID: 149126801}
 --- !u!4 &106053432
@@ -1418,7 +1432,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3704,11 +3718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name
@@ -6993,7 +7007,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   m_Layer: 0
@@ -7003,14 +7016,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -7402,7 +7407,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10954,7 +10959,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1577975683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106053431}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PauseMusicSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1577975683
 MonoBehaviour:
   m_ObjectHideFlags: 0

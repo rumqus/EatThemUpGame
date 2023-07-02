@@ -7,14 +7,25 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public Sound[] music;
-    public AudioSource[] sfx;
+    public Sound[] sfx;
+    //public AudioSource[] sfx;
     public AudioSource musicSource, sfxSource;
+
 
 
     private void Awake()
     {
+        GetInstance();
+    }
 
-        
+    private void OnEnable()
+    {
+        Actions.SfxPlay += PlaySFX;
+    }
+
+    private void OnDisable()
+    {
+        Actions.SfxPlay -= PlaySFX;
     }
 
     private void GetInstance() 
@@ -25,7 +36,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMainTheme();
+        //PlayMainTheme();
     }
 
     /// <summary>
@@ -39,16 +50,31 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    private void PlaySFX(string name) 
+    {
+        Sound s;
+        for (int i = 0; i < sfx.Length; i++)
+        {
+            if (sfx[i].name == name)
+            {
+                s = sfx[i];
+                sfxSource.clip = s.clip;
+                sfxSource.Play();
+                Debug.Log(s.name);
+            }
+        }
+    }
+
     /// <summary>
     /// method to all sound and sfx;
     /// </summary>
-    public void PauseMusicSfx() 
-    {
-        musicSource.mute = !musicSource.mute;
-        foreach (AudioSource item in sfx)
-        {
-            item.mute = !item.mute;
-        }
-    }
+    //public void PauseMusicSfx() 
+    //{
+    //    musicSource.mute = !musicSource.mute;
+    //    foreach (AudioSource item in sfx)
+    //    {
+    //        item.mute = !item.mute;
+    //    }
+    //}
 
 }

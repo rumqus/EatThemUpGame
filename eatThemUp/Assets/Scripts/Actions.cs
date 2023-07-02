@@ -16,4 +16,5 @@ public class Actions : MonoBehaviour
     public static Action<List<GameObject>, int> DisableObjects;
     public static Action SumPoint;
     public static Action EndGame;
+    public static Action<string> SfxPlay;
 }

@@ -116,22 +116,5 @@ public class Bonus : MonoBehaviour, IGrounded
         grounded = true;
         agent.speed = currentSpeed;
     }
-
-    /// <summary>
-    /// method to freeze all object ob location
-    /// </summary>
-    //public void FreezeAll()
-    //{
-    //   agent.speed = 0;
-    //   StartCoroutine(FreezeTime(freezeTime));
-    //}
-
-    //IEnumerator FreezeTime(float freezeTime) 
-    //{
-    //    yield return new WaitForSeconds(freezeTime);
-    //    agent.speed = currentSpeed;
-    //}
-
-
 }
 

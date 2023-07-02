@@ -14,6 +14,7 @@ TagManager:
   - obstacle
   - camera
   - freezeCanvas
+  - freeze
   layers:
   - Default
   - TransparentFX
