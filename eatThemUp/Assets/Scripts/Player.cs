@@ -21,8 +21,7 @@ public class Player : MonoBehaviour
     private GameObject freezeCanvas;
     private Rigidbody playerRB;
     [SerializeField] AudioSource playerSound;
-
-    
+    private bool calledSound;
 
 
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
@@ -32,9 +31,7 @@ public class Player : MonoBehaviour
     {
         freezeCanvas = canvas;
         playerRB = GetComponent<Rigidbody>();
-
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +43,24 @@ public class Player : MonoBehaviour
         freezeCanvas.SetActive(false);
     }
 
+    /// <summary>
+    /// костыль для проигрывания звука увеличения
+    /// </summary>
+    /// <param name="size"></param>
+    private void CallOnceSuperSound(bool size) 
+    {
+        if (!size)
+        {
+            Actions.SfxPlay("superSize");
+            size = true;
+        }
+    }
+
     public void FreezeOn()
     {
         freezeCanvas.SetActive(true);
         animator.enabled = false;
     }
-
     public void FreezeOff()
     {
         freezeCanvas.SetActive(false);
@@ -75,7 +84,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private bool ChangeSize(float enemySize, float enemyLevel)
     {
-        pointsSize += enemySize; //прибавляем очки роста
+        pointsSize += enemySize; //adding points of growth
         if (pointsSize / 3 > 1)
         {
             if (levelOfSize < maxLevelofSize)
@@ -87,12 +96,13 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Actions.SfxPlay("superSize");
                 GetSuperSize();
+
             }
         }
         return true;
     }
+
 
     /// <summary>
     /// returning an object to its initial state
@@ -145,6 +155,7 @@ public class Player : MonoBehaviour
             {
                 // end of the game
                 Debug.Log("Конец игры");
+                Actions.SfxPlay("death");
                 Actions.EndGame();
             }
         }
@@ -159,8 +170,6 @@ public class Player : MonoBehaviour
             }
             ResetBonus(other.gameObject);
             other.gameObject.SetActive(false);
-            
-
         }
     }
 
@@ -182,7 +191,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void GetSuperSize()
     {
-        
+
         onOffSuperSize = true;
         levelOfSize = 10;
         StartCoroutine(TimeSuperSize(timer));
@@ -194,6 +203,7 @@ public class Player : MonoBehaviour
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
+        calledSound = false;
     }
 
     /// <summary>
@@ -211,14 +221,13 @@ public class Player : MonoBehaviour
     /// </summary>
     /// <param name="startScale"></param>
     /// <param name="endScale"></param>
-    private void DebugSmooth(Vector3 startScale, Vector3 endScale)
-    {
-        
-        for (float time = 0; time < 2; time += Time.deltaTime)
-        {
-            transform.localScale = Vector3.Lerp(startScale, endScale, speedGrowth * Time.deltaTime);
-        }
-    }
+    //private void DebugSmooth(Vector3 startScale, Vector3 endScale)
+    //{
+    //    for (float time = 0; time < 2; time += Time.deltaTime)
+    //    {
+    //        transform.localScale = Vector3.Lerp(startScale, endScale, speedGrowth * Time.deltaTime);
+    //    }
+    //}
 
     /// <summary>
     /// Cheecking is super On Off
@@ -236,6 +245,14 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// delaying time beetwen spawining objects
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <param name="listEnemys"></param>
+    /// <param name="number"></param>
+    /// <returns></returns>
     IEnumerator DelaySpawn(int seconds, List<GameObject> listEnemys, int number)
     {
         yield return new WaitForSeconds(seconds);
