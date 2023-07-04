@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    [SerializeField] private AudioMixer audioMixer;
+    private float currentVolume = 0.4f;
     public Sound[] music;
     public Sound[] sfx;
-    //public AudioSource[] sfx;
-    public AudioSource musicSource, sfxSource;
-
-
+    public Sound[] UIsfx;
+    public AudioSource musicSource, sfxSource, uiSfx;
 
     private void Awake()
     {
@@ -68,13 +69,32 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// method to all sound and sfx;
     /// </summary>
-    //public void PauseMusicSfx() 
+    public void PauseMusicSfx()
+    {
+        musicSource.mute = !musicSource.mute;
+        sfxSource.mute = !sfxSource.mute;
+        
+        audioMixer.GetFloat("volume", out float volume);
+        if (volume > 0)
+        {
+            audioMixer.SetFloat("volume", 0);
+        }
+        else 
+        {
+            audioMixer.SetFloat("volume", currentVolume);
+        }
+    }
+
+    //public void GetPooledSoundsPause(List<GameObject> listPooled) 
     //{
-    //    musicSource.mute = !musicSource.mute;
-    //    foreach (AudioSource item in sfx)
+    //    foreach (var item in listPooled)
     //    {
-    //        item.mute = !item.mute;
+    //        if (item.TryGetComponent<AudioSource>(out AudioSource audioItem)) 
+    //        {
+    //            audioItem.mute = !audioItem.mute;
+    //        }
     //    }
+    
     //}
 
 }

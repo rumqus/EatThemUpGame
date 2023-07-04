@@ -5303,7 +5303,7 @@ MonoBehaviour:
   timer: 10
   canvas: {fileID: 5616156282933067645}
   animator: {fileID: 85703192510936021}
-  playerSound: {fileID: 4175875486618027780}
+  superSize: {fileID: 4175875486618027780}
 --- !u!114 &7897430581976012677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,7 +5370,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 6f2f6cccd13ed9c46bd881f3ed0cffc4, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6b6078703b0039d439786caea344b56f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 497c27f590c84eb49b1d427062b18b64, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1

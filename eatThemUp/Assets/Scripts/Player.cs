@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] Animator animator;
     private GameObject freezeCanvas;
     private Rigidbody playerRB;
-    [SerializeField] AudioSource playerSound;
-    private bool calledSound;
+    [SerializeField] AudioSource superSize; // sound of superSize
+    private bool calledOnce; // bool for plauing superSize sound only once
+
 
 
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
@@ -41,19 +42,7 @@ public class Player : MonoBehaviour
         onOffSuperSize = false;
         dic = new Dictionary<int, string> { { 0, "smallEnemy" }, { 1, "mediumEnemy" }, { 2, "bigEnemy" }, { 3, "coin" }, { 4, "bonus" } };
         freezeCanvas.SetActive(false);
-    }
-
-    /// <summary>
-    /// костыль для проигрывания звука увеличения
-    /// </summary>
-    /// <param name="size"></param>
-    private void CallOnceSuperSound(bool size) 
-    {
-        if (!size)
-        {
-            Actions.SfxPlay("superSize");
-            size = true;
-        }
+        calledOnce = false;
     }
 
     public void FreezeOn()
@@ -97,12 +86,10 @@ public class Player : MonoBehaviour
             else
             {
                 GetSuperSize();
-
             }
         }
         return true;
     }
-
 
     /// <summary>
     /// returning an object to its initial state
@@ -125,7 +112,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         // невероятно монструозная херня
         // detecting collision with enemy
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
@@ -191,19 +177,22 @@ public class Player : MonoBehaviour
     /// </summary>
     private void GetSuperSize()
     {
-
+        if (!calledOnce)
+        {
+            superSize.Play();
+            calledOnce = true;
+        }
         onOffSuperSize = true;
         levelOfSize = 10;
         StartCoroutine(TimeSuperSize(timer));
     }
     private IEnumerator TimeSuperSize(float timer)
     {
-
         yield return new WaitForSeconds(timer);
         pointsSize = 1f;
         levelOfSize = 1;
         onOffSuperSize = false;
-        calledSound = false;
+        calledOnce = false;
     }
 
     /// <summary>
@@ -215,19 +204,6 @@ public class Player : MonoBehaviour
     {
         transform.localScale = Vector3.Lerp(transform.localScale, newSize, speedGrowth * Time.deltaTime);
     }
-
-    /// <summary>
-    /// smooth growing
-    /// </summary>
-    /// <param name="startScale"></param>
-    /// <param name="endScale"></param>
-    //private void DebugSmooth(Vector3 startScale, Vector3 endScale)
-    //{
-    //    for (float time = 0; time < 2; time += Time.deltaTime)
-    //    {
-    //        transform.localScale = Vector3.Lerp(startScale, endScale, speedGrowth * Time.deltaTime);
-    //    }
-    //}
 
     /// <summary>
     /// Cheecking is super On Off
