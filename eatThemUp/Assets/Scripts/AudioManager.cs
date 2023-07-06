@@ -75,20 +75,21 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
-        
-        //audioMixer.GetFloat("volume", out float volume);
-        MixerGroup.audioMixer.SetFloat("Volume", -80f);
+
+
+        //MixerGroup.audioMixer.SetFloat("volume", -80f);
         //Debug.Log($@"Volume_start_{volume}");
         //audioMixer.SetFloat("volume", -80f);
-        //if (volume == 0f)
-        //{
-        //    audioMixer.SetFloat("volume", -80f);
-        //}
-        //else 
-        //{
-        //    audioMixer.SetFloat("volume", 0f);
-        //}
-        //Debug.Log($@"Volume_end_{volume}");
+        audioMixer.GetFloat("volume", out float volume);
+        if (volume == 0f)
+        {
+            audioMixer.SetFloat("volume", -80f);
+        }
+        else
+        {
+            audioMixer.SetFloat("volume", 0f);
+        }
+        Debug.Log($@"Volume_end_{volume}");
     }
 
     //public void GetPooledSoundsPause(List<GameObject> listPooled) 
