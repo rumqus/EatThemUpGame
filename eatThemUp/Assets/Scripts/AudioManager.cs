@@ -24,22 +24,31 @@ public class AudioManager : MonoBehaviour
     private void OnEnable()
     {
         Actions.SfxPlay += PlaySFX;
+        Actions.SoundPause += PauseMusicSfx;
     }
 
     private void OnDisable()
     {
         Actions.SfxPlay -= PlaySFX;
+        Actions.SoundPause -= PauseMusicSfx;
     }
 
     private void GetInstance() 
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else 
+        {
+            DestroyObject(gameObject);
+        }
     }
 
     private void Start()
     {
-        //PlayMainTheme();
+        PlayMainTheme();
     }
 
     /// <summary>
@@ -63,23 +72,17 @@ public class AudioManager : MonoBehaviour
                 s = sfx[i];
                 sfxSource.clip = s.clip;
                 sfxSource.Play();
-                Debug.Log(s.name);
             }
         }
     }
 
     /// <summary>
-    /// method to all sound and sfx;
+    /// method to pause all sound and sfx;
     /// </summary>
     public void PauseMusicSfx()
     {
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
-
-
-        //MixerGroup.audioMixer.SetFloat("volume", -80f);
-        //Debug.Log($@"Volume_start_{volume}");
-        //audioMixer.SetFloat("volume", -80f);
         audioMixer.GetFloat("volume", out float volume);
         if (volume == 0f)
         {
@@ -89,19 +92,6 @@ public class AudioManager : MonoBehaviour
         {
             audioMixer.SetFloat("volume", 0f);
         }
-        Debug.Log($@"Volume_end_{volume}");
     }
-
-    //public void GetPooledSoundsPause(List<GameObject> listPooled) 
-    //{
-    //    foreach (var item in listPooled)
-    //    {
-    //        if (item.TryGetComponent<AudioSource>(out AudioSource audioItem)) 
-    //        {
-    //            audioItem.mute = !audioItem.mute;
-    //        }
-    //    }
-    
-    //}
 
 }
