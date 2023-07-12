@@ -84,13 +84,13 @@ public class AudioManager : MonoBehaviour
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
         audioMixer.GetFloat("volume", out float volume);
-        if (volume == 0f)
+        if (volume == +5f)
         {
             audioMixer.SetFloat("volume", -80f);
         }
         else
         {
-            audioMixer.SetFloat("volume", 0f);
+            audioMixer.SetFloat("volume", +5f);
         }
     }
 
