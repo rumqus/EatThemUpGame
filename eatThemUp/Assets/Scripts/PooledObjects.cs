@@ -15,7 +15,7 @@ public class PooledObjects : MonoBehaviour
     private List<List<GameObject>> AllpooledObject;
  
 
-    public const int LOCATION = 1;
+    public const int LOCATION = 4;
     public const float FREEZETIME = 5;
     
     public List<GameObject> Coins { get { return coins;} }
