@@ -44,7 +44,6 @@ public class ObjectPooler : MonoBehaviour
 
 	}
 
-
 	public GameObject GetPooledObject(int index)
 	{
 		int curSize = pooledObjectsList[index].Count;

@@ -5,15 +5,13 @@ using UnityEngine.AI;
 
 public class PooledObjects : MonoBehaviour
 {
-    
     private ObjectPooler objectPooler;
     private List<GameObject> smallestEnemys;
     private List<GameObject> biggestEnemy;
     private List<GameObject> mediumEnemys;
     private List<GameObject> coins;
     private List<GameObject> bonus;
-    private List<List<GameObject>> AllpooledObject;
- 
+    private List<List<GameObject>> AllpooledObject; 
 
     public const int LOCATION = 4;
     public const float FREEZETIME = 5;
@@ -66,7 +64,6 @@ public class PooledObjects : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// disabling unnecessary elements on locations, with respawning objects
     /// </summary>
@@ -85,11 +82,6 @@ public class PooledObjects : MonoBehaviour
                 items[i].SetActive(false);
                 count--;
             }
-
         }
-
     }
-
-
-
 }

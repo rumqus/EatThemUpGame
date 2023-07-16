@@ -11,6 +11,10 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     private GameObject freezeCanvas;
     [SerializeField] GameObject participleDust;
     private GameObject participles;
+    [SerializeField] private float currentLifeTime;
+    [SerializeField] private Rigidbody rigidBody;
+    private float lifeTime;
+
 
 
     private void Awake()
@@ -28,7 +32,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         Size = Random.Range(0.25f, 0.4f);
         freezeCanvas.SetActive(false);
         participleDust.SetActive(false);
-
+        lifeTime = currentLifeTime;
     }
 
     private void Update()
@@ -38,6 +42,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
             ChasePlayer();
             MoveEnemy();
         }
+        DisableObject();
     }
 
     private void OnEnable()
@@ -45,9 +50,9 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         enemyAnimator.enabled = true;
         freezeCanvas.SetActive(false);
         participles.SetActive(true);
+        lifeTime = currentLifeTime;
+
     }
-
-
 
     /// <summary>
     /// method to freeze all object ob location
@@ -80,5 +85,26 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         participles.SetActive(true);
     }
 
+    /// <summary>
+    /// Disabling object when life time is over
+    /// </summary>
+    private void DisableObject() 
+    {
+        lifeTime = lifeTime - Time.deltaTime;
+        if (lifeTime <= 0)
+        {
+            Agent.enabled = false;
+            rigidBody.isKinematic = false;
+            grounded = false;
+            Actions.SpawnOneItem(gameObject);
+            gameObject.SetActive(false); // disabling bonus
+            lifeTime = currentLifeTime; // reset lifeTime
+        }
+    }
 
+    IEnumerator DelaySpawn(float seconds) 
+    {
+        yield return new WaitForSeconds(seconds);
+        Actions.SpawnOneItem(gameObject);
+    }
 }

@@ -12,7 +12,9 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private GameObject canvas;
     private GameObject freezeCanvas;
     private float currentSpeed;
-
+    [SerializeField] private float currentLifeTime;
+    private float lifeTime;
+    [SerializeField] private Rigidbody rigidBody;
 
     private void Awake()
     {
@@ -28,13 +30,14 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         target = PlayerInstance.instancePlayer.player.transform;
         Agent.avoidancePriority = Random.Range(76, 99);
         freezeCanvas.SetActive(false);
-        
+        lifeTime = currentLifeTime;
     }
 
     private void OnEnable()
     {
         animController.enabled = true;
         freezeCanvas.SetActive(false);
+        lifeTime = currentLifeTime;
     }
 
     // Update is called once per frame
@@ -45,6 +48,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             ChasePlayer();
             MoveEnemy();
         }
+        DisableObject();
     }
 
     /// <summary>
@@ -93,4 +97,26 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         Agent.speed = currentSpeed;
     }
 
+    /// <summary>
+    /// Disabling object when life time is over
+    /// </summary>
+    private void DisableObject()
+    {
+        lifeTime = lifeTime - Time.deltaTime;
+        if (lifeTime <= 0)
+        {
+            Agent.enabled = false;
+            rigidBody.isKinematic = false;
+            grounded = false;
+            lifeTime = currentLifeTime; // reset lifeTime
+            Actions.SpawnOneItem(gameObject);
+            gameObject.SetActive(false); // disabling bonus
+        }
+    }
+
+    IEnumerator DelaySpawn(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Actions.SpawnOneItem(gameObject);
+    }
 }

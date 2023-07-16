@@ -18,11 +18,9 @@ public class Bonus : MonoBehaviour, IGrounded
     public bool grounded; // detecting object is on the ground
     private Rigidbody bonusRB; // bonus rigidbody
     private float freezeTime; // time of freezingEnemy
-    private float currentSpeed;
-    
+    private float currentSpeed;    
 
     public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
-
 
     void Start()
     {
@@ -31,7 +29,7 @@ public class Bonus : MonoBehaviour, IGrounded
         bonusRB = GetComponent<Rigidbody>();
         target = PlayerInstance.instancePlayer.player.transform;
         agent.avoidancePriority = Random.Range(76, 99);
-        currentLifeTime = lifeTimeInspector; // lige of bonus
+        currentLifeTime = lifeTimeInspector; // lifeTime of bonus
     }
 
     private void Update()
@@ -43,6 +41,7 @@ public class Bonus : MonoBehaviour, IGrounded
     private void OnEnable()
     {
         SetRandomChildGo(); // Set new bonus
+        currentLifeTime = lifeTimeInspector;
     }
 
     /// <summary>

@@ -15,13 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float timer;
     private bool onOffSuperSize;
     private Dictionary<int, string> dic; // dictionary of pair index and item :(1, mediumEnemy)
-    private int randomTime;
     [SerializeField] GameObject canvas;
     [SerializeField] Animator animator;
     private GameObject freezeCanvas;
     private Rigidbody playerRB;
     [SerializeField] AudioSource superSize; // sound of superSize
     private bool calledOnce; // bool for plauing superSize sound only once
+    private int randomTimeSpawn; // delay between spawning new objects
 
 
 
@@ -65,7 +65,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         CheckSuperSize(onOffSuperSize);
-        randomTime = Random.Range(3, 8);
     }
 
     /// <summary>
@@ -101,14 +100,12 @@ public class Player : MonoBehaviour
         enemy.GetComponent<Rigidbody>().isKinematic = false;
         enemy.GetComponent<Enemy>().grounded = false;
     }
-
     private void ResetBonus(GameObject bonus) 
     {
         bonus.GetComponent<NavMeshAgent>().enabled = false;
         bonus.GetComponent<Rigidbody>().isKinematic = false;
         bonus.GetComponent<Bonus>().grounded = false;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -130,7 +127,8 @@ public class Player : MonoBehaviour
                         {
                             if (item.Value == other.gameObject.tag) // if tag of dictionary compare with of eated object
                             {
-                                StartCoroutine(DelaySpawn(2, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
+                                randomTimeSpawn = Random.Range(3,8);
+                                StartCoroutine(DelaySpawn(randomTimeSpawn, ObjectPooler.SharedInstance.GetAllPooledObjects(item.Key), 1));
                             }
                         }
                         Actions.SumPoint();
@@ -140,7 +138,6 @@ public class Player : MonoBehaviour
             else
             {
                 // end of the game
-                Debug.Log("Конец игры");
                 Actions.SfxPlay("death");
                 Actions.EndGame();
             }
@@ -233,8 +230,8 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         Actions.RespawnEnemy(listEnemys, 1);
-        yield return new WaitForSeconds(seconds + seconds);
-        Actions.DisableObjects(listEnemys, PooledObjects.LOCATION);
+        //yield return new WaitForSeconds(seconds + seconds);
+        //Actions.DisableObjects(listEnemys, PooledObjects.LOCATION);
     }
 
 }

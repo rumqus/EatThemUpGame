@@ -5121,6 +5121,8 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1656152072274109147}
   canvas: {fileID: 6439719785475190914}
   participleDust: {fileID: 3254807202680974278}
+  currentLifeTime: 30
+  rigidBody: {fileID: 7643587268516839852}
 --- !u!65 &4674951478159870795
 BoxCollider:
   m_ObjectHideFlags: 0

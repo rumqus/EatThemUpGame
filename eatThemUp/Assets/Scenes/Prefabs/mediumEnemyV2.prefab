@@ -4923,6 +4923,8 @@ MonoBehaviour:
   enemyAnimator: {fileID: 3832725521829496669}
   canvas: {fileID: 5666841693261496377}
   participleDust: {fileID: 3354819633883580640}
+  currentLifeTime: 25
+  rigidBody: {fileID: 4550448526595634792}
 --- !u!114 &8548303533201688760
 MonoBehaviour:
   m_ObjectHideFlags: 0

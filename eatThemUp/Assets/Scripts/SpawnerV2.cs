@@ -53,22 +53,6 @@ public class SpawnerV2 : MonoBehaviour
         SpawnBonus();
     }
 
-    /// <summary>
-    /// method of spawning coins over timer, another timer in coins.cs
-    /// </summary>
-    /// <param name="delaySpawn"></param>
-    //private void SpawnCoin()
-    //{
-    //    currentDelayCoin = currentDelayCoin - Time.deltaTime;
-    //    if (currentDelayCoin < 0)
-    //    {
-    //        StartSpawn(coins, objectPooler.GetComponent<PooledObjects>().Coins);
-    //        currentDelayCoin = delayTimeCoin;
-    //    }
-    //}
-    /// <summary>
-    /// method of spawning bonus over timer,another timer in bonus.cs
-    /// </summary>
     private void SpawnBonus()
     {
         currentDelayBonus = currentDelayBonus - Time.deltaTime;
@@ -114,16 +98,26 @@ public class SpawnerV2 : MonoBehaviour
                 countActived++;
             }
         }
-
     }
 
+    /// <summary>
+    /// method to spawn one object
+    /// </summary>
+    /// <param name="enemy"></param>
     void SpawnOneEnemy(GameObject enemy)
     {
-        Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
-        GameObject poolledObject = enemy;
-        poolledObject.GetComponent<Rigidbody>().isKinematic = false;
-        poolledObject.transform.position = pos;
-        enemy.SetActive(true);
+        int delayTime = Random.Range(5, 10);
+        StartCoroutine(DelaySpawnOne(delayTime));
+        IEnumerator DelaySpawnOne(int seconds) 
+        {
+            yield return new WaitForSeconds(seconds);
+            Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+            GameObject poolledObject = enemy;
+            poolledObject.GetComponent<Rigidbody>().isKinematic = false;
+            poolledObject.transform.position = pos;
+            enemy.SetActive(true);
+
+        }
     }
 
     /// <summary>
@@ -140,5 +134,6 @@ public class SpawnerV2 : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         SpawnItem(items, count);
     }
+
 
 }
