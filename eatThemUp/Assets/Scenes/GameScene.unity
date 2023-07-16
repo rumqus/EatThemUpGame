@@ -498,16 +498,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - objectToPool: {fileID: 7643587268516839849, guid: e0ff5e23d81f8f046b406e3e47c2078f, type: 3}
-    amountToPool: 5
+    amountToPool: 50
     shouldExpand: 0
   - objectToPool: {fileID: 4550448526595634797, guid: 811a23a4ede36c44f989b8957a805978, type: 3}
-    amountToPool: 5
+    amountToPool: 50
     shouldExpand: 0
   - objectToPool: {fileID: 4966353744019478003, guid: 34ce5233b978a88448bee0fb587b1976, type: 3}
-    amountToPool: 20
+    amountToPool: 30
     shouldExpand: 0
   - objectToPool: {fileID: 8982359932727671362, guid: 4d292fdd259183b4fa490f314f2ccb58, type: 3}
-    amountToPool: 5
+    amountToPool: 10
     shouldExpand: 0
   pooledObjects: []
 --- !u!4 &51785203
@@ -1031,11 +1031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name
@@ -2100,11 +2100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name
@@ -3693,11 +3693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name
@@ -5563,11 +5563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name

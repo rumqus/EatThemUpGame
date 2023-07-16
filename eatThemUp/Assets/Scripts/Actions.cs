@@ -12,8 +12,8 @@ public class Actions : MonoBehaviour
     public static Action freezeAll;
     public static Action setRandomBonus;
     public static Action<List<GameObject>,int> RespawnEnemy;
-    public static Action<GameObject> SpawnOneItem;
-    public static Action<List<GameObject>, int> DisableObjects;
+    public static Action<List<GameObject>> SpawnOneItem;
+    //public static Action<List<GameObject>, int> DisableObjects;
     public static Action SumPoint;
     public static Action EndGame;
     public static Action<string> SfxPlay;

@@ -15,6 +15,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private float currentLifeTime;
     private float lifeTime;
     [SerializeField] private Rigidbody rigidBody;
+    private List<GameObject> enemys;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         Agent.avoidancePriority = Random.Range(76, 99);
         freezeCanvas.SetActive(false);
         lifeTime = currentLifeTime;
+        enemys = ObjectPooler.SharedInstance.GetAllPooledObjects(3);
     }
 
     private void OnEnable()
@@ -109,14 +111,9 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             rigidBody.isKinematic = false;
             grounded = false;
             lifeTime = currentLifeTime; // reset lifeTime
-            Actions.SpawnOneItem(gameObject);
+            Actions.SpawnOneItem(enemys);
             gameObject.SetActive(false); // disabling bonus
         }
     }
 
-    IEnumerator DelaySpawn(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        Actions.SpawnOneItem(gameObject);
-    }
 }

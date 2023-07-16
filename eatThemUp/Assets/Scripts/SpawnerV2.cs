@@ -104,19 +104,21 @@ public class SpawnerV2 : MonoBehaviour
     /// method to spawn one object
     /// </summary>
     /// <param name="enemy"></param>
-    void SpawnOneEnemy(GameObject enemy)
+    void SpawnOneEnemy(List<GameObject> enemys)
     {
-        int delayTime = Random.Range(5, 10);
+        int delayTime = Random.Range(10, 15);
         StartCoroutine(DelaySpawnOne(delayTime));
+
         IEnumerator DelaySpawnOne(int seconds) 
         {
             yield return new WaitForSeconds(seconds);
-            Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
-            GameObject poolledObject = enemy;
-            poolledObject.GetComponent<Rigidbody>().isKinematic = false;
-            poolledObject.transform.position = pos;
-            enemy.SetActive(true);
+            SpawnItem(enemys,1);
 
+            //Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+            //GameObject poolledObject = enemy;
+            //poolledObject.GetComponent<Rigidbody>().isKinematic = false;
+            //poolledObject.transform.position = pos;
+            //enemy.SetActive(true);
         }
     }
 

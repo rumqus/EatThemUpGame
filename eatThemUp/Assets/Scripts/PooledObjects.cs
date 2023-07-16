@@ -13,7 +13,7 @@ public class PooledObjects : MonoBehaviour
     private List<GameObject> bonus;
     private List<List<GameObject>> AllpooledObject; 
 
-    public const int LOCATION = 4;
+    //public const int LOCATION = 4;
     public const float FREEZETIME = 5;
     
     public List<GameObject> Coins { get { return coins;} }
@@ -24,13 +24,13 @@ public class PooledObjects : MonoBehaviour
 
     private void OnEnable()
     {
-        Actions.DisableObjects += DisableItems;
+        //Actions.DisableObjects += DisableItems;
         Actions.freezeAll += FreezeAllObjects;
     }
 
     private void OnDisable()
     {
-        Actions.DisableObjects -= DisableItems;
+        //Actions.DisableObjects -= DisableItems;
         Actions.freezeAll -= FreezeAllObjects;
     }
 
@@ -69,19 +69,19 @@ public class PooledObjects : MonoBehaviour
     /// </summary>
     /// <param name="items"></param>
     /// <param name="locations"></param>
-    void DisableItems(List<GameObject> items,int locations) 
-    {
-        int count = locations - 1;
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[i].active == true && count > 0)
-            {
-                items[i].GetComponent<NavMeshAgent>().enabled = false;
-                items[i].GetComponent<Rigidbody>().isKinematic = false;
-                items[i].GetComponent<Enemy>().grounded = false;
-                items[i].SetActive(false);
-                count--;
-            }
-        }
-    }
+    //void DisableItems(List<GameObject> items,int locations) 
+    //{
+    //    int count = locations - 1;
+    //    for (int i = 0; i < items.Count; i++)
+    //    {
+    //        if (items[i].active == true && count > 0)
+    //        {
+    //            items[i].GetComponent<NavMeshAgent>().enabled = false;
+    //            items[i].GetComponent<Rigidbody>().isKinematic = false;
+    //            items[i].GetComponent<Enemy>().grounded = false;
+    //            items[i].SetActive(false);
+    //            count--;
+    //        }
+    //    }
+    //}
 }

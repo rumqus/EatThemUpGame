@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,8 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private float currentLifeTime;
     [SerializeField] private Rigidbody rigidBody;
     private float lifeTime;
+    [SerializeField] private PooledObjects pooledobj;
+    private List<GameObject> enemys;
 
 
 
@@ -33,6 +36,14 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         freezeCanvas.SetActive(false);
         participleDust.SetActive(false);
         lifeTime = currentLifeTime;
+        if (gameObject.tag == "smallEnemy")
+        {
+            enemys = ObjectPooler.SharedInstance.GetAllPooledObjects(0);
+        }
+        else
+        {
+            enemys = ObjectPooler.SharedInstance.GetAllPooledObjects(1);
+        }
     }
 
     private void Update()
@@ -51,7 +62,6 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         freezeCanvas.SetActive(false);
         participles.SetActive(true);
         lifeTime = currentLifeTime;
-
     }
 
     /// <summary>
@@ -96,15 +106,9 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
             Agent.enabled = false;
             rigidBody.isKinematic = false;
             grounded = false;
-            Actions.SpawnOneItem(gameObject);
-            gameObject.SetActive(false); // disabling bonus
+            Actions.SpawnOneItem(enemys);
             lifeTime = currentLifeTime; // reset lifeTime
+            gameObject.SetActive(false); // disabling bonus
         }
-    }
-
-    IEnumerator DelaySpawn(float seconds) 
-    {
-        yield return new WaitForSeconds(seconds);
-        Actions.SpawnOneItem(gameObject);
     }
 }
