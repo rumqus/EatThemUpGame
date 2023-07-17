@@ -90,7 +90,6 @@ public class SpawnerV2 : MonoBehaviour
             if (enemys[i].active == false && countActived < number)
             {
                 Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
-
                 GameObject poolledObject = enemys[i];
                 poolledObject.GetComponent<Rigidbody>().isKinematic = false;
                 poolledObject.transform.position = pos;
@@ -108,17 +107,10 @@ public class SpawnerV2 : MonoBehaviour
     {
         int delayTime = Random.Range(10, 15);
         StartCoroutine(DelaySpawnOne(delayTime));
-
         IEnumerator DelaySpawnOne(int seconds) 
         {
             yield return new WaitForSeconds(seconds);
-            SpawnItem(enemys,1);
-
-            //Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
-            //GameObject poolledObject = enemy;
-            //poolledObject.GetComponent<Rigidbody>().isKinematic = false;
-            //poolledObject.transform.position = pos;
-            //enemy.SetActive(true);
+            SpawnItem(enemys, 1); // respawning one item
         }
     }
 

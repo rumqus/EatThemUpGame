@@ -111,7 +111,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             rigidBody.isKinematic = false;
             grounded = false;
             lifeTime = currentLifeTime; // reset lifeTime
-            Actions.SpawnOneItem(enemys);
+            //Actions.SpawnOneItem(enemys);
             gameObject.SetActive(false); // disabling bonus
         }
     }

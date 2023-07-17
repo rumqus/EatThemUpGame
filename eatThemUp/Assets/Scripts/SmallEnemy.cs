@@ -18,8 +18,6 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     [SerializeField] private PooledObjects pooledobj;
     private List<GameObject> enemys;
 
-
-
     private void Awake()
     {
         freezeCanvas = canvas;
