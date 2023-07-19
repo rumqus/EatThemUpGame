@@ -72,7 +72,7 @@ public class SpawnerV2 : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            float DelayTime = Random.Range(1, 5); // delay time to spawn
+            float DelayTime = Random.Range(1, 7); // delay time to spawn
             StartCoroutine(DelaySpawnStart(items, 1, DelayTime));
         }
     }
@@ -105,7 +105,7 @@ public class SpawnerV2 : MonoBehaviour
     /// <param name="enemy"></param>
     void SpawnOneEnemy(List<GameObject> enemys)
     {
-        int delayTime = Random.Range(10, 15);
+        int delayTime = Random.Range(5, 10);
         StartCoroutine(DelaySpawnOne(delayTime));
         IEnumerator DelaySpawnOne(int seconds) 
         {

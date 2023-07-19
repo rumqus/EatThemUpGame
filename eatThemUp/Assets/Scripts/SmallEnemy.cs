@@ -60,6 +60,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         freezeCanvas.SetActive(false);
         participles.SetActive(true);
         lifeTime = currentLifeTime;
+        rigidBody.velocity = Vector3.zero;
     }
 
     /// <summary>

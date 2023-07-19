@@ -10,5 +10,9 @@ public class DeathTrigger : MonoBehaviour
         {
             Actions.EndGame();
         }
+        else if (other.TryGetComponent<IDisableObject>(out IDisableObject item))
+        {
+            item.DisableObject();
+        }
     }
 }

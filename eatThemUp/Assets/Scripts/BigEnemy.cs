@@ -40,6 +40,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         animController.enabled = true;
         freezeCanvas.SetActive(false);
         lifeTime = currentLifeTime;
+        rigidBody.velocity = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -111,7 +112,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             rigidBody.isKinematic = false;
             grounded = false;
             lifeTime = currentLifeTime; // reset lifeTime
-            //Actions.SpawnOneItem(enemys);
+            Actions.SpawnOneItem(enemys);
             gameObject.SetActive(false); // disabling bonus
         }
     }

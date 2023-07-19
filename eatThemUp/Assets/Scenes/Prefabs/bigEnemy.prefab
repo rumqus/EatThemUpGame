@@ -615,7 +615,7 @@ MonoBehaviour:
   animController: {fileID: 1043565709750468197}
   itemAgent: {fileID: 4966353744019478005}
   canvas: {fileID: 1489669502364865591}
-  currentLifeTime: 180
+  currentLifeTime: 40
   rigidBody: {fileID: 4966353744019478006}
 --- !u!82 &8315897196774389854
 AudioSource:
