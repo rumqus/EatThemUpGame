@@ -89,10 +89,13 @@ public class SpawnerV2 : MonoBehaviour
         {
             if (enemys[i].active == false && countActived < number)
             {
-                Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+                //Vector3 pos = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+                Transform transform = gameObject.transform;
+                transform.position = center + new Vector3(Random.Range(-range / 2, range / 2), yPos, Random.Range(-range / 2, range / 2));
+                Vector3 pos = GetPoint.Instance.GetRandomPoint(transform, range);
                 GameObject poolledObject = enemys[i];
                 poolledObject.GetComponent<Rigidbody>().isKinematic = false;
-                poolledObject.transform.position = pos;
+                poolledObject.transform.position = new Vector3(pos.x,yPos,pos.z);
                 enemys[i].SetActive(true);
                 countActived++;
             }

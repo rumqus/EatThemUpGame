@@ -17,6 +17,7 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
     private float lifeTime;
     [SerializeField] private PooledObjects pooledobj;
     private List<GameObject> enemys;
+    //[SerializeField] private AudioSource deathSound;
 
     private void Awake()
     {
@@ -102,6 +103,13 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
         lifeTime = lifeTime - Time.deltaTime;
         if (lifeTime <= 0)
         {
+            //deathSound.Play();
+            StartCoroutine(DelaySoundDeath());
+        }
+
+        IEnumerator DelaySoundDeath()
+        {
+            yield return new WaitForSeconds(0.2f);
             Agent.enabled = false;
             rigidBody.isKinematic = false;
             grounded = false;
@@ -110,4 +118,5 @@ public class SmallEnemy : Enemy, IFreezeAll, IGrounded
             gameObject.SetActive(false); // disabling bonus
         }
     }
+
 }

@@ -40,10 +40,8 @@ public class GetPoint : MonoBehaviour
         if (RandomPoint(point == null ? transform.position : point.position, radius == 0 ? Range : radius, out _point))
         {
             Debug.DrawRay(_point, Vector3.up, Color.red, 1);
-
             return _point;
         }
-
         return point == null ? Vector3.zero : point.position;
     }
 

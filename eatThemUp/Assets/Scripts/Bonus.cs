@@ -18,7 +18,7 @@ public class Bonus : MonoBehaviour, IGrounded
     public bool grounded; // detecting object is on the ground
     private Rigidbody bonusRB; // bonus rigidbody
     private float freezeTime; // time of freezingEnemy
-    private float currentSpeed;    
+    private float currentSpeed;
 
     public List<GameObject> ChildrenGO { get { return childGO; }} // need to triger bonus from player
 

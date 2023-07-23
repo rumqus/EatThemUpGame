@@ -27,6 +27,14 @@ public class SmallEnemyDemo : Enemy
     private void OnEnable()
     {
         enemyAnimator.enabled = true;
+    }
 
+    private void MoveEnemy() 
+    {
+        if (!Agent.hasPath)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            Agent.SetDestination(GetPoint.Instance.GetRandomPoint(transform, areaRadius));
+        }
     }
 }
