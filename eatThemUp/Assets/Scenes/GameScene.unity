@@ -3451,7 +3451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: bonus
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: coins
@@ -3491,11 +3491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: smallEnemyCount
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410129, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: mediumEnemyCount
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6136225466583410131, guid: 7976c371d105e1042bf1c3ac9d59a36c, type: 3}
       propertyPath: m_Name

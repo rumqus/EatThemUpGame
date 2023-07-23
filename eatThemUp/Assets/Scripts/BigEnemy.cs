@@ -33,7 +33,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
         Agent.avoidancePriority = Random.Range(76, 99);
         freezeCanvas.SetActive(false);
         lifeTime = currentLifeTime;
-        enemys = ObjectPooler.SharedInstance.GetAllPooledObjects(3);
+        enemys = ObjectPooler.SharedInstance.GetAllPooledObjects(2); // 0 - smallenemy, 1 - mediumEnemy, 2 - bigEnemy
     }
 
     private void OnEnable()
