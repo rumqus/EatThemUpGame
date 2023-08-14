@@ -24,7 +24,6 @@ public class UIGame : MonoBehaviour
     private void Awake()
     {
         transAnimator.speed = 0;
-
     }
 
     private void OnEnable()
@@ -37,12 +36,9 @@ public class UIGame : MonoBehaviour
         Actions.EndGame -= EndGame;
     }
 
-
     private void Start()
     {
         UIpanel.SetActive(false);
-        
-        
     }
 
     /// <summary>
@@ -85,18 +81,22 @@ public class UIGame : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void Update()
-    {
-       
-    }
-
+    /// <summary>
+    /// stopping all movement and pausing all sound
+    /// </summary>
     private void EndGame() 
     {
         pauseText.SetActive(false);
         GameOverText.SetActive(true);
         continueButton.interactable = false;
+        StartCoroutine(DelaySoundOFF());
         Pause();
-        
     }
 
+    IEnumerator DelaySoundOFF() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        Actions.SoundPause();
+        Debug.Log("SOUND OFF DELAY");
+    }
 }

@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private int randomTimeSpawn; // delay between spawning new objects
 
 
-
     public float PointSize { get { return pointsSize; } private set { pointsSize = value; } }
     public int LevelOfsize { get { return levelOfSize; } private set { levelOfSize = value; } }
 
@@ -156,8 +155,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator DelaySoundOFF() 
+    {
+        yield return new WaitForSeconds(1f);
+        Actions.SoundPause();
+    }
+
     /// <summary>
-    /// метод сравнения размеров сталкиваемых объектов
+    /// method of comparing size of hitting objects player vs enemy
     /// </summary>
     /// <param name="collidedObject"></param>
     /// <returns></returns>

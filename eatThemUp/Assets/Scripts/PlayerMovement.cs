@@ -91,9 +91,8 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.LookAt(playerRb.position + movement);
         }
-        
-
     }
+
     /// <summary>
     /// moving player
     /// </summary>

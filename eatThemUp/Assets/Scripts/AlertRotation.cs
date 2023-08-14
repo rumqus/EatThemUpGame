@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// class - rotating canvas "alert" on enemy against camera
+/// </summary>
 public class AlertRotation : MonoBehaviour
 {
     GameObject targetObject;

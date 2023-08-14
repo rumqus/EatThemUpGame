@@ -33,6 +33,9 @@ public class AudioManager : MonoBehaviour
         Actions.SoundPause -= PauseMusicSfx;
     }
 
+    /// <summary>
+    /// method prevents copying audiomanager on restarting scene
+    /// </summary>
     private void GetInstance() 
     {
         if (Instance == null)
@@ -62,6 +65,11 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+
+    /// <summary>
+    /// method of playing SFX
+    /// </summary>
+    /// <param name="name"></param>
     private void PlaySFX(string name) 
     {
         Sound s;
