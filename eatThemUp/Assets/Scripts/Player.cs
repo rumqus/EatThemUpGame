@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
             {
                 // end of the game
                 Actions.SfxPlay("death");
-                Actions.EndGame();
+                StartCoroutine(DelaySoundOFF());
             }
         }
         if (other.TryGetComponent<Bonus>(out Bonus bonus))
@@ -157,8 +157,9 @@ public class Player : MonoBehaviour
 
     IEnumerator DelaySoundOFF() 
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
         Actions.SoundPause();
+        Actions.EndGame();
     }
 
     /// <summary>
