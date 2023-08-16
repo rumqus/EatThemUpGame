@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
             {
                 // end of the game
                 Actions.SfxPlay("death");
-                StartCoroutine(DelaySoundOFF());
+                Actions.EndGame();
             }
         }
         if (other.TryGetComponent<Bonus>(out Bonus bonus))
@@ -155,15 +155,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator DelaySoundOFF() 
-    {
-        yield return new WaitForSeconds(0.4f);
-        Actions.SoundPause();
-        Actions.EndGame();
-    }
-
     /// <summary>
-    /// method of comparing size of hitting objects player vs enemy
+    /// method of comparing size of hitting objects - player vs enemy
     /// </summary>
     /// <param name="collidedObject"></param>
     /// <returns></returns>
@@ -236,8 +229,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         Actions.RespawnEnemy(listEnemys, 1);
-        //yield return new WaitForSeconds(seconds + seconds);
-        //Actions.DisableObjects(listEnemys, PooledObjects.LOCATION);
     }
 
 }

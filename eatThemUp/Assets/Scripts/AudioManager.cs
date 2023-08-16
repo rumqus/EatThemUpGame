@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sfx;
     public Sound[] UIsfx;
     public AudioSource musicSource, sfxSource, uiSfx;
+    public bool AllSound;
 
 
     private void Awake()

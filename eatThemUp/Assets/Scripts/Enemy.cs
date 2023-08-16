@@ -8,7 +8,7 @@ public abstract class Enemy : MonoBehaviour, IGrounded
     protected float radius = 10f; // radius of enemy start acting
     protected Transform target; // target - player to chase and look
     protected NavMeshAgent agent;
-    [SerializeField] protected float areaRadius;
+    [SerializeField] protected float areaRadius; // radius enemy geting random point
     protected float timer; // time for movement
     [SerializeField] protected GameObject ChildGO;
     protected bool Up;
