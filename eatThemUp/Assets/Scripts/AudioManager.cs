@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sfx;
     public Sound[] UIsfx;
     public AudioSource musicSource, sfxSource, uiSfx;
-    public bool AllSound;
+
 
 
     private void Awake()
@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMainTheme();
+        PauseMusicSfx();
     }
 
     /// <summary>
@@ -60,12 +61,10 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     private void PlayMainTheme() 
     {
-        
         Sound s = music[UnityEngine.Random.Range(0, music.Length)];
         musicSource.clip = s.clip;
         musicSource.Play();
     }
-
 
     /// <summary>
     /// method of playing SFX
@@ -93,14 +92,16 @@ public class AudioManager : MonoBehaviour
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
         audioMixer.GetFloat("volume", out float volume);
-        if (volume == +5f)
+        if (volume  == +4f)
         {
             audioMixer.SetFloat("volume", -80f);
         }
         else
         {
-            audioMixer.SetFloat("volume", +5f);
+            audioMixer.SetFloat("volume", +4f);
         }
     }
+
+
 
 }

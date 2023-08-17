@@ -87,7 +87,6 @@ public class UIGame : MonoBehaviour
     private void EndGame() 
     {
         StartCoroutine(DelaySoundOFF());
-
     }
 
     IEnumerator DelaySoundOFF()
