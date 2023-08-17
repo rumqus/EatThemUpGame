@@ -18,4 +18,5 @@ public class Actions : MonoBehaviour
     public static Action EndGame;
     public static Action<string> SfxPlay;
     public static Action SoundPause;
+    public static Action StopOnce;
 }

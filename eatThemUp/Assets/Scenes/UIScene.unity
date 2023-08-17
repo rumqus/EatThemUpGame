@@ -8738,13 +8738,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8292030116729930776, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292030116729930776, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 6f2f6cccd13ed9c46bd881f3ed0cffc4, type: 2}
     - target: {fileID: 8292030117077743479, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292030117077743479, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 6f2f6cccd13ed9c46bd881f3ed0cffc4, type: 2}
+    - target: {fileID: 8292030117523504262, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292030117523504262, guid: b1d68d180aa3bbf47a4b7c5ba348bfda, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 

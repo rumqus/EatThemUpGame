@@ -91,8 +91,8 @@ public class UIGame : MonoBehaviour
 
     IEnumerator DelaySoundOFF()
     {
-        yield return new WaitForSeconds(0.4f);
-        Actions.SoundPause();
+        yield return new WaitForSeconds(0.3f);
+        Actions.StopOnce();
         pauseText.SetActive(false);
         GameOverText.SetActive(true);
         continueButton.interactable = false;

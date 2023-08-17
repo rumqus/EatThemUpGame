@@ -26,12 +26,15 @@ public class AudioManager : MonoBehaviour
     {
         Actions.SfxPlay += PlaySFX;
         Actions.SoundPause += PauseMusicSfx;
+        Actions.StopOnce += StopOnce;
     }
 
     private void OnDisable()
     {
         Actions.SfxPlay -= PlaySFX;
         Actions.SoundPause -= PauseMusicSfx;
+        Actions.StopOnce -= StopOnce;
+
     }
 
     /// <summary>
@@ -102,6 +105,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
+    public void StopOnce()
+    {
+        musicSource.mute = true;
+        sfxSource.mute = true;
+        audioMixer.SetFloat("volume", -80f);
+    }
 
 }
