@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,12 +15,12 @@ public class AudioManager : MonoBehaviour
     public Sound[] sfx;
     public Sound[] UIsfx;
     public AudioSource musicSource, sfxSource, uiSfx;
-
-
+    public static bool stopMusic;
 
     private void Awake()
     {
         GetInstance();
+
     }
 
     private void OnEnable()
@@ -34,8 +35,10 @@ public class AudioManager : MonoBehaviour
         Actions.SfxPlay -= PlaySFX;
         Actions.SoundPause -= PauseMusicSfx;
         Actions.StopOnce -= StopOnce;
-
+        //Actions.ResumeMusic -= ResumeMusic;
     }
+
+
 
     /// <summary>
     /// method prevents copying audiomanager on restarting scene
@@ -56,7 +59,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMainTheme();
-        PauseMusicSfx();
+        stopMusic = false;
     }
 
     /// <summary>
@@ -92,10 +95,11 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void PauseMusicSfx()
     {
+        //stopMusic = !stopMusic;
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
         audioMixer.GetFloat("volume", out float volume);
-        if (volume  == +4f)
+        if (volume == +4f)
         {
             audioMixer.SetFloat("volume", -80f);
         }
@@ -111,5 +115,14 @@ public class AudioManager : MonoBehaviour
         sfxSource.mute = true;
         audioMixer.SetFloat("volume", -80f);
     }
+
+    public void ResumeOnce()
+    {
+        musicSource.mute = false;
+        sfxSource.mute = false;
+        audioMixer.SetFloat("volume", +4f);
+    }
+
+
 
 }

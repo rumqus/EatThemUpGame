@@ -15,6 +15,7 @@ TagManager:
   - camera
   - freezeCanvas
   - freeze
+  - audio
   layers:
   - Default
   - TransparentFX
