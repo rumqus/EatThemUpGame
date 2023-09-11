@@ -4926,6 +4926,7 @@ MonoBehaviour:
   currentLifeTime: 25
   rigidBody: {fileID: 4550448526595634792}
   pooledobj: {fileID: 0}
+  growthSpeed: 0.2
 --- !u!114 &8548303533201688760
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -617,6 +617,7 @@ MonoBehaviour:
   canvas: {fileID: 1489669502364865591}
   currentLifeTime: 30
   rigidBody: {fileID: 4966353744019478006}
+  growthSpeed: 2
 --- !u!82 &8315897196774389854
 AudioSource:
   m_ObjectHideFlags: 0

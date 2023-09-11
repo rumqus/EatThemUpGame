@@ -18,9 +18,5 @@ public class CheckMusic : MonoBehaviour
         {
             audiomanage.GetComponent<AudioManager>().StopOnce();
         }
-        Debug.Log(AudioManager.stopMusic);
     }
-
-
-
 }

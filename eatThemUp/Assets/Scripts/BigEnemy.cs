@@ -16,11 +16,15 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
     private float lifeTime;
     [SerializeField] private Rigidbody rigidBody;
     private List<GameObject> enemys;
+    [SerializeField]private float growthSpeed;
+    Vector3 currentSize = new Vector3(1,1,1);
+    bool small;
     //[SerializeField] private AudioSource deathSound;
 
     private void Awake()
     {
         freezeCanvas = canvas;
+        small = false;
     }
 
     // Start is called before the first frame update
@@ -53,6 +57,7 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             MoveEnemy();
         }
         DisableObject();
+        SmoothScale(transform.localScale, new Vector3(0,0,0));
     }
 
     /// <summary>
@@ -112,16 +117,30 @@ public class BigEnemy : Enemy, IFreezeAll, IGrounded
             //deathSound.Play();
             StartCoroutine(DelaySoundDeath());
         }
+        if (lifeTime <= 1)
+        {
+            small = true;
+        }
 
         IEnumerator DelaySoundDeath()
         {
             yield return new WaitForSeconds(0.2f);
             Agent.enabled = false;
             rigidBody.isKinematic = false;
+            small = false;
+            transform.localScale = currentSize;
             grounded = false;
             Actions.SpawnOneItem(enemys);
             lifeTime = currentLifeTime; // reset lifeTime
             gameObject.SetActive(false); // disabling bonus
+        }
+    }
+
+    private void SmoothScale(Vector3 currentsize, Vector3 newSize)
+    {
+        if (small)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, newSize, growthSpeed * Time.deltaTime);
         }
     }
 
