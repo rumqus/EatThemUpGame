@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     // importing checker is Mobile or not;
 
-    [System.Runtime.InteropServices.DllImport("__Internal")]
-    private static extern bool IsMobile();
+    //[System.Runtime.InteropServices.DllImport("__Internal")]
+    //private static extern bool IsMobile();
 
 
 
@@ -44,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckMobile()
     {
-        isMobile = false;
-#if !UNITY_EDITOR && UNITY_WEBGL
-        isMobile = IsMobile();
-#endif
+//        isMobile = false;
+//#if !UNITY_EDITOR && UNITY_WEBGL
+//        isMobile = IsMobile();
+//#endif
 
     }
 
