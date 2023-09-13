@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -22,9 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bl_Joystick joystick;
 
 
-
     // importing checker is Mobile or not;
-
     //[System.Runtime.InteropServices.DllImport("__Internal")]
     //private static extern bool IsMobile();
 
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckMobile();
         joystick = mobileController.GetComponent<bl_Joystick>();
-        mobileController.SetActive(false);
         freezeCanvas = player.GetComponent<Player>();
         freezeCanvas.FreezeOff();
         currentSpeed = speed;
@@ -44,6 +42,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckMobile()
     {
+        if (SystemInfo.operatingSystemFamily.ToString() != "Windows")
+        {
+            isMobile = true;
+            mobileController.SetActive(true);
+        }
+        else 
+        {
+            isMobile = false;
+            mobileController.SetActive(false);
+        }
 //        isMobile = false;
 //#if !UNITY_EDITOR && UNITY_WEBGL
 //        isMobile = IsMobile();
@@ -51,22 +59,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
     private void OnEnable()
     {
         Actions.bonusSpeed += GetSpeedBonus;
         Actions.freezeBonus += GetFreezeBonus;
         Actions.invertBonus += GetInvertMoveBonus;
-    }
-
-    private void ActivateMobileController() 
-    {
-        if (isMobile == true)
-        {
-            //activate mobile controller
-            mobileController.SetActive(true);
-        }
-
     }
 
     private void OnDisable()
@@ -81,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
         ChangeAnimState();
-        isMobile = debugMobile;
     }
 
     private void FixedUpdate()
