@@ -78,6 +78,10 @@ public class UIGame : MonoBehaviour
     public void UnPause() 
     {
         UIpanel.SetActive(false);
+        if (PlayerMovement.isMobile == true)
+        {
+            joystick.SetActive(true);
+        }
         Time.timeScale = 1;
     }
 

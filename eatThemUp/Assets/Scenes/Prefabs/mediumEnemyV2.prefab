@@ -4920,7 +4920,7 @@ MonoBehaviour:
   areaRadius: 40
   ChildGO: {fileID: 0}
   grounded: 0
-  enemyAnimator: {fileID: 0}
+  enemyAnimator: {fileID: 3225632896595711187}
   canvas: {fileID: 5666841693261496377}
   participleDust: {fileID: 3354819633883580640}
   currentLifeTime: 25
@@ -5327,5 +5327,10 @@ PrefabInstance:
 --- !u!4 &8801138487863217833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 639928985217862936, guid: 7162793d91fb69744a25a3a0371894ba, type: 3}
+  m_PrefabInstance: {fileID: 8269331116775179185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3225632896595711187 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6773784173122344802, guid: 7162793d91fb69744a25a3a0371894ba, type: 3}
   m_PrefabInstance: {fileID: 8269331116775179185}
   m_PrefabAsset: {fileID: 0}
